@@ -4,7 +4,7 @@ O projeto faz parte da avaliação principal das disciplinas **IF977- ENGENHARIA
 
 O projeto foi dividido em 3 repostiórios, sendo eles:
 
-📌[Font-end](https://github.com/Jailsonsdsj/projeto-ES-front)
+📌[Front-end](https://github.com/Jailsonsdsj/projeto-ES-front)
 
 📌Back-end [inserir-link]
 
