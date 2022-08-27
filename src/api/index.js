@@ -1,10 +1,1 @@
-export const userData = [
-    {
-        email:"junior@klote.com",
-        password:"123"
-    },
-    {
-        user:"wytoria@klote.com",
-        password:"123"
-    }
-]
+export const API_BACKEND_ENDPOINT = '';
