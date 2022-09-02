@@ -1,8 +1,8 @@
-import { API_BACKEND_ENDPOINT } from ".";
+import { API_BACKEND_BASEURL } from ".";
 import axios from "axios";
 
 export const apiAutentication = axios.create({
-    baseURL: API_BACKEND_ENDPOINT,
+    baseURL: API_BACKEND_BASEURL,
 });
 
 export const createSession = async(email,password) =>{
