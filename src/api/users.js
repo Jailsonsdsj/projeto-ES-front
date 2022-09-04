@@ -6,12 +6,14 @@ export const apiAutentication = axios.create({
 });
 
 export const createSession = async(email,password) =>{
-    try{
+    try{ 
         const headers = {
-            "email": email, 
-            "password": password
-        }
-        return apiAutentication.post('/api/user/login', headers)
+            auth: {
+              "username": email,
+              "password": password
+            }
+          };
+        return apiAutentication.post('/user/login', {}, headers)
 
     }catch(err){
         return err;
@@ -19,6 +21,7 @@ export const createSession = async(email,password) =>{
     }
     
 }
+
 export const getUser = async() =>{
     try{
         return apiAutentication.get('/get_user/5')
@@ -28,4 +31,24 @@ export const getUser = async() =>{
 
     }
     
+}
+
+export const sendResetPassword = async(email) => {
+    try{
+        const response = await fetch(`${API_BACKEND_BASEURL}/user/send_email`, {
+            method: "POST",
+            body: JSON.stringify({
+                "email": email
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+               
+        return response.status;
+
+    }catch(err){
+        return err;
+    }
+   
 }

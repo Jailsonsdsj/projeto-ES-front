@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import LoginForm from './components/loginForm/loginForm';
+import { LoginForm } from './components/loginForm/loginForm';
 import HomePage from './components/HomePage/HomePage';
 import { AuthContext, AuthProvider } from './contexts/auth';
-
+import ResetPassword from './components/loginForm/ResetPassword';
 
 export const AppRoutes = () =>{
 
@@ -16,7 +16,6 @@ export const AppRoutes = () =>{
         if(loading){
             return <div className="loading">Carregando...</div>
         }
-
         return children;
     }
     
@@ -26,6 +25,7 @@ export const AppRoutes = () =>{
             <AuthProvider>
                 <Routes>
                     <Route exact path="/login" element={ <LoginForm />} />
+                    <Route exact path="/resetPassword" element={ <ResetPassword />} />
                     <Route exact path="/" element={<Private> <HomePage /></Private>} />
                 </Routes>
             </AuthProvider>

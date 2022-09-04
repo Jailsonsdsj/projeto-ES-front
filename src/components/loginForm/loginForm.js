@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
 
-function LoginForm() {
+export const LoginForm = () => {
   const { authenticated, login } = useContext(AuthContext);
 
   const [details, setDetails] = useState({ email: "", password: "" });
@@ -40,9 +41,14 @@ function LoginForm() {
           value={details.password}
         />
       </div>
+      <Link to="/resetPassword">Esqueci a senha</Link>
       <input type="submit" value="Entrar" />
+
     </form>
   );
 }
 
-export default LoginForm;
+
+
+
+
