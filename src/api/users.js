@@ -22,9 +22,9 @@ export const createSession = async(email,password) =>{
     
 }
 
-export const getUser = async() =>{
+export const getUsers = async() =>{
     try{
-        return apiAutentication.get('/get_user/5')
+        return apiAutentication.get('/user/get_users')
 
     }catch(err){
         return err;
