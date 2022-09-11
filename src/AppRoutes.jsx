@@ -10,12 +10,13 @@ export const AppRoutes = () =>{
     //checks if the component inside Private (children) is autenticate. if don't, the user will be redirect to login page
     const Private = ({ children }) => {
         const { authenticated, loading } = useContext(AuthContext)
-        console.log(authenticated)
-        // if (!authenticated) {
-        //     return <Navigate to="/login" />
-        // }
+        
+       
         if(loading){
             return <div className="loading">Carregando...</div>
+        }
+        if (!authenticated) {
+            return <Navigate to="/login" />
         }
         return children;
     }
