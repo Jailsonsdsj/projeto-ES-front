@@ -20,7 +20,6 @@ export const LoginForm = () => {
   return (
     <form onSubmit={submitHandle}>
       <h2>Login</h2>
-      <p>{String(authenticated)}</p>
       <div className="form-group">
         <label htmlFor="email">Email: </label>
         <input
