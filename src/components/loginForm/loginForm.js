@@ -1,17 +1,22 @@
-import React, { useState } from 'react'
-import styled from 'styled-components';
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+// import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/auth";
 
-function LoginForm({ login,error }){
-    const [details, setDetails] = useState({email:"", password:""})
+export const LoginForm = () => {
+  const {login } = useContext(AuthContext);
 
-    const submitHandle = (e) =>{
-        e.preventDefault();
-        login(details);
-    }
+  const [details, setDetails] = useState({ email: "", password: "" });
+
+  const submitHandle = (e) => {
+    e.preventDefault();
+    login(details.email, details.password); //context integration
+  };
 
   return (
         <Container>
-        <Title>K-LOTE </Title>   
+        <Title>K-LOTE</Title>   
         <SubTitle>Fazer Login</SubTitle>
             <Form onSubmit={submitHandle}>
                 <InputLabel className="form-group">
@@ -24,14 +29,14 @@ function LoginForm({ login,error }){
                     <InputText type="password" name="password" placeholder='Digite sua senha' id="password" onChange={e => 
                         setDetails({...details, password: e.target.value})} value={details.password}/>
                 </InputLabel>
-                {(error !== "") ? ( <div className="error">{error}</div>) : ""}
+                {/* {(error !== "") ? ( <div className="error">{error}</div>) : ""} */}
                 <DisplayBetween class="display-space-between">
                     <RadioDiv>
                         <input type="checkbox"></input>
                         <label for="password" class="chekbox-label">Manter conectado</label>
                     </RadioDiv>
-                    <div>
-                        Esqueceu sua senha?
+                    <div >
+                        <Link to="/resetPassword">Esqueceu sua senha?</Link>
                     </div>
                 </DisplayBetween>
             <div>
@@ -68,6 +73,9 @@ box-shadow: 10px;
 margin-bottom: 10px;
 `
 const Title = styled.h1`
+text-align: center;
+margin: 17px 0;
+
 color: #38B885;
 font-family: 'Segoe UI', 'Roboto';
 `
