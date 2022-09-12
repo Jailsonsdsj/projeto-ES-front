@@ -1,16 +1,21 @@
 import React, { useContext,useEffect,useState } from 'react'
 import { AuthContext } from '../../contexts/auth'
-import { getUsers } from '../../api/users';
+import { getUsers,userData } from '../../api/users';
+
 
 const HomePage = () => {
+  const name = userData()
   const { logout } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [loading , setLoading] = useState(true);
+  const [ loggedUser, setLoggedUser ] = useState(null)
 
   useEffect(()=>{
     (async ()=>{
       const response = await getUsers();
+      const user = await userData();
       setUsers(response.data);
+      setLoggedUser(user)
       setLoading(false);
     })();
   }, []);
@@ -18,6 +23,8 @@ const HomePage = () => {
   const handleLogout = () =>{
     logout();
   }
+
+  
 
   if(loading){
     return (
@@ -31,6 +38,7 @@ const HomePage = () => {
   return (
     <>
       <div><h1>HomePage</h1></div>
+      <p>Bem vindo(a), {loggedUser.name}!</p>
         {users ? 
         <ul>
           <h3>Usuários ativos:</h3>
