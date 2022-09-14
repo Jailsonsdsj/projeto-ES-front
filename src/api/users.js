@@ -8,15 +8,12 @@ export const apiAutentication = axios.create({
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
 });
 
-
  //this is will force to update the token
 export const axiosPrivate = axios.create({
     baseURL: API_BACKEND_BASEURL,
     headers: { 'Content-Type': 'application/json' },
     withCredentials: true
 });
-
-
 
 export const createSession = async(email,password) =>{
     try{ 
@@ -27,13 +24,10 @@ export const createSession = async(email,password) =>{
             }
           };
         return apiAutentication.post('/user/login', {}, headers)
-
     }catch(err){
         console.error(err)
         return err;
-
     }
-    
 }
 
 export const getUsers = async() =>{
@@ -43,9 +37,7 @@ export const getUsers = async() =>{
     }catch(err){
         console.error(err)
         return err;
-
     }
-    
 }
 
 export const sendResetPassword = async(email) => {
@@ -58,25 +50,20 @@ export const sendResetPassword = async(email) => {
             headers: {
               "Content-Type": "application/json",
             },
-          });
-               
+          });   
         return response.status;
-
     }catch(err){
         console.error(err)
         return err;
     }
-   
 }
-
 
 export const userData = async()=>{
     const response = await getUsers();
     const { data } = response;
     const tokenUser = jwt(localStorage.getItem("token"))
     const result = data.data.filter(item => tokenUser.user_id === item.user_id)
-    
-    return result[0]
+    return result[0];
   }
 
 
