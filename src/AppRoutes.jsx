@@ -7,7 +7,7 @@ import { Financial } from './pages/Financial';
 import HomePage from './pages/HomePage';
 import { Profile } from './pages/Profile';
 import { Navigation } from './components/Header/Navigation';
-import { LoginForm } from './components/Login/LoginForm';
+import{ LoginForm } from './components/Login/loginForm'
 import ResetPassword from './components/Login/ResetPassword'; 
 import { AuthContext, AuthProvider } from './contexts/auth';
 
