@@ -12,7 +12,41 @@ O projeto foi dividido em 3 repostiórios, sendo eles:
 
 
 
-## Instalação
+## 📑Sobre
+
+
+
+
+
+
+
+
+
+## 👩🏽‍💻Tecnologias
+
+
+
+
+
+
+
+
+
+
+
+## 🛠Requisitos
+
+
+
+
+
+
+
+
+
+
+
+## Instalação (local)
 
 1. Realize o clone do repositório:
 
@@ -40,7 +74,21 @@ npm start
 
 
 
-## Outras Informações
+## Instrutor
 
-Acesse o site hospedado em: <link do site>
+Professor: [Vinicius Cardoso Garcia](https://viniciusgarcia.me/) - [vcg@cin.ufpe.br]()
+
+
+
+
+
+## 👥 Autores
+
+
+
+
+
+
+
+
 
