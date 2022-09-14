@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React,{useContext} from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import { Allotments } from './pages/Allotments';
@@ -7,7 +7,7 @@ import { Financial } from './pages/Financial';
 import HomePage from './pages/HomePage';
 import { Profile } from './pages/Profile';
 import { Navigation } from './components/Header/Navigation';
-import{ LoginForm } from './components/Login/loginForm'
+import LoginForm from './components/Login/LoginForm';
 import ResetPassword from './components/Login/ResetPassword'; 
 import { AuthContext, AuthProvider } from './contexts/auth';
 

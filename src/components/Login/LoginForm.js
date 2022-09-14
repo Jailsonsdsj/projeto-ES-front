@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AuthContext } from "../../contexts/auth";
 
-export const LoginForm = () => {
+const LoginForm = () => {
   const {login } = useContext(AuthContext);
 
   const [details, setDetails] = useState({ email: "", password: "" });
@@ -51,6 +51,8 @@ export const LoginForm = () => {
 }
 
 export default LoginForm
+
+
 
 const Container = styled.div`
 height: 100vh;
