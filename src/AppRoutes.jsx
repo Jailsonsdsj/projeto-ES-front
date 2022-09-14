@@ -1,9 +1,16 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { LoginForm } from './components/loginForm/loginForm';
-import HomePage from './components/HomePage/HomePage';
+
+import { Allotments } from './pages/Allotments';
+import { Clients } from './pages/Clients';
+import { Financial } from './pages/Financial';
+import HomePage from './pages/HomePage';
+import { Profile } from './pages/Profile';
+import { Navigation } from './components/Header/Navigation';
+import{ LoginForm } from './components/Login/loginForm'
+import ResetPassword from './components/Login/ResetPassword'; 
 import { AuthContext, AuthProvider } from './contexts/auth';
-import ResetPassword from './components/loginForm/ResetPassword';
+
 
 export const AppRoutes = () =>{
 
@@ -16,7 +23,12 @@ export const AppRoutes = () =>{
         if (!authenticated) {
             return <Navigate to="/login" />
         }
-        return children;
+        return(
+            <>
+            <Navigation />
+            {children}
+            </>
+        ) 
     }
     
 
@@ -27,6 +39,10 @@ export const AppRoutes = () =>{
                     <Route exact path="/login" element={ <LoginForm />} />
                     <Route exact path="/resetPassword" element={ <ResetPassword />} />
                     <Route exact path="/" element={<Private> <HomePage /></Private>} />
+                    <Route exact path="/Financial" element={<Private> <Financial /></Private>} />
+                    <Route exact path="/Allotments" element={<Private> <Allotments /></Private>} />
+                    <Route exact path="/Clients" element={<Private> <Clients /></Private>} />
+                    <Route exact path="/Profile" element={<Private> <Profile /></Private>} />
                 </Routes>
             </AuthProvider>
       </Router>

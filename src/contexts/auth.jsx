@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { apiAutentication,createSession} from "../api/users";
-import axios from "axios";
+import { useNavigate} from "react-router-dom";
+import { apiAutentication,createSession } from "../api/users";
+// import axios from "axios";
 
 export const AuthContext = createContext();
 
@@ -15,12 +15,11 @@ export const AuthProvider = ({ children }) =>{
     useEffect(()=>{
         const recoveredUser = localStorage.getItem("user");
         const token = localStorage.getItem("token")
-        // console.log(recoveredUser)
+        
         if(recoveredUser && token){
             setUser(JSON.parse(recoveredUser))
             //sets default headres in requests
             apiAutentication.defaults.headers.Authorization = `Bearer ${token}`;
-          
         }
         setLoading(false)
 
@@ -29,7 +28,6 @@ export const AuthProvider = ({ children }) =>{
     const login = async(email, password) =>{
 
         const response = await createSession(email,password)
-
         const loggedUser = response.data;
         const token = response.data.token;
         

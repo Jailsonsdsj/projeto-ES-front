@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
 
 export const LoginForm = () => {
