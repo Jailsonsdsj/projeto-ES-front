@@ -10,14 +10,14 @@ const HomePage = () => {
   useEffect(()=>{
     (async ()=>{
       const user = await userData();
-      const alloteaments = await getAllAllotments(user.user_id);
-      setAlloteaments(alloteaments);
       setLoggedUser(user)
+
+      // const alloteaments = await getAllAllotments(user.user_id);
+      // setAlloteaments(alloteaments);
+
       setLoading(false);
     })();
   }, []);
-
-  
 
 
 
