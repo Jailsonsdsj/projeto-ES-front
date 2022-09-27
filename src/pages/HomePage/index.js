@@ -29,8 +29,8 @@ const HomePage = () => {
     <>
       <p>Olá, {loggedUser.name}!</p>
       <div><h1>Dashboard</h1></div>
-      <p>Estamos preparando o seu K-lote!</p>
-      <img src="https://c.tenor.com/7X9KjkIfDQwAAAAM/michael-scott.gif" alt="" srcset="" />
+    
+      
     </>
   )
 }

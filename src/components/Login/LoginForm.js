@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { AuthContext } from "../../contexts/auth";
 
 const LoginForm = () => {
-  const {login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const [details, setDetails] = useState({ email: "", password: "" });
 
