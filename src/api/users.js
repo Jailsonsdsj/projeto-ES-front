@@ -69,4 +69,15 @@ export const userData = async()=>{
 
  
 
+export const getAllAllotments = async(id)=> {
+    try{
+        return await apiAutentication.get(`/user/get_allotments/${id}`)
+     
+    }catch(err){
+        console.log(`getAllAllotments error: ${err}`)
+        return err;
+    }
+    
+}
+
 
