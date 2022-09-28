@@ -13,13 +13,13 @@ export const Navigation = () => {
     return(
         <nav>
             
-            <div class="hamburger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+            <div className="hamburger">
+                <div className="line1"></div>
+                <div className="line2"></div>
+                <div className="line3"></div>
             </div>
-            <ul class="nav-links">
-                <li class="logo">
+            <ul className="nav-links">
+                <li className="logo">
                     <img src="https://pbs.twimg.com/media/FdtM0pqWAAA7QJj?format=jpg&name=4096x4096" alt="logo" />
                 </li>
                 <li key="home">
