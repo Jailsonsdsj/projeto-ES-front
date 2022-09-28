@@ -1,6 +1,5 @@
 import React,{useContext} from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-
 import { Allotments } from './pages/Allotments';
 import { Clients } from './pages/Clients';
 import { Financial } from './pages/Financial';
