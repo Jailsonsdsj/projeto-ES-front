@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AuthContext } from "../../contexts/auth";
+import { Link } from "react-router-dom";
+
+    
+    
 
 const LoginForm = () => {
   const { login } = useContext(AuthContext);
@@ -18,21 +21,21 @@ const LoginForm = () => {
         <Title>K-LOTE</Title>   
         <SubTitle>Fazer Login</SubTitle>
             <Form onSubmit={submitHandle}>
-                <InputLabel className="form-group">
+                <InputLabel>
                     <label htmlFor="email">E-mail</label>
                     <InputText type="email" name="email" placeholder='Digite seu e-mail' id="email" onChange={e => 
                         setDetails({...details, email: e.target.value})} value={details.email}/>
                 </InputLabel>
-                <InputLabel className="form-group">
+                <InputLabel>
                     <label htmlFor="password">Senha</label>
                     <InputText type="password" name="password" placeholder='Digite sua senha' id="password" onChange={e => 
                         setDetails({...details, password: e.target.value})} value={details.password}/>
                 </InputLabel>
                 {/* {(error !== "") ? ( <div className="error">{error}</div>) : ""} */}
-                <DisplayBetween class="display-space-between">
+                <DisplayBetween className="display-space-between">
                     <RadioDiv>
                         <input type="checkbox"></input>
-                        <label for="password" class="chekbox-label">Manter conectado</label>
+                        <label htmlFor="password" className="chekbox-label">Manter conectado</label>
                     </RadioDiv>
                     <div >
                         <Link to="/resetPassword">Esqueceu sua senha?</Link>
@@ -50,7 +53,7 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default LoginForm;
 
 
 

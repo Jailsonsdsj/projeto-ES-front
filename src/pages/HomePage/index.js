@@ -3,6 +3,7 @@ import { AuthContext } from '../../contexts/auth'
 import { getUsers,userData, getAllAlloteaments } from '../../api/users';
 import AlloteamentsDashboard from '../../components/Alloteaments/AlloteamentsDashboard'
 import LoadingData from '../../components/utils/LoadingData';
+import './home-index-style.css'
 
 const HomePage = () => {
   const [ loading , setLoading] = useState(true);
@@ -28,16 +29,20 @@ const HomePage = () => {
     {loading ? (
       <LoadingData/>
       ):( 
-      <div>
-        <p>Olá, {loggedUser.name}!</p>
-        <div><h1>Dashboard</h1></div>
-        <p>Estamos preparando o seu K-lote!</p>
-        {/* 
-          1. create componet to show Dashboard data - waiting for business rule
-          2. create componet to show the list of alloteaments
-          3. show alloteaments details when click
-         */}
-         <AlloteamentsDashboard/>
+      <div className='container-warning'>
+        <div className='alert-content'>
+          {/* <div><h1>Dashboard</h1></div> */}
+          <p>Olá, {loggedUser.name}!</p>
+          <p>Estamos preparando o seu K-lote!</p>
+          <img src='https://cdn-icons-png.flaticon.com/512/1564/1564701.png' alt=''/>
+          {/* 
+            1. create componet to show Dashboard data - waiting for business rule
+            2. create componet to show the list of alloteaments
+            3. show alloteaments details when click
+          */}
+          {/* <AlloteamentsDashboard/> */}
+        </div>
+        
       </div>
       )}
     </>

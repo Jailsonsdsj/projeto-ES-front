@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import LoadingData from '../../components/utils/LoadingData';
-import ProfileData from '../../components/ProfileData';
+import ProfileData from '../../components/profileData';
 import { PlusOutlined, EditOutlined } from '@ant-design/icons';
 import { userData } from '../../api/users';
 
