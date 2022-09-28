@@ -77,12 +77,3 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
 };
 
 export default AlloteamentsDashboard;
-
-// {
-//     address:"",
-//     cep:"",
-//     id:"",
-//     img_url:"",
-//     lots:[],
-//     name:""
-// }

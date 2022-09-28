@@ -16,20 +16,56 @@ const Lot = () => {
     })();
   }, [id]);
 
-  console.log(lotData)
-
- 
+  console.log(lotData);
 
   return loading ? (
     <LoadingData />
   ) : (
-    <ul>
-        <li> ID: {lotData.allotment_id}</li>
-        <li> Bloco: {lotData.block}</li>
-        <li> Número: {lotData.number}</li>
-        <li> Status: {lotData.status}</li>
-        <li> Valor: {lotData.value}</li>
-    </ul>
+    <main>
+      <div className="buttons">
+        <button>Editar</button>
+        <button>Excluir</button>
+      </div>
+
+      <div className="lot-info-container">
+        <div className="lot-info">
+          <h1>Lote {lotData.block}</h1>
+          <h5>Valor da Venda</h5>
+          <h3>R${lotData.value}</h3>
+        </div>
+        <button> Adicionar Proprietário</button>
+      </div>
+
+      <div className="lot-history">
+        <h5>Histório do lote</h5>
+        <table>
+          <thead>
+            <tr>
+              <td>Data</td>
+              <td>Descrição</td>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(lotData.history).length
+              ? Object.entries(lotData.history).map(([key, value]) => (
+                  <tr key={value.id}>
+                    <td>{value.created_at}</td>
+                    <td>{value.description}</td>
+                  </tr>
+                ))
+              : "Lote sem histórico"}
+          </tbody>
+        </table>
+        <button>Adicionar Marco</button>
+      </div>
+    </main>
+    // <ul>
+    //     <li> ID: {lotData.allotment_id}</li>
+    //     <li> Bloco: {lotData.block}</li>
+    //     <li> Número: {lotData.number}</li>
+    //     <li> Status: {lotData.status}</li>
+    //     <li> Valor: {lotData.value}</li>
+    // </ul>
   );
 };
 
