@@ -12,7 +12,6 @@ export const Navigation = () => {
       
     return(
         <nav>
-            
             <div className="hamburger">
                 <div className="line1"></div>
                 <div className="line2"></div>
