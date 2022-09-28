@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { sendResetPassword } from '../../api/users';
-
+import '../Login/reset-passworfd.css'
 const ResetPassword = () => {
     const [ statusResponse, setStatusResponse ] = useState('')
     const handleSubmit = async(e) =>{
@@ -17,8 +17,8 @@ const ResetPassword = () => {
     }
 
   return (
-    <form onSubmit={handleSubmit}>
-        <h2>Recuperar Senha</h2>
+    <form onSubmit={handleSubmit} className='form-div'>
+        <h2 className='title'>Recuperar Senha 222</h2>
         <div className="form-group">
             <label htmlFor="email">Digite seu e-mail: </label>
             <input 

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from "../../contexts/auth";
+import './navigation-style.css'
 
 export const Navigation = () => {
     const { logout } = useContext(AuthContext);

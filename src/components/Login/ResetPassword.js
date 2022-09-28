@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { sendResetPassword } from '../../api/users';
+import '../Login/reset-password.css';
+
+
 
 const ResetPassword = () => {
     const [ statusResponse, setStatusResponse ] = useState('')
@@ -11,25 +14,38 @@ const ResetPassword = () => {
            const response = await sendResetPassword(value)
         
            response === 200 ? 
-           setStatusResponse("Enviamos um link de recuperação para o seu e-mail. Não esqueça de verificar a caixa de spam.") :
-            setStatusResponse("O endereço de e-mail que você inseriu não está vinculado a uma conta do K-Lote. Entre em contato com o administrador do site.")
+           setStatusResponse("Senha temporária enviada. Verifique o e-mail cadastrado para continuar.") :
+           setStatusResponse("O endereço de e-mail que você inseriu não está vinculado a uma conta do K-Lote. Entre em contato com o administrador do site.")
         }   
     }
 
   return (
-    <form onSubmit={handleSubmit}>
-        <h2>Recuperar Senha</h2>
-        <div className="form-group">
-            <label htmlFor="email">Digite seu e-mail: </label>
-            <input 
-                type="email"
-                id="email"
-                name="email" 
-            />
-        </div>
-         <input type="submit" value="Enviar" />
-        {statusResponse ? <p>{statusResponse}</p>: <></>}
-    </form>
+    <div className='container'>
+        <form onSubmit={handleSubmit} className='reset-form'>
+            <div className='title-form'>
+                <h2 >Recuperar sua senha</h2>
+                <p>Vamos enviar uma senha temporária através do e-mail cadastrado.</p>
+            </div>
+            
+            <div className="form-group">
+                <label htmlFor="email" className='input-label'>Digite seu e-mail: </label>
+                <input 
+                    className='input-text'
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder='seuemail@email.com' 
+                />
+            </div>
+            <div className='input-class'>
+                <input className='input-reset' type="reset" value='Cancelar'/>
+                <input className='input-btn' type="submit" value="Enviar" />
+            </div>
+
+            {statusResponse ? <p>{statusResponse}</p>: <></>}
+        </form>
+    </div>
+    
   );
 }
 
