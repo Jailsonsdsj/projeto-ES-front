@@ -20,8 +20,7 @@ const HomePage = () => {
     })();
   }, []);
 
- 
-  console.log(alloteaments)
+  
 
   return (
     <>
@@ -37,7 +36,7 @@ const HomePage = () => {
           2. create componet to show the list of alloteaments
           3. show alloteaments details when click
          */}
-         <AlloteamentsDashboard/>
+         <AlloteamentsDashboard alloteaments={alloteaments}/>
       </div>
       )}
     </>
