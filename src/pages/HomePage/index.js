@@ -1,6 +1,7 @@
 import React, { useContext,useEffect,useState } from 'react'
 import { AuthContext } from '../../contexts/auth'
-import { getUsers,userData, getAllAllotments } from '../../api/users';
+import { getUsers,userData, getAllAlloteaments } from '../../api/users';
+import AlloteamentsDashboard from '../../components/Alloteaments/AlloteamentsDashboard'
 import LoadingData from '../../components/utils/LoadingData';
 
 const HomePage = () => {
@@ -11,15 +12,16 @@ const HomePage = () => {
     (async ()=>{
       const user = await userData();
       setLoggedUser(user)
-
-      // const alloteaments = await getAllAllotments(user.user_id);
-      // setAlloteaments(alloteaments);
+     
+      const alloteaments = await getAllAlloteaments(user.user_id);
+      setAlloteaments(alloteaments);
 
       setLoading(false);
     })();
   }, []);
 
-
+ 
+  console.log(alloteaments)
 
   return (
     <>
@@ -31,10 +33,11 @@ const HomePage = () => {
         <div><h1>Dashboard</h1></div>
         <p>Estamos preparando o seu K-lote!</p>
         {/* 
-        1. create componet to show Dashboard data
-        2. create componet to show the list of alloteaments
-        3. show alloteaments details
+          1. create componet to show Dashboard data - waiting for business rule
+          2. create componet to show the list of alloteaments
+          3. show alloteaments details when click
          */}
+         <AlloteamentsDashboard/>
       </div>
       )}
     </>
