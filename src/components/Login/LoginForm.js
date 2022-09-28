@@ -6,11 +6,8 @@ import { Link } from "react-router-dom";
     
     
 
-export const LoginForm = () => {
-
-
-  //reset password
-  const {login } = useContext(AuthContext);
+const LoginForm = () => {
+  const { login } = useContext(AuthContext);
 
   const [details, setDetails] = useState({ email: "", password: "" });
 
@@ -57,6 +54,8 @@ export const LoginForm = () => {
 }
 
 export default LoginForm;
+
+
 
 const Container = styled.div`
 height: 100vh;

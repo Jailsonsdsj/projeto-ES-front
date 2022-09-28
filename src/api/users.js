@@ -62,12 +62,28 @@ export const userData = async()=>{
     const response = await getUsers();
     const { data } = response;
     const tokenUser = jwt(localStorage.getItem("token"))
-    const result = data.data.filter(item => tokenUser.user_id === item.user_id)
+    const result = data.data.filter(item => tokenUser.user_data.user_id === item.user_id)
     return result[0];
   }
 
 
  
 
+export const getAllAlloteaments = async(id)=> {
+    try{
+        const response = await apiAutentication.get(`/user/get_allotments/${id}`) 
+        return response.data.data
+     
+    }catch(err){
+        console.error(`getAllAlloteaments error: ${err}`)
+        return err;
+    }
+    
+}
+
+
+export const detailsAllotments = async()=>{
+
+}
 
 
