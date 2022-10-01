@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import LoadingData from "../../components/utils/LoadingData";
-// import ProfileData from "../../components/ProfileData";
+import ProfileData from "../../components/ProfileData";
 import { PlusOutlined, EditOutlined } from "@ant-design/icons";
+import ResetPassword
+ from "../../components/ResetPassword";
 import { userData } from "../../api/users";
 
 export const Profile = () => {
@@ -34,23 +36,10 @@ export const Profile = () => {
               Editar
             </button>
           </div>
-          <table>
-            <tr>
-              <td>Nome</td>
-              <td>E-mail</td>
-              <td>CPF</td>
-              <td>Telefone</td>
-            </tr>
-            <tr>
-              <td>{data.name}</td>
-              <td>{data.email}</td>
-              <td>{data.cpf}</td>
-              <td>{data.phone}</td>
-            </tr>
-          </table>
-
+          <ProfileData data={data}/>
           {/* Insert change passowrd funcion here */}
           <button>Alterar Senha</button>
+          <ResetPassword/>
           <div className="guests">
             <h2>Convidados</h2>
             {/* insert add guest function inside this componet: */}
