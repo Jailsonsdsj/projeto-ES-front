@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { sendResetPassword } from '../../api/users';
 import '../Login/reset-password.css';
-
+import { Link } from "react-router-dom";
 
 
 const ResetPassword = () => {
@@ -38,7 +38,7 @@ const ResetPassword = () => {
                 />
             </div>
             <div className='input-class'>
-                <input className='input-reset' type="reset" value='Cancelar'/>
+                <Link to="/login" className='input-reset'> Cancelar </Link>
                 <input className='input-btn' type="submit" value="Enviar" />
             </div>
 

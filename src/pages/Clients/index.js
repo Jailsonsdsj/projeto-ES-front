@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import { getUsers,userData } from '../../api/users';
-
+import './client-style.css'
 
 export const Clients = () => {
   const [users, setUsers] = useState([]);
@@ -26,15 +26,19 @@ export const Clients = () => {
 
   return (
     <>
-    <h1>Usuários ativos:</h1>
+    <h1>Usuários ativos ou passivos?</h1>
     {users ? 
-      <ul>
+      <>
         {users.data.map((user) => (
-            <li key={user.cpf}>
-              {user.cpf} - {user.email}
-            </li>
+          <div className='active-users-intire-box'>
+          <div className='active-users-credentials-box'>
+            <p>{user.name}</p>
+            <p>CPF: {user.cpf}</p>
+            <p>ID: {user.email}</p>
+          </div>
+          </div>
           ))}
-      </ul> : <p>Sem usuários cadastrados</p>}
-      </>
+     </> : <p>Sem usuários cadastrados</p>}
+    </>
   )
 }
