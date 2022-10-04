@@ -1,6 +1,6 @@
 import React from "react";
 
-const ResetPassword = () => {
+const FormResetPassword = () => {
 
 
   return (
@@ -17,4 +17,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default FormResetPassword;

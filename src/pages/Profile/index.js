@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import LoadingData from "../../components/utils/LoadingData";
 import ProfileData from "../../components/ProfileData";
-import AddGuests from "../../components/AddGuests.form";
 import { EditOutlined  } from "@ant-design/icons";
 import { Button } from "antd";
-import ResetPassword from "../../components/ResetPassword";
+import ResetPassword from "../../components/ResetPassword/FormResetPassword";
 import { userData } from "../../api/users";
+import AddGuests from "../../components/AddGuests";
 
 export const Profile = () => {
   const [loading, setLoading] = useState(true);
@@ -42,14 +42,14 @@ export const Profile = () => {
           <div className="profile-type">
             <h2>Administrador</h2>
             {/* add edit function inside button */}
-            <button>
+            <button >
               <EditOutlined />
               Editar
             </button>
           </div>
           <ProfileData data={data}/>
           {/* Insert change passowrd funcion here */}
-          <Button type="primary" onClick={onClick}>Alterar a senha</Button>
+          <button  onClick={onClick}>Alterar a senha</button>
      
           {resetPasswordModal && <ResetPassword/>}
   
