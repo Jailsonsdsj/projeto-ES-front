@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LoadingData from "../../components/utils/LoadingData";
-import { detailsAllotments } from "../../api/users";
+import { detailsAllotments } from "../../api/alloteaments";
 
 const Lot = () => {
   const { id, lotId } = useParams();
@@ -15,8 +15,6 @@ const Lot = () => {
       setLoading(false);
     })();
   }, [id]);
-
-  console.log(lotData);
 
   return loading ? (
     <LoadingData />

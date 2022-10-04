@@ -22,27 +22,27 @@ export const Navigation = () => {
                     <img src="https://pbs.twimg.com/media/FdtM0pqWAAA7QJj?format=jpg&name=4096x4096" alt="logo" />
                 </li>
                 <li key="home">
-                    <NavLink  to='/' className="nav-link"activeClassName="nav-link-active">
+                    <NavLink  to='/' className="nav-link">
                         Início
                     </NavLink>
                 </li>
                 <li key="financial">
-                    <NavLink to='/financial' className="nav-link" activeClassName="nav-link-active">
+                    <NavLink to='/financial' className="nav-link" >
                         Financeiro
                     </NavLink>
                 </li>
                 <li key="allotments">
-                    <NavLink to='/allotments' className="nav-link"activeClassName="nav-link-active">
+                    <NavLink to='/allotments' className="nav-link">
                         Loteamento
                     </NavLink>
                 </li>
                 <li key="clients">
-                    <NavLink to='/clients' className="nav-link" activeClassName="nav-link-active">
+                    <NavLink to='/clients' className="nav-link" >
                         Clientes
                     </NavLink>
                 </li>
                 <li key="profile">
-                    <NavLink to='/profile' className="nav-link" activeClassName="nav-link-active">
+                    <NavLink to='/profile' className="nav-link">
                         Perfil
                     </NavLink>
                 </li>

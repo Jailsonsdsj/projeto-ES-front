@@ -1,6 +1,6 @@
-import React, { useContext,useEffect,useState } from 'react'
-import { AuthContext } from '../../contexts/auth'
-import { getUsers,userData, getAllAlloteaments } from '../../api/users';
+import React, { useEffect,useState } from 'react'
+import { userData } from '../../api/users';
+import { getAllAlloteaments } from '../../api/alloteaments';
 import AlloteamentsDashboard from '../../components/Alloteaments/AlloteamentsDashboard'
 import LoadingData from '../../components/utils/LoadingData';
 import './home-index-style.css'
@@ -21,7 +21,6 @@ const HomePage = () => {
     })();
   }, []);
 
-  
 
   return (
     <>

@@ -52,7 +52,7 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
         <div className="alloteaments-numbers">
           {Object.keys(dataAlloteaments.lots).length
             ? Object.entries(dataAlloteaments.lots).map(([key, value]) =>
-                value === "available" ? (
+                value === true ? (
                   <div key={key} className="box-lot available-lot">
                     <NavLink
                       to={`/Lot/${dataAlloteaments.id}/${key}`}
