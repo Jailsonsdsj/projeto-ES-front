@@ -12,10 +12,6 @@ export const Profile = () => {
   const [data, setData] = useState();
   const [resetPasswordModal, setResetPasswordModal ] = useState(false)
 
-
-  //uncoment when request data
-  // const [ guests, setGests] = useState()
-
   useEffect(() => {
     (async () => {
       const dataResponse = await userData();
@@ -29,9 +25,6 @@ export const Profile = () => {
     
   }
 
-  // const addGuests = ()=>{
-  //   setAddGuestsModal(!addGuestsModal)
-  // }
   return (
     <>
       {loading ? (
@@ -49,14 +42,12 @@ export const Profile = () => {
           </div>
           <ProfileData data={data}/>
           {/* Insert change passowrd funcion here */}
-          <button  onClick={onClick}>Alterar a senha</button>
+          <button onClick={onClick}>Alterar a senha</button>
      
           {resetPasswordModal && <ResetPassword/>}
   
           <div className="guests">
-            <h2>Convidados</h2>
-            {/* insert add guest function inside this componet: */}
-           
+            <h2>Convidados</h2>          
             <AddGuests/>
           </div>
 
