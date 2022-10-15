@@ -14,6 +14,7 @@ export const getAllAlloteaments = async(id)=> {
 }
 
 export const detailsAllotments = async(allotment_id,number)=>{
+    
     try{
         const body ={
             "allotment_id": allotment_id,

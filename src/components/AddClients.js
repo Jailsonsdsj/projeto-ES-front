@@ -1,29 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { PlusOutlined } from "@ant-design/icons";
-import { getAllAlloteaments } from "../api/alloteaments";
-
+import { ConsoleSqlOutlined, PlusOutlined } from "@ant-design/icons";
+import { getAllAlloteaments, detailsAllotments } from "../api/alloteaments";
+import { addClient } from "../api/user";
 const AddClients = () => {
   const [openModal, setOpenModal] = useState(false);
   const [alloteaments, setAlloteaments] = useState();
+  const [selectedAlloteament, setSelectedAlloteament] = useState("");
+
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
     cpf: "",
     address: "",
-    alloteaments: [],
+    lot: "",
+    alloteaments: ""
   });
 
   useEffect(() => {
     (async () => {
+      //get all alloteaments
       const user = JSON.parse(localStorage.getItem("userData"));
-      const response = await getAllAlloteaments(user.user_id);
-      setAlloteaments(response);
+      const allAlloteamentsResponse = await getAllAlloteaments(user.user_id);
+      setAlloteaments(allAlloteamentsResponse);
+
     })();
   }, []);
 
   const onChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
+ 
   };
 
   const toggleModal = () => {
@@ -32,6 +38,14 @@ const AddClients = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    addClient(formValues)
+  };
+
+  const handleChange = (e) => {
+  
+    const { value } = e.target;
+    const lots = JSON.parse(value);
+    setSelectedAlloteament(lots.lots);
   };
 
   return openModal ? (
@@ -69,26 +83,48 @@ const AddClients = () => {
         onChange={onChange}
         value={formValues.address}
       />
-      <label htmlFor="alloteaments-list">Lotes associados</label>
+
+      <h3>Lote associado</h3>
+
       <select
-        id="alloteaments-list"
         name="alloteaments"
+        id="alloteaments-list"
         placeholder="Lotes associados"
+        onChange={(e)=>{
+          handleChange(e)
+          onChange(e)
+        }
+        }
+        defaultValue ={formValues.alloteaments}
       >
-        <option>Loteamento</option>
+        <option value={false}>Loteamento</option>
         {alloteaments ? (
           alloteaments.map((item) => (
-            <option key={item.id} value={item.address}>
-               { console.log(item)}
+            <option key={item.id} value={JSON.stringify(item)} datasearch={JSON.stringify(item)}>
               {item.address}
             </option>
           ))
         ) : (
-         <option> </option>
+          <></>
         )}
       </select>
 
-      {/* input new select based on alloteament selected */}
+      {selectedAlloteament ? (
+        <select name="lot" id="lot" defaultValue ={formValues.lot}  onChange={onChange}>
+          <option value={false}>Lote</option>
+          {Object.entries(selectedAlloteament).map(
+            ([key, value]) =>
+              value && (
+                <option key={key} value={key}>
+                  {key}
+                </option>
+              )
+          )}
+        </select>
+      ) : (
+        <></>
+      )}
+
       <button className="secondary-button" onClick={toggleModal}>
         Cancelar
       </button>

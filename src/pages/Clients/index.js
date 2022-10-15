@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { getUsers,userData } from '../../api/users';
 import AddClients from '../../components/AddClients';
+import AllClients from '../../components/AllClients';
 
 export const Clients = () => {
   const [users, setUsers] = useState([]);
@@ -22,7 +23,7 @@ export const Clients = () => {
     <main>
     <h1>Clientes</h1>
     <AddClients/>
-    
+    <AllClients/>
     </main>
   )
 }

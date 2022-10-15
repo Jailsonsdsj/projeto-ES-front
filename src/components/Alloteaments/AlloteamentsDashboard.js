@@ -14,7 +14,6 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
     setDataAlloteaments(selectedAlloteaments[0]);
   };
 
-
   return (
     <div className="alloteaments-panel">
       <h2>Acompanhar Loteamento</h2>
