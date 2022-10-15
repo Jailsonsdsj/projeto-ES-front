@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { ConsoleSqlOutlined, PlusOutlined } from "@ant-design/icons";
 import { getAllAlloteaments, detailsAllotments } from "../api/alloteaments";
 import { addClient } from "../api/user";
+
+
 const AddClients = () => {
   const [openModal, setOpenModal] = useState(false);
   const [alloteaments, setAlloteaments] = useState();
