@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from "../../contexts/auth";
-import './navigation-style.css'
-
+// import './navigation-style.css'
+import '../../assets/css/style.css'
 export const Navigation = () => {
     const { logout } = useContext(AuthContext);
 
@@ -19,7 +19,7 @@ export const Navigation = () => {
             </div>
             <ul className="nav-links">
                 <li className="logo">
-                    <img src="https://i.ibb.co/FgBjTBg/klote-logo.png" alt="klote-logo" />
+                    <img src="https://i.ibb.co/xzyn9sj/logo-klote-03.png" alt="klote-logo" />
                 </li>
                 <li key="home">
                     <NavLink  to='/' className="nav-link">

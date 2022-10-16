@@ -4,7 +4,7 @@ import './client-style.css'
 import '../../assets/css/style.css'
 import AddClients from '../../components/AddClients';
 import AllClients from '../../components/AllClients';
-
+import "../../assets/css/style.css"
 export const Clients = () => {
   const [users, setUsers] = useState([]);
   const [loading , setLoading] = useState(true);
@@ -22,10 +22,10 @@ export const Clients = () => {
     loading ? 
     (<div className="loading">Carregando dados...</div> 
     ):
-    <main>
-    <h1>Clientes</h1>
-    <AddClients/>
-    <AllClients/>
+    <main className='container-1'>
+      <h1>Clientes</h1>
+      <AddClients/>
+      <AllClients/>
     </main>
   )
 }

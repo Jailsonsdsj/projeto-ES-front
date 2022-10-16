@@ -51,11 +51,12 @@ const AddClients = () => {
   };
 
   return openModal ? (
-    <form onSubmit={handleSubmit}>
+    <div className="container-1" >
       <h2>Adicionar Cliente</h2>
+      <form className="add-client-modal" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'row', gap: '100px'}}>
       <input
         type="text"
-        className="input-text"
+        className="input-convidado"
         name="name"
         placeholder="Nome"
         onChange={onChange}
@@ -63,7 +64,7 @@ const AddClients = () => {
       />
       <input
         type="text"
-        className="input-text"
+        className="input-convidado"
         name="email"
         placeholder="E-mail"
         onChange={onChange}
@@ -71,7 +72,7 @@ const AddClients = () => {
       />
       <input
         type="text"
-        className="input-text"
+        className="input-convidado"
         name="cpf"
         placeholder="CPF"
         onChange={onChange}
@@ -79,13 +80,14 @@ const AddClients = () => {
       />
       <input
         type="text"
-        className="input-text"
+        className="input-convidado"
         name="address"
         placeholder="Endereço"
         onChange={onChange}
         value={formValues.address}
       />
-
+      </form>
+      
       <h3>Lote associado</h3>
 
       <select
@@ -126,12 +128,12 @@ const AddClients = () => {
       ) : (
         <></>
       )}
-
-      <button className="secondary-button" onClick={toggleModal}>
+      <br></br>
+      <button className="input-reset" onClick={toggleModal}>
         Cancelar
       </button>
-      <input className="primary-button" type="submit" value="Adicionar" />
-    </form>
+      <input className="input-btn" type="submit" value="Adicionar" />
+    </div>
   ) : (
     <PlusOutlined onClick={toggleModal} />
   );
