@@ -4,6 +4,7 @@ import './client-style.css'
 import '../../assets/css/style.css'
 import AddClients from '../../components/AddClients';
 import AllClients from '../../components/AllClients';
+import {SearchOutlined} from '@ant-design/icons';
 
 export const Clients = () => {
   const [users, setUsers] = useState([]);
@@ -25,6 +26,11 @@ export const Clients = () => {
     <main>
     <h1>Clientes</h1>
     <AddClients/>
+    <div>
+      <input type="text" placeholder='Pesquisar cliente...' />
+    <SearchOutlined/>
+    </div>
+    
     <AllClients/>
     </main>
   )

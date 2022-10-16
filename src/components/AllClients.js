@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import { getCustomers } from '../api/user'
 import { NavLink } from "react-router-dom";
 
+
 const AllClients = () => {
     const [ clientList, setClientList ] = useState()
 

@@ -21,7 +21,7 @@ const DetailsClient = () => {
 
   return loading ? 
     <LoadingData/> : (
-        <div>Clientes</div>
+        <div>Clientes  {clientData.name}</div>
   )
 }
 
