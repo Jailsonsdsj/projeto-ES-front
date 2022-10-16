@@ -23,8 +23,14 @@ export const Clients = () => {
     (<div className="loading">Carregando dados...</div> 
     ):
     <main className='container-1'>
-      <h1>Clientes</h1>
-      <AddClients/>
+      <div style={{displey:'flex', flexDirection: 'row'}}>
+      <div style={{displey:'flex', flexDirection: 'row'}}>
+        <h1>Clientes</h1>
+        <AddClients/>
+      </div>
+      </div>
+      
+      
       <AllClients/>
     </main>
   )

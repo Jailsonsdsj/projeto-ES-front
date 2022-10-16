@@ -382,3 +382,37 @@ tr{
     text-align: center;
 
 }
+.modal-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color:paleturquoise;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-items: flex-end;
+    overflow: hidden;
+    transition: all .3s;
+    z-index: var(--z-modal);
+    visibility: hidden;
+    opacity: 0;
+
+  /* */
+}:focus{
+    border: 0.5px solid #7b0e85;
+  outline-offset: 0px;
+  outline: none;
+}
+.modal-container-up{
+  position: relative;
+  background-color: var(--container-color);
+  /* text-align: center; */
+  padding: 3rem 2rem 2rem;
+  border: 1px solid #AEAEB2;
+  border-radius: 10px;
+  transition: all .3s;
+
+  transform: translateY();
+   
+}
+
