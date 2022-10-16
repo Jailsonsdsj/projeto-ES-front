@@ -2,26 +2,29 @@ import React, { useState, useEffect } from "react";
 import { ConsoleSqlOutlined, PlusOutlined } from "@ant-design/icons";
 import { getAllAlloteaments, detailsAllotments } from "../api/alloteaments";
 import { addClient } from "../api/user";
+import { message } from "antd";
 
 
 const AddClients = () => {
   const [openModal, setOpenModal] = useState(false);
   const [alloteaments, setAlloteaments] = useState();
   const [selectedAlloteament, setSelectedAlloteament] = useState("");
-
+  const [messageSubmit, setMessageSubmit] = useState()
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
     cpf: "",
     address: "",
     lot: "",
-    alloteaments: ""
+    alloteaments: "",
+    admin_id: "",
   });
 
   useEffect(() => {
     (async () => {
       //get all alloteaments
       const user = JSON.parse(localStorage.getItem("userData"));
+      setFormValues({ ...formValues, admin_id: user.user_id });
       const allAlloteamentsResponse = await getAllAlloteaments(user.user_id);
       setAlloteaments(allAlloteamentsResponse);
 
@@ -40,17 +43,23 @@ const AddClients = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addClient(formValues)
+    (async () => {
+      const response = await addClient(formValues)
+      response.status === 201 ? setMessageSubmit("Cliente cadastrado com sucesso!") : setMessageSubmit("Falha ao cadastrar cliente")
+    })();
+    
+    
+    
   };
 
   const handleChange = (e) => {
-  
     const { value } = e.target;
     const lots = JSON.parse(value);
     setSelectedAlloteament(lots.lots);
   };
 
   return openModal ? (
+    <>
     <form onSubmit={handleSubmit}>
       <h2>Adicionar Cliente</h2>
       <input
@@ -132,9 +141,18 @@ const AddClients = () => {
       </button>
       <input className="primary-button" type="submit" value="Adicionar" />
     </form>
+    {messageSubmit && (
+      <div className="success-message">
+         <h3>{messageSubmit}</h3>
+         <button onClick={()=>window.location.reload()}>Ok</button>
+      </div>
+     
+    )}
+    </>
   ) : (
     <PlusOutlined onClick={toggleModal} />
   );
+    
 };
 
 export default AddClients;
