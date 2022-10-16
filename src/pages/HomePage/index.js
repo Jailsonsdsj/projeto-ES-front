@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import { userData } from '../../api/users';
-import { getAllAlloteaments } from '../../api/alloteaments'
+import { getAllAlloteaments } from '../../api/alloteaments';
 import AlloteamentsDashboard from '../../components/Alloteaments/AlloteamentsDashboard'
 import LoadingData from '../../components/utils/LoadingData';
 import '../../assets/css/style.css'

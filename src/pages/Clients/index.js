@@ -2,6 +2,8 @@ import React, { useState,useEffect } from 'react'
 import { getUsers,userData } from '../../api/users';
 import './client-style.css'
 import '../../assets/css/style.css'
+import AddClients from '../../components/AddClients';
+import AllClients from '../../components/AllClients';
 
 export const Clients = () => {
   const [users, setUsers] = useState([]);
@@ -16,30 +18,14 @@ export const Clients = () => {
   }, []);
 
 
-  if(loading){
-    return (
-    <>
-      <div className="loading">Carregando dados...</div>
-
-    </>
-    );
-  }
-
   return (
-    <div className='container-1'>
-    <h1>Usuários ativos ou passivos?</h1>
-    {users ? 
-      <>
-        {users.data.map((user) => (
-          <div className='active-users-intire-box'>
-          <div className='active-users-credentials-box'>
-            <p>{user.name}</p>
-            <p>CPF: {user.cpf}</p>
-            <p>ID: {user.email}</p>
-          </div>
-          </div>
-          ))}
-     </> : <p>Sem usuários cadastrados</p>}
-    </div>
+    loading ? 
+    (<div className="loading">Carregando dados...</div> 
+    ):
+    <main>
+    <h1>Clientes</h1>
+    <AddClients/>
+    <AllClients/>
+    </main>
   )
 }

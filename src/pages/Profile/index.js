@@ -6,14 +6,11 @@ import ResetPassword from "../../components/ResetPassword/FormResetPassword";
 import { userData } from "../../api/users";
 import AddGuests from "../../components/AddGuests";
 import "../../assets/css/style.css"
+import AllGuests from "../../components/AllGuests";
 export const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
   const [resetPasswordModal, setResetPasswordModal ] = useState(false)
-
-
-  //uncoment when request data
-  // const [ guests, setGests] = useState()
 
   useEffect(() => {
     (async () => {
@@ -28,9 +25,6 @@ export const Profile = () => {
     
   }
 
-  // const addGuests = ()=>{
-  //   setAddGuestsModal(!addGuestsModal)
-  // }
   return (
     <>
       {loading ? (
@@ -53,14 +47,12 @@ export const Profile = () => {
           {resetPasswordModal && <ResetPassword/>}
   
           <div className="guests">
-            <h2>Convidados</h2>
-            {/* insert add guest function inside this componet: */}
-           
+            <h2>Convidados</h2>          
             <AddGuests/>
           </div>
 
           <div className="guests-container">
-            {/* insert guests component */}
+           <AllGuests/>
           </div>
         </main>
       )}
