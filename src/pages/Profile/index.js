@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import LoadingData from "../../components/utils/LoadingData";
-import ProfileData from "../../components/ProfileData";
+import ProfileData from "../../components/profileData";
 import { EditOutlined  } from "@ant-design/icons";
-import { Button } from "antd";
 import ResetPassword from "../../components/ResetPassword/FormResetPassword";
 import { userData } from "../../api/users";
 import AddGuests from "../../components/AddGuests";
-
+import "../../assets/css/style.css"
+import AllGuests from "../../components/AllGuests";
 export const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
@@ -28,21 +28,21 @@ export const Profile = () => {
   return (
     <>
       {loading ? (
-        <LoadingData />
+        <LoadingData/>
       ) : (
-        <main>
+        <main className="container-1">
           <h1>Conta</h1>
-          <div className="profile-type">
+          <div className="btn-position">
             <h2>Administrador</h2>
             {/* add edit function inside button */}
-            <button >
-              <EditOutlined />
+            <button className="btn-edit">
+              <EditOutlined/>
               Editar
             </button>
           </div>
           <ProfileData data={data}/>
           {/* Insert change passowrd funcion here */}
-          <button onClick={onClick}>Alterar a senha</button>
+          <button className="btn-large" onClick={() => onClick(true)}>Alterar a senha</button>
      
           {resetPasswordModal && <ResetPassword/>}
   
@@ -52,7 +52,7 @@ export const Profile = () => {
           </div>
 
           <div className="guests-container">
-            {/* insert guests component */}
+           <AllGuests/>
           </div>
         </main>
       )}

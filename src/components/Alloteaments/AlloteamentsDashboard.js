@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { BorderOutlined } from "@ant-design/icons";
+import React, { useState} from "react";
+// import { BorderOutlined } from "@ant-design/icons";
 import "./AlloteamentsDashboard.css";
 import { NavLink } from "react-router-dom";
 
@@ -9,7 +9,7 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
   const handleChange = (e) => {
     const { value } = e.target;
     const selectedAlloteaments = alloteaments.filter(
-      (item) => item.id == value
+      (item) => item.id === value
     );
     setDataAlloteaments(selectedAlloteaments[0]);
   };
@@ -24,14 +24,15 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
           </option>
         ))}
       </select>
+      <br></br>
       <div className="alloteaments-details">
         <div className="alloteaments-description">
-          <table>
+          <table className="table-info">
             <thead>
               <tr>
-                <td>Nome</td>
-                <td>Logradouro</td>
-                <td>Número</td>
+                <td className="td-info">Nome</td>
+                <td className="td-info">Logradouro</td>
+                <td className="td-info">Número</td>
               </tr>
             </thead>
             <tbody>
@@ -42,7 +43,7 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
               </tr>
             </tbody>
           </table>
-          <div className="status-subtitle">
+          <div className="alloteaments-status">
             {/* replace icon */}
             <p>v - disponíveis</p>
             <p>x - vendidos</p>
@@ -56,7 +57,7 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
                     <NavLink
                       to={`/Lot/${dataAlloteaments.id}/${key}`}
                       key={key}
-                      className="nav-link"
+                      className="info-number-alloteament"
                       activeClassName="nav-link-active"
                     >
                       <p>{key}</p>

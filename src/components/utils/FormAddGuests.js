@@ -10,15 +10,17 @@ export const FormRequestAccess = (props) => {
   }
   return (
     <div className="formInput">
-      <label>{label}</label>
-      <input 
-        {...inputProps} 
-        onChange={onChange} 
-        onBlur={handleFocus}//click and leave
-        onFocus={() => setFocused(true)}//just on click
-        focused={focused.toString()}
+        <label className="teste-1">
+          {label}
+        </label>
+        <input className="input-convidado"
+          {...inputProps} 
+          onChange={onChange} 
+          onBlur={handleFocus}//click and leave
+          onFocus={() => setFocused(true)}//just on click
+          focused={focused.toString()}
         />
-      <span>{errorMessage}</span>
+        <span>{errorMessage}</span>
     </div>
     
   )

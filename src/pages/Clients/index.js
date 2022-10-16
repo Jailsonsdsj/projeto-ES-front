@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { getUsers,userData } from '../../api/users';
+import './client-style.css'
+import '../../assets/css/style.css'
 import AddClients from '../../components/AddClients';
 import AllClients from '../../components/AllClients';
 

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { AuthContext } from "../../contexts/auth";
 import { Link } from "react-router-dom";
-
+import '../Login/style-login.css'
     
     
 
@@ -38,7 +38,7 @@ const LoginForm = () => {
                         <label htmlFor="password" className="chekbox-label">Manter conectado</label>
                     </RadioDiv>
                     <div >
-                        <Link to="/resetPassword">Esqueceu sua senha?</Link>
+                        <Link to="/resetPassword" className="reset-password">Esqueceu sua senha?</Link>
                     </div>
                 </DisplayBetween>
             <div>
@@ -142,11 +142,13 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 const SubmitButton = styled.button`
 width: 100px;
 padding: 8px;
+text-align: center;
 border-radius: 30px;
 border: none;
 background:#38B885;
 color: #FFFFFF;
-margin: 10px 0 10px 0;
+margin: 0 auto;
+display: block;
 `
 // const Body = styled.body`
 // background-color: #f2f2f7;

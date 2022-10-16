@@ -73,19 +73,23 @@ const AddGuests = () => {
   };
 
   return openModal ? (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className ="modal">
       <h3>Adicionar convidado</h3>
-
-      {inputs.map((input) => (
-        <FormRequestAccess
-          key={input.id}
-          {...input}
-          value={formValues[input.name]}
-          onChange = {(onChange)}
-        />
-      ))}
-      <input type="button" value="Cancelar" onClick={closeModal} />
-      <input type="submit" value="Cadastrar" />
+      <div style={{display: 'flex', flexDirection: 'row', gap: '100px'}}>
+        {inputs.map((input) => (
+          <FormRequestAccess
+            key={input.id}
+            {...input}
+            value={formValues[input.name]}
+            onChange = {(onChange)}
+          />
+        ))}
+      </div>
+    
+      <div className="input-class">
+        <input className="input-reset" type="button" value="Cancelar" onClick={closeModal} />
+        <input className="input-btn" type="submit" value="Adicionar" />
+      </div>
     </form>
   ) : (
     <PlusOutlined onClick={closeModal} />
