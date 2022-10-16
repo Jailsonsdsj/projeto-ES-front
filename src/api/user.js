@@ -66,15 +66,28 @@ export const getCustomers = async() =>{
         return apiAutentication.get('customer/get_customers')
 
     }catch(err){
-        console.error(err)
+        console.log(err)
         return err;
     }
 }
 
 
 export const getCustomersDetails = async(id) =>{
+ 
     try{
         return apiAutentication.get(`customer/get_customer/${id}`)
+        
+    }catch(err){
+        console.log(err)
+        return err;
+        
+    }
+}
+
+
+export const deleteCustomer = async(id) =>{
+    try{
+        return apiAutentication.delete(`customer/delete/${id}`)
        
 
     }catch(err){
@@ -83,3 +96,13 @@ export const getCustomersDetails = async(id) =>{
     }
 }
 
+export const deleteCustomerLot = async({id,allotment_id,lot_number,customer_id}) =>{
+    try{
+        return apiAutentication.delete(`customer/purcharse/delete/${id}`)
+        
+
+    }catch(err){
+        console.error(err)
+        return err;
+    }
+}

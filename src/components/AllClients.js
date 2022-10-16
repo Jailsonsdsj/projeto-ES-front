@@ -23,7 +23,7 @@ const AllClients = () => {
                 <div className="client-container" key={key}>
                     <NavLink
                         to={`/clients/DetailsClient/${value.id}`}
-                        activeClassName="nav-link-active"
+                        
                     >
                         <p>{value.name}</p>
                     </NavLink>
