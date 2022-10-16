@@ -21,6 +21,18 @@ export const createGuest = async({ fullName,email,cpf,cel }) => {
 
 }
 
+export const getAllGuests = async() =>{
+    try{
+      
+        const response = await apiAutentication.get('user/get_clients')
+        return response;
+
+    }catch(err){
+        console.error(`getAllGuests error: ${err}` )
+        throw new Error(err)
+    }
+}
+
 
 
 //erro
@@ -33,6 +45,7 @@ export const addClient = async({ name,email,cpf,address,lot,alloteaments }) =>{
             "email":email,
             "name": name,
             "cpf":cpf,
+            "phone":"00000000000",
             "address":address,
             "lots":[{
                 "allotment_id":allotment.id,

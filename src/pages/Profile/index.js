@@ -6,7 +6,7 @@ import { Button } from "antd";
 import ResetPassword from "../../components/ResetPassword/FormResetPassword";
 import { userData } from "../../api/users";
 import AddGuests from "../../components/AddGuests";
-
+import AllGuests from "../../components/AllGuests";
 export const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
@@ -52,7 +52,7 @@ export const Profile = () => {
           </div>
 
           <div className="guests-container">
-            {/* insert guests component */}
+           <AllGuests/>
           </div>
         </main>
       )}
