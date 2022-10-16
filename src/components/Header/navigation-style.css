@@ -36,13 +36,14 @@
     padding: 0 0.7vw;
     justify-content:space-around;
     align-items: center;
-    background-color: #38B885;
+    background-color: #87D4B6;
     
 }
 .nav-links li a{
     text-decoration: none;
     margin: 0 0.7vw;
     color: white;
+    font-weight: 500;
     font-size: 15px;
     text-decoration: none;
 }

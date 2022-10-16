@@ -1,34 +1,6 @@
-import { API_BACKEND_BASEURL } from ".";
-import axios from "axios";
+import { apiAutentication, API_BACKEND_BASEURL } from ".";
 import jwt from 'jwt-decode';
 
-
-export const apiAutentication = axios.create({
-    baseURL: API_BACKEND_BASEURL,
-    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-});
-
- //this is will force to update the token
-export const axiosPrivate = axios.create({
-    baseURL: API_BACKEND_BASEURL,
-    headers: { 'Content-Type': 'application/json' },
-    withCredentials: true
-});
-
-export const createSession = async(email,password) =>{
-    try{ 
-        const headers = {
-            auth: {
-              "username": email,
-              "password": password
-            }
-          };
-        return apiAutentication.post('/user/login', {}, headers)
-    }catch(err){
-        console.error(err)
-        return err;
-    }
-}
 
 export const getUsers = async() =>{
     try{
@@ -69,21 +41,12 @@ export const userData = async()=>{
 
  
 
-export const getAllAlloteaments = async(id)=> {
-    try{
-        const response = await apiAutentication.get(`/user/get_allotments/${id}`) 
-        return response.data.data
-     
-    }catch(err){
-        console.error(`getAllAlloteaments error: ${err}`)
-        return err;
-    }
-    
-}
 
 
-export const detailsAllotments = async()=>{
 
-}
+
+
+
+
 
 

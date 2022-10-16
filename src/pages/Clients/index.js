@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { getUsers,userData } from '../../api/users';
 import './client-style.css'
+import '../../assets/css/style.css'
 
 export const Clients = () => {
   const [users, setUsers] = useState([]);
@@ -25,7 +26,7 @@ export const Clients = () => {
   }
 
   return (
-    <>
+    <div className='container-1'>
     <h1>Usuários ativos ou passivos?</h1>
     {users ? 
       <>
@@ -39,6 +40,6 @@ export const Clients = () => {
           </div>
           ))}
      </> : <p>Sem usuários cadastrados</p>}
-    </>
+    </div>
   )
 }

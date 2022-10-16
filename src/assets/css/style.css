@@ -1,0 +1,252 @@
+*{
+    width: auto;
+}
+.container-1{
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin: 0 30px;
+    margin-bottom: 5px;
+}
+table{
+    width: 100%;
+}
+.td-info{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: large;
+    /* font-weight: 600; */
+    color: #AEAEB2;
+    font-weight: 400;
+    font-size: 18px;
+}
+.btn-large{
+    width: 20%;
+    height: auto;
+    padding: 8px;
+    border-radius: 30px;
+    border: none; 
+    background:#38B885;
+    color: white;
+    margin: 10px 0 10px 0;
+    font-size: medium;
+    font-weight: 600;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.btn-position{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    left: 50%;
+}
+.btn-edit{
+    background-color: white;
+    /* border: black; */
+    border-radius: 8px 8px 8px 8px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid;
+    justify-content: space-between;
+}
+
+.input-class{
+    font-family: "Roboto", sans-serif;
+    /* text-transform: uppercase; */
+    text-decoration: none;
+    outline: 0;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #38B885;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    display: flex;
+    justify-content: center;
+}
+.input-btn{
+    width: 100px;
+    padding: 8px;
+    border-radius: 30px;
+    border: none;
+    background:#38B885;
+    color: #F2F2F7;
+    margin: 10px 0 10px 0;
+    margin-right: 20px;
+    font-size: medium;
+}
+.input-reset{
+    text-decoration: none;
+    width: 100px;
+    padding: 8px;
+    border-radius: 30px;
+    color: #38B885;
+    margin: 10px 0 10px 0;
+    margin-right: 20px;
+    font-size: medium;
+    border: none;
+}
+
+/* add convidado */
+
+.formInput{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.teste-1{
+    color: #AEAEB2;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+}
+.input-convidado{
+    border: none;
+    border-bottom: 2px solid gray;
+    outline: none;
+    width: auto;
+}
+
+/* alterar senha */
+.new-password{
+width: 50%;
+border: none;
+border-radius: 10px;
+padding: 10px;
+background-color: #F2F2F7;
+font-size: 12pt;
+outline: none;
+box-sizing: border-box;
+outline: none;
+}
+.label-newpassword{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: center;
+margin: 10px 0px 20px 0px;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* dashboard */
+select{
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+box-sizing: border-box;
+border: 1px solid #38B885;
+border-radius: 8px;
+text-align: center;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+letter-spacing: -0.408px;
+color: #38B885;
+}
+option{
+    top: 3em;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    box-sizing: border-box;
+    border: 1px #38B885;
+    border-radius: 8px;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: -0.408px;
+    color: #38B885;
+}
+@media only screen and (max-width: 900px) {
+.table-info{
+        width: 50%;
+}
+}
+.table-info{
+    width: 50%;
+}
+
+.alloteaments-status p{
+        float: right;
+        margin: 0 auto 0;
+        margin-bottom: 10px;
+        /* padding: 0 10px; */
+        position: relative;
+        background-color: plum;
+    }
+.alloteaments-details{
+        padding-bottom: 5%;
+    }
+tr{
+        padding-bottom: 5%;
+    }
+.info-number-alloteament{
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.box-lot{
+    width: 73px;
+    height: 73px;
+    align-items: center;
+}
+/* informacao dos lotes */
+.lot-info h3{
+    font-style: normal;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.delete-btn{
+    background-color: white;
+    /* border: black; */
+    border-radius: 8px;
+    border: 1px solid #EC5858;
+    width: 100px;
+    height: 30px;
+    color: #EC5858;
+}
+.lot-history table{
+    width: 20%;
+    /* color: #AEAEB2; */
+    border-bottom:1px solid #AEAEB2;
+    border-bottom-width: auto;
+
+}
+.add-btn{
+    margin-top: 10px;
+    background-color: #38B885;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 80px;
+    height: 30px;
+    align-items: center;
+    text-align: center;
+    font-weight: 400;
+}
+.lote-with-btn{
+    display: flex;
+    flex-direction: row;
+}
+.input-edit-outlined{
+    width: 100px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid black;
+    margin: 10px 0 10px 0;
+    margin-right: 20px;
+}
+.input-delete-outlined{
+    width: 100px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #EC5858;
+    margin: 10px 0 10px 0;
+    margin-right: 20px;
+    color: #EC5858;
+}

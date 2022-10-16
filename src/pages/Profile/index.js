@@ -1,57 +1,69 @@
-import React, { useState,useEffect } from 'react'
-import LoadingData from '../../components/utils/LoadingData';
-import ProfileData from '../../components/profileData';
-import { PlusOutlined, EditOutlined } from '@ant-design/icons';
-import { userData } from '../../api/users';
-
+import React, { useState, useEffect } from "react";
+import LoadingData from "../../components/utils/LoadingData";
+import ProfileData from "../../components/profileData";
+import { EditOutlined  } from "@ant-design/icons";
+import ResetPassword from "../../components/ResetPassword/FormResetPassword";
+import { userData } from "../../api/users";
+import AddGuests from "../../components/AddGuests";
+import "../../assets/css/style.css"
 export const Profile = () => {
-  const [loading , setLoading] = useState(true);
-  const [ data, setData ] = useState()
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState();
+  const [resetPasswordModal, setResetPasswordModal ] = useState(false)
+
 
   //uncoment when request data
   // const [ guests, setGests] = useState()
-  
-  useEffect(()=>{
-    (async()=>{
+
+  useEffect(() => {
+    (async () => {
       const dataResponse = await userData();
       setData(dataResponse);
       setLoading(false);
-      
-    })()
-  },[])
+    })();
+  }, []);
 
+  const onClick = ()=>{
+    setResetPasswordModal(!resetPasswordModal)
+    
+  }
 
-
-
+  // const addGuests = ()=>{
+  //   setAddGuestsModal(!addGuestsModal)
+  // }
   return (
     <>
-    {loading ? (
-      <LoadingData/>
-      ):( 
-      <main>
-        <h1>Conta</h1>
-        <div className="profile-type">
-          <h2>Administrador</h2>
-          {/* add edit function inside button */}
-          <button><EditOutlined />Editar</button>
-        </div>
-        <ProfileData data={data}/>
-      
-        {/* Insert change passowrd funcion here */}
-        <button>Alterar Senha</button>
-        <div className="guests">
-          <h2>Convidados</h2>
-          {/* insert add guest function inside this componet: */}
-          <PlusOutlined/>
-        </div>
-        
-        <div className="guests-container">
-          {/* insert guests component */}
-        </div>
-        
-      </main>
+      {loading ? (
+        <LoadingData/>
+      ) : (
+        <main className="container-1">
+          <h1>Conta</h1>
+          <div className="btn-position">
+            <h2>Administrador</h2>
+            {/* add edit function inside button */}
+            <button className="btn-edit">
+              <EditOutlined/>
+              Editar
+            </button>
+          </div>
+          <ProfileData data={data}/>
+          {/* Insert change passowrd funcion here */}
+          <button className="btn-large" onClick={() => onClick(true)}>Alterar a senha</button>
+     
+          {resetPasswordModal && <ResetPassword/>}
+  
+          <div className="guests">
+            <h2>Convidados</h2>
+            {/* insert add guest function inside this componet: */}
+           
+            <AddGuests/>
+          </div>
+
+          <div className="guests-container">
+            {/* insert guests component */}
+          </div>
+        </main>
       )}
     </>
-  )
-}
-
+  );
+};
