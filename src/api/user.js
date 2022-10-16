@@ -72,3 +72,14 @@ export const getCustomers = async() =>{
 }
 
 
+export const getCustomersDetails = async(id) =>{
+    try{
+        return apiAutentication.get(`customer/get_customer/${id}`)
+       
+
+    }catch(err){
+        console.error(err)
+        return err;
+    }
+}
+
