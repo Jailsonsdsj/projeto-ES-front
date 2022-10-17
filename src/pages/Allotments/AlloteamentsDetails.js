@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import '../../assets/css/style.css'
 import { useParams, useNavigate } from "react-router-dom";
 import { getAllAlloteaments } from "../../api/alloteaments";
 import {
@@ -28,7 +29,7 @@ const AlloteamentsDetails = () => {
   // console.log(dataAlloteaments)
 
   return dataAlloteaments ? (
-    <div className="alloteaments-panel">
+    <div className="container-1">
       <div className="btn-position">
         <h3>
           <NavLink className="h3-nav-link" to="/clients">
