@@ -104,7 +104,6 @@ export const deleteCustomerLot = async(userId,allotment_id,customer_id,lot_numbe
             "lot_number": lot_number,
             "customer_id": customer_id
         }
-        console.log(body)
         return apiAutentication.delete(`customer/purcharse/delete/${userId}`)
         
 
@@ -117,3 +116,14 @@ export const deleteCustomerLot = async(userId,allotment_id,customer_id,lot_numbe
 
 
 
+export const ticketGenerator = async(clientName) =>{
+    try{
+        console.log(clientName)
+        return apiAutentication.get(`pdf/${clientName}`)
+        
+    }catch(err){
+        console.log(err)
+        return err;
+        
+    }
+}

@@ -39,7 +39,6 @@ export const addAlloteament = async({name,cep,address,img_url}) =>{
             "img_url": "https://i.ibb.co/JKLpGDL/image.png",
             "users_access":[user.user_id]
         }
-        console.log(body)
         return apiAutentication.post("/allotment/register",body)
         
 

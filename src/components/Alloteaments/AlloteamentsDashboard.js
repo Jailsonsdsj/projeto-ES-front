@@ -6,8 +6,6 @@ import { NavLink } from "react-router-dom";
 const AlloteamentsDashboard = ({ alloteaments }) => {
   const [dataAlloteaments, setDataAlloteaments] = useState(alloteaments[0]);
 
-  // alloteaments.forEach((item)=>console.log(item.id))
-
   const handleChange = (e) => {
     const { value } = e.target;
     const selectedAlloteaments = alloteaments.filter(
