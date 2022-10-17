@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 
 const FormResetPassword = () => {
+    const [modal, setModal] = useState(true)
 
-
-  return (
-    <div className="container-1">
+  return modal ? (
+    <div className="container">
       <h2>Alterar Senha</h2>
       <form className="container-1" action="">
         <label className="label-newpassword" htmlFor="new-password">Nova senha</label>
@@ -17,10 +17,11 @@ const FormResetPassword = () => {
           <input className="input-btn" type="submit" value="Alterar" />
         
       </form>
-      
+      <input className="input-reset" type="reset" onClick={(()=>setModal(!modal))} value="Cancelar" />
+      <input className="input-btn" type="submit" value="Alterar" />
     </div>
 
-  );
+  ) : <></>;
 };
 
 export default FormResetPassword;

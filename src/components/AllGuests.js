@@ -1,8 +1,8 @@
-import React, { useState, useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { getAllGuests } from '../api/user';
 
 const AllGuests = () => {
-    const [ guestList, setGuestList ] = useState()
+    // const [ guestList, setGuestList ] = useState()
 
     useEffect(()=>{
         (async ()=>{

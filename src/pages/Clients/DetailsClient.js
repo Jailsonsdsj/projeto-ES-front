@@ -3,22 +3,21 @@ import { useParams,useNavigate  } from "react-router-dom";
 import LoadingData from "../../components/utils/LoadingData";
 import { EditOutlined, DeleteOutlined, RightOutlined,InfoCircleOutlined,WarningOutlined  } from "@ant-design/icons";
 import { NavLink  } from "react-router-dom";
-import { getCustomersDetails,deleteCustomer,deleteCustomerLot } from "../../api/user";
+import { getCustomersDetails,deleteCustomer } from "../../api/user";
 
 
 const DetailsClient = () => {
     const { userId } = useParams();
     const [loading, setLoading] = useState(true)
     const [clientData, setClientData] = useState();
-    const [toggleDelete, setToggleDelete] = useState(false);
+    const [toggleDeleteClient, setToggleDeleteClient] = useState(false);
     const [messageSubmit, setMessageSubmit] = useState()
+    const [toggleDeleteLot, setToggleDeleteLot] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
         (async () => {
           const response = await getCustomersDetails(userId);
-        //   console.log(response)
-
           if(response.status === 200){
             setClientData(response.data.customer);
           }else{
@@ -37,16 +36,11 @@ const DetailsClient = () => {
         })();
     }
     const toggleCanvas =()=>{
-        setToggleDelete(!toggleDelete)
+        setToggleDeleteClient(!toggleDeleteClient)
     }
     
-    const removeCustomerLot = () =>{
-        (async () => {
-            const response = await deleteCustomerLot(userId)
-          
-            response.status === 200 ? setMessageSubmit("Usuário deletado com sucesso") : setMessageSubmit("Falha ao deletar usuário")
-        })();
-    }
+    
+
    
     console.log(clientData);
 
@@ -68,7 +62,7 @@ const DetailsClient = () => {
             </div> 
         </div>
         
-        {toggleDelete && 
+        {toggleDeleteClient && 
             (<div> 
                 <h3>Tem certeza que deseja excluir o cliente?</h3>
                 <button className="input-edit-outlined" onClick={toggleCanvas}>Cancelar</button>
@@ -114,11 +108,18 @@ const DetailsClient = () => {
                     </div>
                     <div className="status-position">
                         <p className="status-user-open"><WarningOutlined/>ABERTO</p>
-                        <button className="delete-user-allotements" onClick={removeCustomerLot}>Excluir lote do proprietário</button>
+                        <button onClick={(()=>setToggleDeleteLot(!toggleDeleteLot))} className="delete-user-allotements">Excluir lote do proprietário</button>
                     </div>
-                     
+                    {toggleDeleteLot && 
+                        (<div> 
+                            <h3>Tem certeza que deseja desvincular o lote?</h3>
+                            <button onClick={(()=>setToggleDeleteLot(!toggleDeleteLot))}>Cancelar</button>
+                            <button onClick={''}>Excluir</button>
+                        </div>)
+                    }
                 </div>
                ))
+               
             
             ):(<>Sem lotes associados</>)}
            

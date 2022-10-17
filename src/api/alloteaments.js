@@ -10,7 +10,6 @@ export const getAllAlloteaments = async(id)=> {
         console.error(`getAllAlloteaments error: ${err}`)
         return err;
     }
-    
 }
 
 export const detailsAllotments = async(allotment_id,number)=>{
@@ -25,6 +24,27 @@ export const detailsAllotments = async(allotment_id,number)=>{
      
     }catch(err){
         console.error(`detailsAllotments error: ${err}`)
+        return err;
+    }
+}
+
+
+export const addAlloteament = async({name,cep,address,img_url}) =>{
+    try{
+        const user = JSON.parse(localStorage.getItem("userData"));
+        const body ={
+            "name": name,
+            "cep": cep,
+            "address": address,
+            "img_url": "https://i.ibb.co/JKLpGDL/image.png",
+            "users_access":[user.user_id]
+        }
+        console.log(body)
+        return apiAutentication.post("/allotment/register",body)
+        
+
+    }catch(err){
+        console.log(err)
         return err;
     }
 }
