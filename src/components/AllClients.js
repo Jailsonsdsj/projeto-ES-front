@@ -22,8 +22,8 @@ const AllClients = () => {
         Object.entries(clientList).map(
             ([key, value]) =>(
                
-            <div className='active-users-intire-box'>
-                <div className="active-users-credentials-box" key={key}>
+            <div className='active-users-intire-box' key={key}>
+                <div className="active-users-credentials-box" >
                     <div className='users-lote-column'>
                     <NavLink className='active-users-name' to={`/clients/DetailsClient/${value.id}`}>
                         <p>{value.name}</p>

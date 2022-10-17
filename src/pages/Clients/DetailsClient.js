@@ -4,7 +4,7 @@ import LoadingData from "../../components/utils/LoadingData";
 import { EditOutlined, DeleteOutlined, RightOutlined,InfoCircleOutlined,WarningOutlined  } from "@ant-design/icons";
 import { NavLink  } from "react-router-dom";
 import { getCustomersDetails,deleteCustomer } from "../../api/user";
-
+import { ticketGenerator } from "../../api/user";
 
 const DetailsClient = () => {
     const { userId } = useParams();
@@ -12,6 +12,7 @@ const DetailsClient = () => {
     const [clientData, setClientData] = useState();
     const [toggleDeleteClient, setToggleDeleteClient] = useState(false);
     const [messageSubmit, setMessageSubmit] = useState()
+    const [downloadPDF , setDownloadPDF] = useState();
     const [toggleDeleteLot, setToggleDeleteLot] = useState(false)
     const navigate = useNavigate()
 
@@ -38,11 +39,23 @@ const DetailsClient = () => {
     const toggleCanvas =()=>{
         setToggleDeleteClient(!toggleDeleteClient)
     }
-    
-    
 
-   
-    console.log(clientData);
+    const ticketRequest = () =>{
+        (async () => {
+
+            const response = await ticketGenerator(clientData.name)
+            if( response.status === 200){
+                setDownloadPDF("Carnê gerado com sucesso")
+                window.location.href = `https://kloteteste.herokuapp.com/pdf/${clientData.name}`
+            }else{
+                setDownloadPDF("Falha ao gerar o carnê. Entre em contato com um administrador")
+            }
+    
+            
+        })();
+    }
+    
+    // console.log(clientData);
 
   return loading ? 
     <LoadingData/> : (
@@ -58,15 +71,27 @@ const DetailsClient = () => {
                 <div>
                     <button className="input-edit-outlined" style={{backgroundColor: 'white'}}><EditOutlined/>Editar</button>
                     <button className="input-delete-outlined" style={{backgroundColor: 'white'}}><DeleteOutlined onClick={toggleCanvas}/> Deletar</button>
+                    
+                    <button className="input-edit-outlined" onClick={ticketRequest} style={{backgroundColor: 'white'}}>Gerar carnê</button>
+                    
                 </div>
+               
             </div> 
+           
         </div>
+        {downloadPDF && (
+                    <div>
+                        <p>{downloadPDF}</p>
+                        <button onClick={()=>{setDownloadPDF(!downloadPDF)}}>Fechar</button>
+                    </div>
+        )}
         
         {toggleDeleteClient && 
             (<div> 
                 <h3>Tem certeza que deseja excluir o cliente?</h3>
                 <button className="input-edit-outlined" onClick={toggleCanvas}>Cancelar</button>
                 <button className="input-delete-outlined" onClick={deleteUser}>Excluir</button>
+                
             </div>)
         }
      
