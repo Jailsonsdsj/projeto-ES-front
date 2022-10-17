@@ -34,7 +34,7 @@ export const getAllGuests = async() =>{
 
 
 
-//erro
+
 export const addClient = async({ name,email,cpf,address,lot,alloteaments,admin_id  }) =>{
     try{
         
@@ -113,3 +113,7 @@ export const deleteCustomerLot = async(userId,allotment_id,customer_id,lot_numbe
         return err;
     }
 }
+
+
+
+

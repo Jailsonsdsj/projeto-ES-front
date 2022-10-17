@@ -6,14 +6,16 @@ import { NavLink } from "react-router-dom";
 const AlloteamentsDashboard = ({ alloteaments }) => {
   const [dataAlloteaments, setDataAlloteaments] = useState(alloteaments[0]);
 
+  // alloteaments.forEach((item)=>console.log(item.id))
+
   const handleChange = (e) => {
     const { value } = e.target;
     const selectedAlloteaments = alloteaments.filter(
-      (item) => item.id === value
+      (item) => item.id == value
     );
     setDataAlloteaments(selectedAlloteaments[0]);
   };
-
+  
   return (
     <div className="alloteaments-panel">
       <h2>Acompanhar Loteamento</h2>
@@ -58,7 +60,6 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
                       to={`/Lot/${dataAlloteaments.id}/${key}`}
                       key={key}
                       className="info-number-alloteament"
-                      activeClassName="nav-link-active"
                     >
                       <p>{key}</p>
                     </NavLink>

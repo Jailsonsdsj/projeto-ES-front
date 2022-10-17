@@ -28,3 +28,22 @@ export const detailsAllotments = async(allotment_id,number)=>{
         return err;
     }
 }
+
+
+export const addAlloteament = async({name,cep,address,img_url}) =>{
+    try{
+        const body ={
+            "name": name,
+            "cep": cep,
+            "address": address,
+            "img_url": "https://i.ibb.co/JKLpGDL/image.png"
+        }
+        console.log(body)
+        return apiAutentication.post("/allotment/register",body)
+        
+
+    }catch(err){
+        console.log(err)
+        return err;
+    }
+}
