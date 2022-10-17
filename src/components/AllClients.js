@@ -8,7 +8,8 @@ const AllClients = () => {
 
     useEffect(()=>{
         (async ()=>{
-            const response = await getCustomers();  
+            const user = JSON.parse(localStorage.getItem("userData"));
+            const response = await getCustomers(user.user_id);  
             setClientList(response.data.data);
 
         })();

@@ -51,22 +51,23 @@ export const addClient = async({ name,email,cpf,address,lot,alloteaments,admin_i
                 "number": parseInt(lot)
             }]
         }
+        console.log(body)
+
     const response = await apiAutentication.post(`${API_BACKEND_BASEURL}/customer/register`, body)
     return response;  
-
-
     }catch(err){
-        console.error(`addClient error: ${err}` )
-        throw new Error(err)
+        console.log(err)
+        // console.err(`addClient error: ${err}` )
+        // throw new Error(err)
     }
 }
 
-export const getCustomers = async() =>{
+export const getCustomers = async(id) =>{
     try{
-        return apiAutentication.get('customer/get_customers')
+        return apiAutentication.get(`customer/get_customers/${id}`)
 
     }catch(err){
-        console.log(err)
+        console.err(err)
         return err;
     }
 }
@@ -78,7 +79,7 @@ export const getCustomersDetails = async(id) =>{
         return apiAutentication.get(`customer/get_customer/${id}`)
         
     }catch(err){
-        console.log(err)
+        console.err(err)
         return err;
         
     }
@@ -96,9 +97,15 @@ export const deleteCustomer = async(id) =>{
     }
 }
 
-export const deleteCustomerLot = async({id,allotment_id,lot_number,customer_id}) =>{
+export const deleteCustomerLot = async(userId,allotment_id,customer_id,lot_number) =>{
     try{
-        return apiAutentication.delete(`customer/purcharse/delete/${id}`)
+        const body ={
+            "allotment_id": allotment_id,
+            "lot_number": lot_number,
+            "customer_id": customer_id
+        }
+        console.log(body)
+        return apiAutentication.delete(`customer/purcharse/delete/${userId}`)
         
 
     }catch(err){

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { ConsoleSqlOutlined, PlusOutlined } from "@ant-design/icons";
-import { getAllAlloteaments, detailsAllotments } from "../api/alloteaments";
+import { PlusOutlined } from "@ant-design/icons";
+import { getAllAlloteaments } from "../api/alloteaments";
 import { addClient } from "../api/user";
-import { message } from "antd";
+
 
 
 const AddClients = () => {
