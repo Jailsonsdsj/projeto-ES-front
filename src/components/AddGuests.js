@@ -73,7 +73,7 @@ const AddGuests = () => {
   };
 
   return openModal ? (
-    <form onSubmit={handleSubmit} className ="modal">
+    <form onSubmit={handleSubmit} className="container-1">
       <h3>Adicionar convidado</h3>
       <div style={{display: 'flex', flexDirection: 'row', gap: '100px'}}>
         {inputs.map((input) => (
@@ -85,14 +85,14 @@ const AddGuests = () => {
           />
         ))}
       </div>
-    
-      <div className="input-class">
+      <br></br>
+      <div>
         <input className="input-reset" type="button" value="Cancelar" onClick={closeModal} />
         <input className="input-btn" type="submit" value="Adicionar" />
       </div>
     </form>
   ) : (
-    <PlusOutlined onClick={closeModal} />
+        <button className="btn-add-guest" onClick={closeModal}>Adicionar</button>
   );
 };
 

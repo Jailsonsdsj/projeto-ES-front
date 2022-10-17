@@ -34,7 +34,7 @@ export const getAllGuests = async() =>{
 
 
 
-//erro
+
 export const addClient = async({ name,email,cpf,address,lot,alloteaments,admin_id  }) =>{
     try{
         
@@ -104,12 +104,26 @@ export const deleteCustomerLot = async(userId,allotment_id,customer_id,lot_numbe
             "lot_number": lot_number,
             "customer_id": customer_id
         }
-        console.log(body)
         return apiAutentication.delete(`customer/purcharse/delete/${userId}`)
         
 
     }catch(err){
         console.error(err)
         return err;
+    }
+}
+
+
+
+
+export const ticketGenerator = async(clientName) =>{
+    try{
+        console.log(clientName)
+        return apiAutentication.get(`pdf/${clientName}`)
+        
+    }catch(err){
+        console.log(err)
+        return err;
+        
     }
 }

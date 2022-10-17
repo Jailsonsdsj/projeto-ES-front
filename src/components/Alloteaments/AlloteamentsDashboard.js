@@ -9,14 +9,20 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
   const handleChange = (e) => {
     const { value } = e.target;
     const selectedAlloteaments = alloteaments.filter(
-      (item) => item.id === value
+      (item) => item.id == value
     );
     setDataAlloteaments(selectedAlloteaments[0]);
   };
-
+  
   return (
     <div className="alloteaments-panel">
       <h2>Acompanhar Loteamento</h2>
+      <div className="alloteaments-status">
+            {/* replace icon */}
+            <p>⚫️Vendido</p>
+            <p>🟢Disponível</p>
+           
+      </div>
       <select name="address" onChange={handleChange}>
         {alloteaments.map((item) => (
           <option key={item.id} value={item.id}>
@@ -43,11 +49,7 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
               </tr>
             </tbody>
           </table>
-          <div className="alloteaments-status">
-            {/* replace icon */}
-            <p>v - disponíveis</p>
-            <p>x - vendidos</p>
-          </div>
+          
         </div>
         <div className="alloteaments-numbers">
           {Object.keys(dataAlloteaments.lots).length
@@ -58,7 +60,6 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
                       to={`/Lot/${dataAlloteaments.id}/${key}`}
                       key={key}
                       className="info-number-alloteament"
-                      activeClassName="nav-link-active"
                     >
                       <p>{key}</p>
                     </NavLink>

@@ -10,6 +10,7 @@ import { Navigation } from './components/Header/Navigation';
 import LoginForm from './components/Login/LoginForm';
 import ResetPassword from './components/Login/ResetPassword'; 
 import { AuthContext, AuthProvider } from './contexts/auth';
+import AlloteamentsDetails from './pages/Allotments/AlloteamentsDetails';
 import Lot from './pages/Lot';
 
 export const AppRoutes = () =>{
@@ -41,6 +42,8 @@ export const AppRoutes = () =>{
                     <Route exact path="/" element={<Private> <HomePage /></Private>} />
                     <Route exact path="/Financial" element={<Private> <Financial /></Private>} />
                     <Route exact path="/Allotments" element={<Private> <Allotments /></Private>} />
+                    <Route exact path="/Allotments/AlloteamentsDetails/:id" element={<Private> <AlloteamentsDetails/></Private>} />
+              
                     <Route exact path="/Clients" element={<Private> <Clients /></Private>} />
                     <Route exact path="/Profile" element={<Private> <Profile /></Private>} />
                     <Route exact path="/Lot/:lotId/:id" element={<Private> <Lot/></Private>} />

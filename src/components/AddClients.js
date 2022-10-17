@@ -59,100 +59,94 @@ const AddClients = () => {
   };
 
   return openModal ? (
-    <>
-    <form onSubmit={handleSubmit}>
-      <h2>Adicionar Cliente</h2>
-      <input
-        type="text"
-        className="input-text"
-        name="name"
-        placeholder="Nome"
-        onChange={onChange}
-        value={formValues.name}
-      />
-      <input
-        type="text"
-        className="input-text"
-        name="email"
-        placeholder="E-mail"
-        onChange={onChange}
-        value={formValues.email}
-      />
-      <input
-        type="text"
-        className="input-text"
-        name="cpf"
-        placeholder="CPF"
-        onChange={onChange}
-        value={formValues.cpf}
-      />
-      <input
-        type="text"
-        className="input-text"
-        name="address"
-        placeholder="Endereço"
-        onChange={onChange}
-        value={formValues.address}
-      />
+    <div className="modal-test" >
+          <div className="modal-container-up">
+          <h2>Adicionar Cliente</h2>
+          <form className="add-client-modal" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'row', gap: '100px'}}>
+          <input
+            type="text"
+            className="input-convidado"
+            name="name"
+            placeholder="Nome"
+            onChange={onChange}
+            value={formValues.name}
+          />
+          <input
+            type="text"
+            className="input-convidado"
+            name="email"
+            placeholder="E-mail"
+            onChange={onChange}
+            value={formValues.email}
+          />
+          <input
+            type="text"
+            className="input-convidado"
+            name="cpf"
+            placeholder="CPF"
+            onChange={onChange}
+            value={formValues.cpf}
+          />
+          <input
+            type="text"
+            className="input-convidado"
+            name="address"
+            placeholder="Endereço"
+            onChange={onChange}
+            value={formValues.address}
+          />
+          </form>
+          
+          <h3>Lote associado</h3>
 
-      <h3>Lote associado</h3>
-
-      <select
-        name="alloteaments"
-        id="alloteaments-list"
-        placeholder="Lotes associados"
-        onChange={(e)=>{
-          handleChange(e)
-          onChange(e)
-        }
-        }
-        defaultValue ={formValues.alloteaments}
-      >
-        <option value={false}>Loteamento</option>
-        {alloteaments ? (
-          alloteaments.map((item) => (
-            <option key={item.id} value={JSON.stringify(item)} datasearch={JSON.stringify(item)}>
-              {item.address}
-            </option>
-          ))
-        ) : (
-          <></>
-        )}
-      </select>
-
-      {selectedAlloteament ? (
-        <select name="lot" id="lot" defaultValue ={formValues.lot}  onChange={onChange}>
-          <option value={false}>Lote</option>
-          {Object.entries(selectedAlloteament).map(
-            ([key, value]) =>
-              value && (
-                <option key={key} value={key}>
-                  {key}
+          <select
+            name="alloteaments"
+            id="alloteaments-list"
+            placeholder="Lotes associados"
+            onChange={(e)=>{
+              handleChange(e)
+              onChange(e)
+            }
+            }
+            defaultValue ={formValues.alloteaments}
+          >
+            <option value={false}>Loteamento</option>
+            {alloteaments ? (
+              alloteaments.map((item) => (
+                <option key={item.id} value={JSON.stringify(item)} datasearch={JSON.stringify(item)}>
+                  {item.address}
                 </option>
-              )
-          )}
-        </select>
-      ) : (
-        <></>
-      )}
+              ))
+            ) : (
+              <></>
+            )}
+          </select>
 
-      <button className="secondary-button" onClick={toggleModal}>
-        Cancelar
-      </button>
-      <input className="primary-button" type="submit" value="Adicionar" />
-    </form>
-    {messageSubmit && (
-      <div className="success-message">
-         <h3>{messageSubmit}</h3>
-         <button onClick={()=>window.location.reload()}>Ok</button>
-      </div>
-     
-    )}
-    </>
+          {selectedAlloteament ? (
+            <select name="lot" id="lot" defaultValue ={formValues.lot}  onChange={onChange}>
+              <option value={false}>Lote</option>
+              {Object.entries(selectedAlloteament).map(
+                ([key, value]) =>
+                  value && (
+                    <option key={key} value={key}>
+                      {key}
+                    </option>
+                  )
+              )}
+            </select>
+          ) : (
+            <></>
+          )}
+          <br></br>
+          <button className="input-reset" onClick={toggleModal}>
+            Cancelar
+          </button>
+          <input className="input-btn" type="submit" value="Adicionar" />
+        </div>
+    </div>
   ) : (
-    <PlusOutlined onClick={toggleModal} />
-  );
-    
+    <button className="add-btn-client" onClick={toggleModal}>Adicionar Clientes</button>
+);
 };
 
 export default AddClients;

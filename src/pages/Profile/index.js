@@ -4,9 +4,9 @@ import ProfileData from "../../components/profileData";
 import { EditOutlined  } from "@ant-design/icons";
 import ResetPassword from "../../components/ResetPassword/FormResetPassword";
 import { userData } from "../../api/users";
-import AddGuests from "../../components/AddGuests";
+// import AddGuests from "../../components/AddGuests";
 import "../../assets/css/style.css"
-import AllGuests from "../../components/AllGuests";
+// import AllGuests from "../../components/AllGuests";
 export const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
@@ -41,19 +41,15 @@ export const Profile = () => {
             </button>
           </div>
           <ProfileData data={data}/>
-          {/* Insert change passowrd funcion here */}
           <button className="btn-large" onClick={() => onClick(true)}>Alterar a senha</button>
-     
           {resetPasswordModal && <ResetPassword/>}
   
-          <div className="guests">
+          {/* <div className="guests">
             <h2>Convidados</h2>          
             <AddGuests/>
-          </div>
-
           <div className="guests-container">
            <AllGuests/>
-          </div>
+          </div> */}
         </main>
       )}
     </>

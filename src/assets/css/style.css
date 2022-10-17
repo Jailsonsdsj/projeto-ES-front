@@ -1,6 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 *{
     width: auto;
 }
+/* navbar */
+.nav{
+    height: 6rem;
+    width: 100%;
+    /* background-color: #131418;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2); */
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: black;
+}
+.logo img {
+    height: 5rem;
+    width: 5rem;
+}
+.logo{
+    padding:1vh 1vw;
+    text-align: center;
+}
+.nav-links{
+    margin: 0;
+    padding: 0;
+    color: rgb(255, 255, 255);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: 1px;
+    font-weight: auto;
+    display: flex;
+    list-style: none; 
+    width: 100%;
+    height: auto;
+    padding: 0 0.7vw;
+    justify-content:space-around;
+    align-items: center;
+    background-color: #38B885;
+    
+}
+.nav-links li a{
+    text-decoration: none;
+    margin: 0 0.7vw;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+}
+.nav-links li {
+    position: relative;
+}
+/* .nav-links li a::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 0%;
+    background-color: #61DAFB;
+    position: absolute;
+    transition: all ease-in-out 250ms;
+    margin: 0 0 0 10%;
+} */
+.nav-links li a:hover::before{
+    width: 80%;
+}
+.logout-btn{
+width: 100px;
+padding: 8px;
+border-radius: 30px;
+border: none;
+color: #38B885;
+}
+
 .container-1{
     padding: 10px 15px;
     border-radius: 20px;
@@ -104,6 +176,9 @@ table{
     border-bottom: 2px solid gray;
     outline: none;
     width: auto;
+}::placeholder{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
 }
 
 /* alterar senha */
@@ -174,8 +249,8 @@ option{
         margin-bottom: 10px;
         /* padding: 0 10px; */
         position: relative;
-        background-color: plum;
-    }
+        gap: 10%;
+}
 .alloteaments-details{
         padding-bottom: 5%;
     }
@@ -250,3 +325,273 @@ tr{
     margin-right: 20px;
     color: #EC5858;
 }
+/* clientes */
+.active-users-intire-box {
+    padding: 10px 15px;
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 20px;
+    margin: 0 5px 0 5px;
+    margin-bottom: 10px;
+}
+
+.active-users-credentials-box {
+    display: flex;
+    flex-direction: column;
+}
+.active-users-credentials-box p {
+    margin: 5px 0;
+}
+.active-users-name{
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+
+}
+.search-addClients-position{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 30%;
+    /* margin-top: 5%; */
+}
+.search-input{
+    border: 1px solid #AEAEB2;
+    border-radius: 8px;
+    width: auto;
+    height: 30%;
+    margin-bottom: 3px;
+}.search-input::placeholder{
+    padding: 0 5px 0px;
+    color: #38B885;
+}
+.lote-association{
+    border: 1px solid #38B885;
+    border-radius: 10px;
+    width: 50%;
+    color: #38B885;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    top: 30%;
+}
+.users-lote-column{
+    display: flex;
+    flex-direction: row;
+    gap: 35%
+    
+}
+.add-client-modal{
+    border: none;
+}
+
+/* avisos */
+.waning-page{
+    padding: 8% 0 0;
+    margin: auto;
+    border: 5x solid #38B885;
+}
+.warning-information{
+    /* background-color: purple; */
+    border: 1px solid #38B885;
+    border-radius: 24px;
+    box-shadow: 10px;
+    max-width: 300px;
+    margin: 70px auto 100px;
+    padding: 45px;
+    text-align: center;
+
+}
+.modal-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color:paleturquoise;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    transition: all .3s;
+    z-index: 3;
+    visibility: hidden;
+    opacity: 0;
+
+  /* */
+}:focus{
+  outline-offset: 0px;
+  outline: none;
+}
+.modal-container-up{
+  position: relative;
+  background-color: var(--container-color);
+  /* text-align: center; */
+  padding: 3rem 2rem 2rem;
+  border: 1px solid #AEAEB2;
+  border-radius: 10px;
+  transition: all .3s;
+
+  transform: translateY();
+   
+}
+.add-btn-client{
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 5px;
+    top: 80px;
+    background-color: #38B885;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: auto;
+    height: 30px;
+    align-items: center;
+    text-align: center;
+    font-weight: 400;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+/* detalhes do cliente */
+.clients-btn-details-position{
+    display: flex;
+    flex-direction: row;
+    right: 50;
+}
+.h3-nav-link{
+    text-decoration: none;
+    color: black;
+}
+.details-btn{
+    border: 1px solid #38B885;
+    border-radius: 8px;
+    margin-top: 15px;
+    background-color: transparent;
+    color: #38B885;
+    width: 164px;
+    height: 36px;
+    text-align: center;
+}
+.delete-user-allotements{
+    border: 1px solid #EC5858;
+    background-color: #EC5858;
+    color: #F2F2F7;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.status-user-open{
+    color: #EC5858;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.lote-detail-info{
+    color: black;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.divide-details{
+    padding: 10px 15px;
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 20px;
+    margin: 0 5px 0 5px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 50%;
+}
+.btn-add-guest{
+    width: 20%;
+    height: auto;
+    padding: 8px;
+    border-radius: 30px;
+    border: none; 
+    background:#38B885;
+    color: white;
+    margin-right: 30px;
+    font-size: medium;
+    font-weight: 600;
+    text-align: center;
+}
+/* detalhe dos lotes */
+/* input[type="file"] {
+display: none;
+} */
+.img-label{
+    padding: 20px 10px;
+    width: 200px;
+    background-color: #333;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.file{
+    line-height: 30px;
+  height: 30px;
+  border: 1px solid #A7A7A7;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 15px;
+  vertical-align: middle;
+  width: 300px;
+}
+form{
+    border: none;
+}
+.lotes-img{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10%
+}
+.input-img::-webkit-file-upload-button{
+    visibility: hidden;
+}
+.input-img::before {
+   content: 'Anexar foto';
+   display: inline-block;
+   width: 50%;
+   cursor: pointer;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   margin-bottom: 5px;
+   top: 80px;
+   background-color: #38B885;
+   color: white;
+   border: none;
+   border-radius: 8px;
+   height: 30px;
+   font-weight: 500;
+   font-size: large;
+}
+#image{
+    display: inline-block;
+    /* background: #38B885;
+    width: 30%; */
+    color: white;
+    /* border: 1px solid #38B885; */
+    border-radius: 8px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 10pt;
+}
+.info-lote-input{
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+}
+
+  /* .input-img:hover::before {
+    border-color: black;
+  }
+  .input-img:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  } */
