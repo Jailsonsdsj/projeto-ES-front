@@ -3,11 +3,13 @@ import { userData } from '../../api/users';
 import { addAlloteament } from '../../api/alloteaments';
 import { getAllAlloteaments } from '../../api/alloteaments';
 import {SearchOutlined,PlusOutlined} from '@ant-design/icons'
+import { NavLink } from "react-router-dom";
 
 export const Allotments = () =>{
 
   const [ alloteaments, setAlloteaments ] = useState(null)
   const [ addAlloteamentModal, setAddAlloteamentModal] = useState(false)
+  const [messageSubmit, setMessageSubmit] = useState()
   const [ inputData, setInputData ] = useState({
     img:"",
     name:"",
@@ -28,15 +30,14 @@ export const Allotments = () =>{
   const handleSubmit = async(e) =>{
     e.preventDefault()
     const response = await addAlloteament(inputData)
-    console.log(response)
-
+    response.status === 201 ? setMessageSubmit("Loteamento cadastrado com sucesso!") : setMessageSubmit("Falha ao cadastrar loteamento")
   }
 
   const onChange = (e) =>{
     const { name, value } = e.target
     setInputData({...inputData, [name]:value})
   }
-  // console.log(alloteaments)
+ 
 
 
   return alloteaments ? (
@@ -60,17 +61,27 @@ export const Allotments = () =>{
         <button onClick={()=>setAddAlloteamentModal(!addAlloteamentModal)}>Cancelar</button>
         <input className="primary-button" type="submit" value="Adicionar" />
       </form>
+      {messageSubmit && (
+      <div className="success-message">
+         <h3>{messageSubmit}</h3>
+         <button onClick={()=>window.location.reload()}>Ok</button>
+      </div>
+     
+      )}
     </div>
     )}
 
     <div>
     {alloteaments.length
-            ? Object.entries(alloteaments).map(([key, value]) =>
+            ? Object.entries(alloteaments).map(([key, value]) =>              
               <div key={key}>
+                <NavLink to={`/Allotments/AlloteamentsDetails/${value.id}`}>
                 <img src="https://i.ibb.co/JKLpGDL/image.png"  alt="Imagem Loteamento" />
                 <h4>{value.name}</h4>
+                </NavLink>
                 <p>{value.address}</p>
               </div>
+             
               )
             : "Sem lote cadastrado"}
     </div>
