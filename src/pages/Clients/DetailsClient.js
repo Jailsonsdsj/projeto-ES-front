@@ -45,10 +45,10 @@ const DetailsClient = () => {
 
             const response = await ticketGenerator(clientData.name)
             if( response.status === 200){
-                setDownloadPDF("Download efetuado")
+                setDownloadPDF("Carnê gerado com sucesso")
                 window.location.href = `https://kloteteste.herokuapp.com/pdf/${clientData.name}`
             }else{
-                setDownloadPDF("Falha ao realizar do download. Entre em contato com um administrador")
+                setDownloadPDF("Falha ao gerar o carnê. Entre em contato com um administrador")
             }
     
             
@@ -72,7 +72,7 @@ const DetailsClient = () => {
                     <button className="input-edit-outlined" style={{backgroundColor: 'white'}}><EditOutlined/>Editar</button>
                     <button className="input-delete-outlined" style={{backgroundColor: 'white'}}><DeleteOutlined onClick={toggleCanvas}/> Deletar</button>
                     
-                    <button className="input-edit-outlined" onClick={ticketRequest} style={{backgroundColor: 'white'}}>Gerar boleto</button>
+                    <button className="input-edit-outlined" onClick={ticketRequest} style={{backgroundColor: 'white'}}>Gerar carnê</button>
                     
                 </div>
                
