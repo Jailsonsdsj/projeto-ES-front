@@ -2,6 +2,7 @@ import React,{useContext} from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Allotments } from './pages/Allotments';
 import { Clients } from './pages/Clients';
+import DetailsClient from './pages/Clients/DetailsClient';
 import { Financial } from './pages/Financial';
 import HomePage from './pages/HomePage';
 import { Profile } from './pages/Profile';
@@ -43,6 +44,7 @@ export const AppRoutes = () =>{
                     <Route exact path="/Clients" element={<Private> <Clients /></Private>} />
                     <Route exact path="/Profile" element={<Private> <Profile /></Private>} />
                     <Route exact path="/Lot/:lotId/:id" element={<Private> <Lot/></Private>} />
+                    <Route exact path="/clients/DetailsClient/:userId" element={<Private> <DetailsClient/></Private>} />
                 </Routes>
             </AuthProvider>
       </Router>

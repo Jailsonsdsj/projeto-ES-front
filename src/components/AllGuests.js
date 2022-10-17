@@ -14,7 +14,7 @@ const AllGuests = () => {
 
 
   return (
-    <div>AllGuests</div>
+    <div></div>
   )
 }
 

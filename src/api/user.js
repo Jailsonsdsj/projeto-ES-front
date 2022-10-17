@@ -23,7 +23,6 @@ export const createGuest = async({ fullName,email,cpf,cel }) => {
 
 export const getAllGuests = async() =>{
     try{
-      
         const response = await apiAutentication.get('user/get_clients')
         return response;
 
@@ -36,26 +35,24 @@ export const getAllGuests = async() =>{
 
 
 //erro
-export const addClient = async({ name,email,cpf,address,lot,alloteaments }) =>{
+export const addClient = async({ name,email,cpf,address,lot,alloteaments,admin_id  }) =>{
     try{
         
         const allotment = JSON.parse(alloteaments)
-       
         const body={
             "email":email,
             "name": name,
             "cpf":cpf,
-            "phone":"00000000000",
+            "phone1":"00000000",
+            "admin_id":admin_id ,
             "address":address,
             "lots":[{
                 "allotment_id":allotment.id,
                 "number": parseInt(lot)
             }]
         }
-        console.log(body)
-    const response = await apiAutentication.post(`${API_BACKEND_BASEURL}/register_guest`, body)
-    console.log(response)
-    // return response;  
+    const response = await apiAutentication.post(`${API_BACKEND_BASEURL}/customer/register`, body)
+    return response;  
 
 
     }catch(err){
@@ -69,9 +66,43 @@ export const getCustomers = async() =>{
         return apiAutentication.get('customer/get_customers')
 
     }catch(err){
-        console.error(err)
+        console.log(err)
         return err;
     }
 }
 
 
+export const getCustomersDetails = async(id) =>{
+ 
+    try{
+        return apiAutentication.get(`customer/get_customer/${id}`)
+        
+    }catch(err){
+        console.log(err)
+        return err;
+        
+    }
+}
+
+
+export const deleteCustomer = async(id) =>{
+    try{
+        return apiAutentication.delete(`customer/delete/${id}`)
+       
+
+    }catch(err){
+        console.error(err)
+        return err;
+    }
+}
+
+export const deleteCustomerLot = async({id,allotment_id,lot_number,customer_id}) =>{
+    try{
+        return apiAutentication.delete(`customer/purcharse/delete/${id}`)
+        
+
+    }catch(err){
+        console.error(err)
+        return err;
+    }
+}

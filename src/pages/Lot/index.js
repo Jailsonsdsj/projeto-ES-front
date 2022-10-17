@@ -22,11 +22,6 @@ const Lot = () => {
     <LoadingData />
   ) : (
     <main className="container-1">
-      {/* <div className="buttons ">
-        <button className="btn-edit"> <EditOutlined/> Editar</button>
-        <button className="delete-btn"> <DeleteOutlined/> Excluir</button>
-      </div> */}
-      {/* <div className="lot-info-container"> */}
       <div className="btn-position">
             <h1>Lote {lotData.block}</h1>
             <div>
@@ -66,13 +61,6 @@ const Lot = () => {
         <button className="add-btn">Adicionar</button>
       </div>
     </main>
-    // <ul>
-    //     <li> ID: {lotData.allotment_id}</li>
-    //     <li> Bloco: {lotData.block}</li>
-    //     <li> Número: {lotData.number}</li>
-    //     <li> Status: {lotData.status}</li>
-    //     <li> Valor: {lotData.value}</li>
-    // </ul>
   );
 };
 

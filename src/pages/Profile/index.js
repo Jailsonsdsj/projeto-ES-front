@@ -43,14 +43,9 @@ export const Profile = () => {
           <ProfileData data={data}/>
           {/* Insert change passowrd funcion here */}
           <button className="btn-large" onClick={() => onClick(true)}>Alterar a senha</button>
-     
           {resetPasswordModal && <ResetPassword/>}
-  
-          <div className="guests">
-            <h2>Convidados</h2>          
+            <h2>Convidados</h2> 
             <AddGuests/>
-          </div>
-
           <div className="guests-container">
            <AllGuests/>
           </div>
