@@ -51,10 +51,10 @@ export const addClient = async({ name,email,cpf,address,lot,alloteaments,admin_i
                 "number": parseInt(lot)
             }]
         }
-        console.log(body)
 
     const response = await apiAutentication.post(`${API_BACKEND_BASEURL}/customer/register`, body)
     return response;  
+
     }catch(err){
         console.log(err)
         // console.err(`addClient error: ${err}` )

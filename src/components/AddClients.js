@@ -3,13 +3,11 @@ import { PlusOutlined } from "@ant-design/icons";
 import { getAllAlloteaments } from "../api/alloteaments";
 import { addClient } from "../api/user";
 
-
-
 const AddClients = () => {
   const [openModal, setOpenModal] = useState(false);
   const [alloteaments, setAlloteaments] = useState();
   const [selectedAlloteament, setSelectedAlloteament] = useState("");
-  const [messageSubmit, setMessageSubmit] = useState()
+  const [messageSubmit, setMessageSubmit] = useState();
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -27,14 +25,12 @@ const AddClients = () => {
       setFormValues({ ...formValues, admin_id: user.user_id });
       const allAlloteamentsResponse = await getAllAlloteaments(user.user_id);
       setAlloteaments(allAlloteamentsResponse);
-
     })();
   }, []);
 
   const onChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
- 
   };
 
   const toggleModal = () => {
@@ -44,12 +40,12 @@ const AddClients = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     (async () => {
-      const response = await addClient(formValues)
-      response.status === 201 ? setMessageSubmit("Cliente cadastrado com sucesso!") : setMessageSubmit("Falha ao cadastrar cliente")
+
+      const response = await addClient(formValues);
+      response.status === 201
+        ? setMessageSubmit("Cliente cadastrado com sucesso!")
+        : setMessageSubmit("Falha ao cadastrar cliente");
     })();
-    
-    
-    
   };
 
   const handleChange = (e) => {
@@ -59,61 +55,68 @@ const AddClients = () => {
   };
 
   return openModal ? (
-    <div className="modal-test" >
-          <div className="modal-container-up">
-          <h2>Adicionar Cliente</h2>
-          <form className="add-client-modal" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'row', gap: '100px'}}>
-          <input
-            type="text"
-            className="input-convidado"
-            name="name"
-            placeholder="Nome"
-            onChange={onChange}
-            value={formValues.name}
-          />
-          <input
-            type="text"
-            className="input-convidado"
-            name="email"
-            placeholder="E-mail"
-            onChange={onChange}
-            value={formValues.email}
-          />
-          <input
-            type="text"
-            className="input-convidado"
-            name="cpf"
-            placeholder="CPF"
-            onChange={onChange}
-            value={formValues.cpf}
-          />
-          <input
-            type="text"
-            className="input-convidado"
-            name="address"
-            placeholder="Endereço"
-            onChange={onChange}
-            value={formValues.address}
-          />
-          </form>
-          
+    <div className="modal-test">
+      <div className="modal-container-up">
+        <h2>Adicionar Cliente</h2>
+        <form className="add-client-modal" onSubmit={handleSubmit}>
+          <div
+            className="forms-input-group"
+            style={{ display: "flex", flexDirection: "row", gap: "100px" }}
+          >
+            <input
+              type="text"
+              className="input-convidado"
+              name="name"
+              placeholder="Nome"
+              onChange={onChange}
+              value={formValues.name}
+            />
+            <input
+              type="text"
+              className="input-convidado"
+              name="email"
+              placeholder="E-mail"
+              onChange={onChange}
+              value={formValues.email}
+            />
+            <input
+              type="text"
+              className="input-convidado"
+              name="cpf"
+              placeholder="CPF"
+              onChange={onChange}
+              value={formValues.cpf}
+            />
+            <input
+              type="text"
+              className="input-convidado"
+              name="address"
+              placeholder="Endereço"
+              onChange={onChange}
+              value={formValues.address}
+            />
+          </div>
+
           <h3>Lote associado</h3>
 
           <select
             name="alloteaments"
             id="alloteaments-list"
             placeholder="Lotes associados"
-            onChange={(e)=>{
-              handleChange(e)
-              onChange(e)
-            }
-            }
-            defaultValue ={formValues.alloteaments}
+            onChange={(e) => {
+              handleChange(e);
+              onChange(e);
+            }}
+            defaultValue={formValues.alloteaments}
           >
             <option value={false}>Loteamento</option>
             {alloteaments ? (
               alloteaments.map((item) => (
-                <option key={item.id} value={JSON.stringify(item)} datasearch={JSON.stringify(item)}>
+                <option
+                  key={item.id}
+                  value={JSON.stringify(item)}
+                  datasearch={JSON.stringify(item)}
+                >
                   {item.address}
                 </option>
               ))
@@ -123,7 +126,12 @@ const AddClients = () => {
           </select>
 
           {selectedAlloteament ? (
-            <select name="lot" id="lot" defaultValue ={formValues.lot}  onChange={onChange}>
+            <select
+              name="lot"
+              id="lot"
+              defaultValue={formValues.lot}
+              onChange={onChange}
+            >
               <option value={false}>Lote</option>
               {Object.entries(selectedAlloteament).map(
                 ([key, value]) =>
@@ -141,12 +149,24 @@ const AddClients = () => {
           <button className="input-reset" onClick={toggleModal}>
             Cancelar
           </button>
-          <input className="input-btn" type="submit" value="Adicionar" />
-        </div>
+          <input className="add-btn-client" type="submit" value="Adicionar" />
+        </form>
+
+        {messageSubmit && (
+      <div className="success-message">
+         <h3>{messageSubmit}</h3>
+         <button onClick={()=>window.location.reload()}>Ok</button>
+      </div>
+     
+      )}
+      </div>
+     
     </div>
   ) : (
-    <button className="add-btn-client" onClick={toggleModal}>Adicionar Clientes</button>
-);
+    <button className="add-btn-client" onClick={toggleModal}>
+      Adicionar Clientes
+    </button>
+  );
 };
 
 export default AddClients;
