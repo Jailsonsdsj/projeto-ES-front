@@ -3,6 +3,7 @@ import './client-style.css'
 import '../../assets/css/style.css'
 import AddClients from '../../components/AddClients';
 import AllClients from '../../components/AllClients';
+import "../../assets/css/style.css"
 import {SearchOutlined} from '@ant-design/icons';
 
 export const Clients = () => {
@@ -19,15 +20,17 @@ export const Clients = () => {
 
 
   return (
-    <main>
-      <h1>Clientes</h1>
-      <AddClients/>
-      <div>
-        <input type="text" placeholder='Pesquisar cliente...' />
-        <SearchOutlined/>
+    <main className='container-1'>
+      <div className="btn-position">
+        <h1>Clientes</h1>
+        <div className="search-addClients-position">
+          <input className='search-input' type="text" placeholder='Buscar'></input>
+          <AddClients/>
+        </div>
+        
       </div>
       
-      <AllClients/>
+    <AllClients/>
     </main>
   
   )

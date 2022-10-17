@@ -42,14 +42,11 @@ export const Profile = () => {
           </div>
           <ProfileData data={data}/>
           <button className="btn-large" onClick={() => onClick(true)}>Alterar a senha</button>
-     
           {resetPasswordModal && <ResetPassword/>}
   
           {/* <div className="guests">
             <h2>Convidados</h2>          
             <AddGuests/>
-          </div>
-
           <div className="guests-container">
            <AllGuests/>
           </div> */}

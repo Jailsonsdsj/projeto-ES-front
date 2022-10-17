@@ -19,6 +19,12 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
   return (
     <div className="alloteaments-panel">
       <h2>Acompanhar Loteamento</h2>
+      <div className="alloteaments-status">
+            {/* replace icon */}
+            <p>⚫️Vendido</p>
+            <p>🟢Disponível</p>
+           
+      </div>
       <select name="address" onChange={handleChange}>
         {alloteaments.map((item) => (
           <option key={item.id} value={item.id}>
@@ -45,11 +51,7 @@ const AlloteamentsDashboard = ({ alloteaments }) => {
               </tr>
             </tbody>
           </table>
-          <div className="alloteaments-status">
-            {/* replace icon */}
-            <p>v - disponíveis</p>
-            <p>x - vendidos</p>
-          </div>
+          
         </div>
         <div className="alloteaments-numbers">
           {Object.keys(dataAlloteaments.lots).length

@@ -45,22 +45,28 @@ const DetailsClient = () => {
     console.log(clientData);
 
   return loading ? 
-    <LoadingData/> : (<>
-        <div> 
-            <div>
-                <NavLink to="/clients">Clientes</NavLink>   <RightOutlined /> {clientData.name}
-            </div>
-            <div>
-                <EditOutlined/>
-                <DeleteOutlined onClick={toggleCanvas}/>
-            </div>
+    <LoadingData/> : (
+    <div className="container-1">
+        <div className="btn-position"> 
+            <h3>
+                <NavLink className='h3-nav-link' to="/clients">Clientes</NavLink>  
+                <RightOutlined/> 
+                {clientData.name}
+            </h3>
+            <div className="clients-btn-details-position">
+               
+                <div>
+                    <button className="input-edit-outlined" style={{backgroundColor: 'white'}}><EditOutlined/>Editar</button>
+                    <button className="input-delete-outlined" style={{backgroundColor: 'white'}}><DeleteOutlined onClick={toggleCanvas}/> Deletar</button>
+                </div>
+            </div> 
         </div>
         
         {toggleDeleteClient && 
             (<div> 
                 <h3>Tem certeza que deseja excluir o cliente?</h3>
-                <button onClick={toggleCanvas}>Cancelar</button>
-                <button onClick={deleteUser}>Excluir</button>
+                <button className="input-edit-outlined" onClick={toggleCanvas}>Cancelar</button>
+                <button className="input-delete-outlined" onClick={deleteUser}>Excluir</button>
             </div>)
         }
      
@@ -74,11 +80,11 @@ const DetailsClient = () => {
         <table>
             <thead>
                 <tr>
-                    <td>Nome</td>
-                    <td>CPF</td>
-                    <td>ID</td>
-                    <td>E-mail</td>
-                    <td>Endereço</td>
+                    <td className="td-info">Nome</td>
+                    <td className="td-info">CPF</td>
+                    <td className="td-info">ID</td>
+                    <td className="td-info">E-mail</td>
+                    <td className="td-info">Endereço</td>
                 </tr>
             </thead>
             <tbody>
@@ -95,14 +101,14 @@ const DetailsClient = () => {
         <div className="lot-container">
             {clientData.lots.length ? (
                Object.entries(clientData.lots).map(([key, value]) => (
-                <div key={key}>
-                    <div>
-                        <div>{value.allotment_name} / {value.lot_number} / {value.block}</div>
-                        <button>Ver Detalhes<InfoCircleOutlined /></button>
+                <div className="divide-details" key={key}>
+                    <div className="active-users-credentials-box ">
+                        <p className="lote-detail-info">{value.allotment_name} / {value.lot_number} / {value.block}</p>
+                        <button className="details-btn"><InfoCircleOutlined/> Ver Detalhes</button>
                     </div>
-                    <div>
-                        <p><WarningOutlined />Aberto</p>
-                        <button onClick={(()=>setToggleDeleteLot(!toggleDeleteLot))}>Excluir lote do proprietário</button>
+                    <div className="status-position">
+                        <p className="status-user-open"><WarningOutlined/>ABERTO</p>
+                        <button onClick={(()=>setToggleDeleteLot(!toggleDeleteLot))} className="delete-user-allotements">Excluir lote do proprietário</button>
                     </div>
                     {toggleDeleteLot && 
                         (<div> 
@@ -118,7 +124,7 @@ const DetailsClient = () => {
             ):(<>Sem lotes associados</>)}
            
         </div>
-        </>)
+        </div>)
 }
 
 export default DetailsClient

@@ -18,8 +18,8 @@ const LoginForm = () => {
 
   return (
         <Container>
-        <Title>K-LOTE</Title>   
-        <SubTitle>Fazer Login</SubTitle>
+        <Title>K-Lote</Title>   
+        <SubTitle>Faça seu login</SubTitle>
             <Form onSubmit={submitHandle}>
                 <InputLabel>
                     <label htmlFor="email">E-mail</label>
