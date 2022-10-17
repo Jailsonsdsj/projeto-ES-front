@@ -41,25 +41,32 @@ export const Allotments = () =>{
 
 
   return alloteaments ? (
-    <main>
-    <div>
+    <main className='container-1'>
+    <div className="btn-position">
       <h1>Loteamentos</h1>
-      <input type="text" placeholder='Pesquisar loteamento...' />
-      <SearchOutlined/>
-      
-      <PlusOutlined onClick={()=>setAddAlloteamentModal(!addAlloteamentModal)}/>
+      <div className="search-addClients-position">
+        <input className='search-input' type="text" placeholder='Pesquisar loteamento' />
+        <button className="add-btn-client" onClick={()=>setAddAlloteamentModal(!addAlloteamentModal)}>Adicionar Loteamento</button>
+      </div>
     </div>
     {addAlloteamentModal && (
-    <div>
+    <div className='active-users-intire-box'>
       <h3>Adicionar Loteamento</h3>
-      <form onSubmit={handleSubmit}>
-        <input type="file" name="img" id="image" alt="Adicionar Imagem" value={inputData.img} onChange={onChange}/>
-        <input type="text" name="name" placeholder="Nome" value={inputData.name} onChange={onChange}/>
-        <input type="text" name="cep" placeholder="cep" value={inputData.cep} onChange={onChange}/>
-        <input type="text" name="address" placeholder="Logradouro" value={inputData.address} onChange={onChange}/>
-        <input type="text" name="number" placeholder="Número" value={inputData.number} onChange={onChange}/>
-        <button onClick={()=>setAddAlloteamentModal(!addAlloteamentModal)}>Cancelar</button>
-        <input className="primary-button" type="submit" value="Adicionar" />
+      <form className="add-client-modal" onSubmit={handleSubmit}>
+        <div>
+          <input className='input-img' type="file" name="img" id="image" alt="Adicionar Imagem" value={inputData.img} onChange={onChange}/>
+          <label for='image'></label>
+        </div>
+        <br></br>
+        <div className='info-lote-input'>
+        <input className="input-convidado" type="text" name="name" placeholder="Nome" value={inputData.name} onChange={onChange}/>
+        {/* <input type="text" name="cep" placeholder="cep" value={inputData.cep} onChange={onChange}/> */}
+        <input className="input-convidado" type="text" name="address" placeholder="Logradouro" value={inputData.address} onChange={onChange}/>
+        <input className="input-convidado" type="text" name="number" placeholder="Número" value={inputData.number} onChange={onChange}/>
+        </div>
+        <br></br>
+        <button className="input-reset" onClick={()=>setAddAlloteamentModal(!addAlloteamentModal)}>Cancelar</button>
+        <input className="input-btn" type="submit" value="Adicionar" />
       </form>
       {messageSubmit && (
       <div className="success-message">
@@ -71,12 +78,12 @@ export const Allotments = () =>{
     </div>
     )}
 
-    <div>
+    <div className='lotes-img'>
     {alloteaments.length
             ? Object.entries(alloteaments).map(([key, value]) =>              
               <div key={key}>
-                <NavLink to={`/Allotments/AlloteamentsDetails/${value.id}`}>
-                <img src="https://i.ibb.co/JKLpGDL/image.png"  alt="Imagem Loteamento" />
+                <NavLink className='h3-nav-link' to={`/Allotments/AlloteamentsDetails/${value.id}`}>
+                <img src="https://i.ibb.co/JKLpGDL/image.png"  alt="loteamento-img" />
                 <h4>{value.name}</h4>
                 </NavLink>
                 <p>{value.address}</p>

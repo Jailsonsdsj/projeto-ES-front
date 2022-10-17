@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useParams,useNavigate  } from "react-router-dom";
-import LoadingData from "../../components/utils/LoadingData";
-import { EditOutlined, DeleteOutlined, RightOutlined,InfoCircleOutlined,WarningOutlined  } from "@ant-design/icons";
-import { NavLink  } from "react-router-dom";
+import '../../assets/css/style.css'
 
 
 
 const AlloteamentsDetails = () => {
   return (
-    <div>detailsAlloteament</div>
+    <div className='warning-page'>
+        <div className='warning-information'>
+            <h2 >Não se preocupe!</h2>
+            <p>Estamos preparando os detalhes do seu lote</p>
+            <p>Volte em breve!</p>
+            <img style={{width: '30%', height: '30%'}} src='https://cdn-icons-png.flaticon.com/512/6675/6675448.png' alt='alert'/>
+        </div>
+    </div>
   )
 }
 
