@@ -19,7 +19,9 @@ export const Navigation = () => {
             </div>
             <ul className="nav-links">
                 <li className="logo">
-                    <img src="https://i.ibb.co/xzyn9sj/logo-klote-03.png" alt="klote-logo" />
+                    <a href="/">
+                        <img src="https://i.ibb.co/xzyn9sj/logo-klote-03.png" alt="klote-logo" />
+                    </a>
                 </li>
                 <li key="home">
                     <NavLink  to='/' className="nav-link">
