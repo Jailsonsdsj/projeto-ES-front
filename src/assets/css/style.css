@@ -149,7 +149,8 @@ table{
 .input-reset{
     text-decoration: none;
     width: 100px;
-    padding: 8px;
+    padding: 50%;
+   
     border-radius: 30px;
     color: #38B885;
     margin: 10px 0 10px 0;
@@ -158,7 +159,18 @@ table{
     border: none;
 }
 
+
 /* add convidado */
+
+.modal-md{
+    min-width: 60vw ;
+}
+
+.form-group-content{
+    display:flex;
+    flex-direction: row;
+    margin:10%;
+}
 
 .formInput{
     display: flex;
@@ -170,6 +182,15 @@ table{
     display: flex;
     flex-direction: column;
     padding-bottom: 5px;
+}
+
+
+.linear-input{
+    border: none;
+    border-bottom: 2px solid gray;
+    outline: none;
+    width: auto;
+    margin: 20px 3px 20px 0;
 }
 .input-convidado{
     border: none;
@@ -401,6 +422,26 @@ tr{
     text-align: center;
 
 }
+
+
+/* .modal{
+    position: fixed;
+    z-index:1;
+    left:0;
+    overflow:auto;
+    background-color: rgb(255, 255, 255); 
+    
+}
+
+.modal-content{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+} */
+
+
 .modal-container{
     position: absolute;
     top: 0;
@@ -421,6 +462,8 @@ tr{
   outline-offset: 0px;
   outline: none;
 }
+
+
 .modal-container-up{
   position: relative;
   background-color: var(--container-color);

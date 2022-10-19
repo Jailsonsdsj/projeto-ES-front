@@ -16,7 +16,7 @@ export const createGuest = async({ fullName,email,cpf,cel }) => {
 
     }catch(err){
         console.error(`createGuest error: ${err}` )
-        throw new Error(err)
+        return new Error(err)
     }
 
 }
@@ -27,8 +27,7 @@ export const getAllGuests = async() =>{
         return response;
 
     }catch(err){
-        console.error(`getAllGuests error: ${err}` )
-        throw new Error(err)
+        return new Error(err)
     }
 }
 
@@ -56,9 +55,7 @@ export const addClient = async({ name,email,cpf,address,lot,alloteaments,admin_i
     return response;  
 
     }catch(err){
-        console.log(err)
-        // console.err(`addClient error: ${err}` )
-        // throw new Error(err)
+        return new Error(err)
     }
 }
 
@@ -67,8 +64,7 @@ export const getCustomers = async(id) =>{
         return apiAutentication.get(`customer/get_customers/${id}`)
 
     }catch(err){
-        console.err(err)
-        return err;
+        return new Error(err)
     }
 }
 
@@ -79,8 +75,7 @@ export const getCustomersDetails = async(id) =>{
         return apiAutentication.get(`customer/get_customer/${id}`)
         
     }catch(err){
-        console.err(err)
-        return err;
+        return new Error(err)
         
     }
 }
@@ -92,8 +87,7 @@ export const deleteCustomer = async(id) =>{
        
 
     }catch(err){
-        console.error(err)
-        return err;
+        return new Error(err)
     }
 }
 
@@ -108,8 +102,7 @@ export const deleteCustomerLot = async(userId,allotment_id,customer_id,lot_numbe
         
 
     }catch(err){
-        console.error(err)
-        return err;
+        return new Error(err)
     }
 }
 
@@ -123,7 +116,7 @@ export const ticketGenerator = async(clientName) =>{
         
     }catch(err){
         console.log(err)
-        return err;
+        return new Error(err)
         
     }
 }
