@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { getAllAlloteaments } from "../api/alloteaments";
 import { addClient } from "../api/user";
-import Modal from "react-bootstrap/Modal";
-
+import { Modal, Row, Col} from "react-bootstrap";
 import ModalMessage from "./utils/ModalMessage";
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+
 import "../assets/css/style.css"
 
 const AddClients = () => {

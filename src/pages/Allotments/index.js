@@ -4,10 +4,8 @@ import { addAlloteament } from "../../api/alloteaments";
 import { getAllAlloteaments } from "../../api/alloteaments";
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
+import { Modal, Row, Col} from "react-bootstrap";
 import ModalMessage from "../../components/utils/ModalMessage";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import "../../assets/css/style.css";
 
 export const Allotments = () => {

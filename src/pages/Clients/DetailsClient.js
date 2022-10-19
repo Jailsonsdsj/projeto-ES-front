@@ -11,7 +11,8 @@ import {
 import { NavLink } from "react-router-dom";
 import { getCustomersDetails, deleteCustomer } from "../../api/user";
 import { ticketGenerator } from "../../api/user";
-import Modal from "react-bootstrap/modal";
+import { Modal, Row, Col} from "react-bootstrap";
+
 import ModalMessage from "../../components/utils/ModalMessage";
 const DetailsClient = () => {
   const { userId } = useParams();
