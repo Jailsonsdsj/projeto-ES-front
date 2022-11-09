@@ -105,7 +105,14 @@ const AlloteamentsDetails = () => {
                   </div>
                 ) : (
                   <div key={key} className="box-lot unavaliable-lot">
-                    <p>{key}</p>
+                    <NavLink
+                      to={`/Lot/${dataAlloteaments.id}/${key}`}
+                      key={key}
+                      className="info-number-alloteament"
+                    >
+                      <p>{key}</p>
+                    </NavLink>
+
                   </div>
                 )
               )

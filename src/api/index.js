@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 
-export const API_BACKEND_BASEURL = 'https://klote-backend.herokuapp.com';
+export const API_BACKEND_BASEURL = 'https://klote.fly.dev';
 
 export const apiAutentication = axios.create({
     baseURL: API_BACKEND_BASEURL,
