@@ -4,7 +4,6 @@ import { getAllAlloteaments } from "../api/alloteaments";
 import { addClient } from "../api/user";
 import { Modal, Row, Col} from "react-bootstrap";
 import ModalMessage from "./utils/ModalMessage";
-
 import "../assets/css/style.css"
 
 const AddClients = () => {
@@ -134,7 +133,7 @@ const AddClients = () => {
                     value={JSON.stringify(item)}
                     datasearch={JSON.stringify(item)}
                   >
-                    {item.address}
+                    {item.name}
                   </option>
                 ))
               ) : (

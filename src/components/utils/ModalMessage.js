@@ -1,6 +1,6 @@
 import React, { useState }from "react";
 import { useNavigate } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
+import {Modal} from "react-bootstrap";
 
 const ModalMessage = ({ message,navigateLink }) => {
     const [modalIsOpen, setModalIsOpen] = useState(true);
