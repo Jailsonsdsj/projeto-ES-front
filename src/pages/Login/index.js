@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { AuthContext } from "../../contexts/auth";
 import { Link } from "react-router-dom";
-import "../Login/style-login.css";
 import {
   Title1,
   FormDefault,
@@ -13,27 +12,35 @@ import {
   LargeTitle,
   CenterContainer,
   FormOptions,
-  PrimaryButton
+  PrimaryButton,
+  InputGroup,
+  FormMessageError
 } from "../../assets/css/style";
 
 export const LoginForm = () => {
   const { login } = useContext(AuthContext);
+  const [details, setDetails] = useState({ email: "", password: "", errorMessage: "" });
+    
 
-  const [details, setDetails] = useState({ email: "", password: "" });
-
-  const submitHandle = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    login(details.email, details.password); //context integration
+    (async () => {
+        const response = await login(details.email, details.password); //context integration
+        if(response) setDetails({...details, errorMessage:"Login ou senha inválidos."})
+
+      })();
   };
 
+  console.log(details);
+ 
   return (
     <>
       <CenterContainer>
         <LargeTitle>K-Lote</LargeTitle>
         <BoxContainer>
-          <h1>Faça seu login</h1>
-          <FormDefault onSubmit={submitHandle}>
-            <InputLabel>
+          <FormDefault>
+          <Title1>Fazer Login</Title1>
+            <InputGroup>
               <FormLabel htmlFor="email">E-mail</FormLabel>
               <InputDefault
                 type="email"
@@ -45,8 +52,8 @@ export const LoginForm = () => {
                 }
                 value={details.email}
               />
-            </InputLabel>
-            <InputLabel>
+            </InputGroup>
+            <InputGroup>
               <FormLabel htmlFor="password">Senha</FormLabel>
               <InputDefault
                 type="password"
@@ -56,24 +63,25 @@ export const LoginForm = () => {
                 onChange={(e) =>
                   setDetails({ ...details, password: e.target.value })
                 }
-                value={details.password}
+                value={details.password} 
               />
-            </InputLabel>
+            </InputGroup>
+           
             {/* {(error !== "") ? ( <div className="error">{error}</div>) : ""} */}
+            {details.errorMessage && <FormMessageError>{details.errorMessage}</FormMessageError>}
             <FormOptions>
-              <RadioDiv>
-                <input type="checkbox"></input>
-                <label htmlFor="password" className="chekbox-label">
-                  Manter conectado
-                </label>
-              </RadioDiv>
-                <Link to="/resetPassword" className="reset-password">
-                  Esqueceu sua senha?
+                
+                <div>
+                    <input type="checkbox" id="keep-conected"/>
+                    <label htmlFor="keep-conected">Manter conectado</label>
+                </div>
+                <Link to="/resetPassword">
+                 <FormText>Esqueceu sua senha?</FormText>
                 </Link>
-              
+                
             </FormOptions>
             <div>
-              <PrimaryButton type="submit">Entrar</PrimaryButton>
+            <PrimaryButton type="submit" onClick={handleSubmit}>Entrar</PrimaryButton>
             </div>
 
             {/* <input type="submit" value="Entrar" /> */}
@@ -84,101 +92,3 @@ export const LoginForm = () => {
   );
 };
 
-const Container = styled.div`
-  height: 100vh;
-  margin: 0 auto;
-  position: relative;
-`;
-const Form = styled.form`
-  background-color: #ffff;
-  width: 450px;
-  height: 300px;
-  padding: 20px;
-  position: absolute;
-  top: 40%;
-  left: 45%;
-  margin: -70px 0 0 -170px;
-  border-radius: 24px;
-  box-shadow: 10px;
-  margin-bottom: 10px;
-`;
-const Title = styled.h1`
-  text-align: center;
-  margin: 17px 0;
-
-  color: #38b885;
-  font-family: "Segoe UI", "Roboto";
-`;
-const SubTitle = styled.h2`
-  text-align: center;
-  margin: 17px 0;
-  padding: 50px;
-`;
-const InputLabel = styled.div`
-  /* max-width: 380px;
-background-color: #F2F2F7;
-margin: 10px 0;
-padding: 10px 10px;
-width: 100%;
-height: 40px;
-border-radius: 25px;
-display: flex;
-grid-template-columns: 15% 85%;
-padding: 0 0.4rem;
-position: relative;
-outline: none; */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  margin: 10px 0px 20px 0px;
-  /* margin-top: 10px;
-margin-bottom: 20px; */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-`;
-const InputText = styled.input`
-  width: 100%;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #f2f2f7;
-  font-size: 12pt;
-  /* box-shadow: 0px 10px 4px black; */
-  outline: none;
-  box-sizing: border-box;
-  ::placeholder {
-    font-size: 13px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    font-weight: 400;
-    line-height: 15px;
-    text-align: left;
-  }
-  outline: none;
-`;
-const DisplayBetween = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 0 10px 0;
-  padding: 25px 0px 0px 0px;
-`;
-const RadioDiv = styled.div`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-`;
-const SubmitButton = styled.button`
-  width: 100px;
-  padding: 8px;
-  text-align: center;
-  border-radius: 30px;
-  border: none;
-  background: #38b885;
-  color: #ffffff;
-  margin: 0 auto;
-  display: block;
-`;
-// const Body = styled.body`
-// background-color: #f2f2f7;
-// `

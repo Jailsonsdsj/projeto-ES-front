@@ -27,18 +27,23 @@ export const AuthProvider = ({ children }) =>{
     },[])
 
     const login = async(email, password) =>{
+        try{
+            const response = await createSession(email,password)
+            const loggedUser = response.data;
+            const token = response.data.token;
+            localStorage.setItem("user", JSON.stringify(loggedUser));
+            localStorage.setItem("token", token);
+            apiAutentication.defaults.headers.Authorization = `Bearer ${token}`;
+    
+            setUser(loggedUser);
+            //if the autentication is done, then redirect the use to homepage
+            navigate("/");
 
-        const response = await createSession(email,password)
-        const loggedUser = response.data;
-        const token = response.data.token;
-        
-        localStorage.setItem("user", JSON.stringify(loggedUser));
-        localStorage.setItem("token", token);
-        apiAutentication.defaults.headers.Authorization = `Bearer ${token}`;
-
-        setUser(loggedUser);
-        //if the autentication is done, then redirect the use to homepage
-        navigate("/");
+        }catch(err){
+            return new Error(err)
+           
+        }
+       
         
     }
    

@@ -57,7 +57,6 @@ export const LargeTitle = styled.h1`
 
 export const Title1 = styled.h1`
    font-size:${theme.fontSize.title1};
-   font-family: ${theme.fonts.primary};
    color:${theme.colors.black.primary};
 `;
 
@@ -103,6 +102,7 @@ export const PrimaryButton = styled.button`
   margin: 0 auto;
   border:none;
   width:100px;
+  height: 30px;
   padding: 8px;
   :hover{
     background: ${theme.colors.green.primary};
@@ -155,7 +155,8 @@ export const InputDefault = styled.input`
   width: 90%;
   padding: 2px 8px;
   height: 30px;
-  font-size:${theme.fontSize.headline};
+  
+  font-size:${theme.fontSize.BodyText};
   ::placeholder{
     font-size: 13px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -163,6 +164,14 @@ export const InputDefault = styled.input`
     line-height: 15px;
     text-align:left
 }
+`
+
+export const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px 0px 20px 0px;
 `
 
 export const FormLabel = styled.label`
@@ -182,6 +191,10 @@ export const FormOptions = styled.div`
   justify-content:space-between;
   align-items: center;
   margin-bottom: 10px;
+`
+export const FormMessageError = styled.p`
+  color:${theme.colors.red.quartenary};
+  font-size: ${theme.fontSize.caption1};
 `
  
 
