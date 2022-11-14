@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { sendResetPassword } from '../../api/users';
-import '../Login/reset-password.css';
+import './reset-password.css';
 import { Link } from "react-router-dom";
 
 
-const ResetPassword = () => {
+export const ResetPassword = () => {
     const [ statusResponse, setStatusResponse ] = useState('')
     const handleSubmit = async(e) =>{
         e.preventDefault();
@@ -49,4 +49,3 @@ const ResetPassword = () => {
   );
 }
 
-export default ResetPassword
