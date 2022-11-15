@@ -36,7 +36,7 @@ export const LoginForm = () => {
       <CenterContainer>
         <LargeTitle>K-Lote</LargeTitle>
         <BoxContainer>
-          <FormDefault>
+          <FormDefault onSubmit={handleSubmit}>
           <Title1>Fazer Login</Title1>
             <InputGroup>
               <FormLabel htmlFor="email">E-mail</FormLabel>
@@ -79,7 +79,7 @@ export const LoginForm = () => {
                 
             </FormOptions>
             <div>
-            <PrimaryButton type="submit" onClick={handleSubmit}>Entrar</PrimaryButton>
+            <PrimaryButton htmlType="submit" style={{margin:"0 auto"}}>Entrar</PrimaryButton>
             </div>
 
             {/* <input type="submit" value="Entrar" /> */}

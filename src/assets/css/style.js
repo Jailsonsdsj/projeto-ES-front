@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
-import { Dropdown } from "antd";
+import { Dropdown, Button, Menu } from "antd";
 /* ######### THEME #########*/
 
 export const theme = {
@@ -96,7 +96,10 @@ export const PrimaryButton = styled.button`
   border-radius: 30px;
   background: ${theme.colors.green.quartenary};
   color: #ffffff;
-
+  display:flex;
+  align-items: center;
+  justify-content: center;
+ 
   border: none;
   width: 100px;
   height: 30px;
@@ -106,6 +109,22 @@ export const PrimaryButton = styled.button`
     cursor: pointer;
   }
 `;
+
+export const AntdPrimaryButton = styled(Button)`
+  text-align: center;
+  border-radius: 30px;
+  background: ${theme.colors.green.quartenary};
+  color: #ffffff;
+
+  border: none;
+  width: 100px;
+  height: 30px;
+  padding: 8px;
+  :hover {
+    background: ${theme.colors.green.primary};
+    cursor: pointer;
+  }
+`
 
 /* ######### FORMS #########*/
 export const BoxContainer = styled.div`
@@ -117,22 +136,22 @@ export const BoxContainer = styled.div`
   justify-content: center;
 `;
 
-export const FormDefault = styled.div`
+export const FormDefault = styled.form`
   background-color: ${theme.colors.white};
   display: flex;
-  width: 20%;
+  width: 30%;
   flex-direction: column;
   border-radius: 15px;
-  padding: 1% 3%;
+  padding: 3%;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   @media (max-width: 1252px) {
-    width: 30%;
-  }
-  @media (max-width: 810px) {
     width: 40%;
   }
-  @media (max-width: 650px) {
+  @media (max-width: 810px) {
     width: 50%;
+  }
+  @media (max-width: 650px) {
+    width: 60%;
   }
   @media (max-width: 490px) {
     width: 80%;
@@ -144,7 +163,7 @@ export const InputDefault = styled.input`
   color: ${theme.colors.black.primary};
   border: none;
   border-radius: 15px;
-  width: 90%;
+  width: 100%;
   padding: 2px 8px;
   height: 30px;
 
@@ -211,7 +230,7 @@ export const NavBar = styled.nav`
 export const ImgLogo = styled.img`
   max-width: 100px;
   max-height: 100px;
-  margin-left:50px;
+  margin-left: 50px;
 `;
 
 export const MenuItems = styled.ul`
@@ -219,34 +238,123 @@ export const MenuItems = styled.ul`
   padding: 0;
   display: flex;
   align-items: center;
-  list-style: none; 
-
+  list-style: none;
+  @media (max-width:655px){
+    display:none;
+  }
 `;
 
 export const MenuOption = styled.li`
   margin: 0 15px;
-  
-
-`
+  list-style: none;
+`;
 
 export const MenuNavLink = styled(NavLink)`
-   text-decoration: none;
-   color: ${theme.colors.white};
-   font-weight: 500;
-   :hover{
-    color: ${theme.colors.black.primary}
-   }
-`
+  text-decoration: none;
+  color: ${theme.colors.white};
+  font-weight: 500;
+  :hover {
+    color: ${theme.colors.black.primary};
+  }
+`;
 
-export const UserAvatar = styled(Dropdown)`
-  border-radius: 15%;
+export const UserAvatar = styled(Button)`
   border-color: ${theme.colors.white};
-  border-style:solid;
-  padding: 3px 10px;
+  border-style: solid;
+  padding: 3px 15px;
   border-radius: 13% 13% 13% 14% / 49% 48% 52% 51%;
   border-width: thin;
-  :hover{
-    border-color: ${theme.colors.black.primary}
-   }
+  display: flex;
+  text-align: center;
+  background: ${theme.colors.green.quartenary};
+  color: #ffffff;
+  align-items: center;
+  height: 30px;
+  font-weight: bold;
+  text-align: center;
+  :hover {
+    border-color: ${theme.colors.black.primary};
+    background-color: inherit;
+    color: ${theme.colors.black.primary};
+    cursor: pointer;
+  }
+`;
 
+export const MenuDropDown = styled.div`
+  position: relative;
+  display: inline-block;
+  border-radius: 10px 10px 0 0;
+  &:hover {
+    display: block;
+    background-color: #f9f9f9;
+  }
+`;
+
+export const DropDownOptions = styled.div`
+  position: absolute;
+  background-color: #f9f9f9;
+  z-index: 1;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+`;
+
+export const DropDownItems = styled.a`
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+
+
+export const MobileNavbar = styled.div`
+  display: none;
+  align-items: center;
+
+
+  @media (max-width: 655px){
+    display: inherit;
+  }
+`;
+
+export const UserPanel = styled.div`
+  text-align: center;
+`
+
+// export const MobileMenu = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   background-color: ${theme.colors.black.senary};
+  
+
+// `
+// export const MobileMenuItems = styled(NavLink)`
+//   text-decoration: none;
+//   padding: 20px 0;
+//   font-size: ${theme.fontSize.headline};
+//   border-style: solid;
+//   border-width: thin;
+//   border-color: ${theme.colors.black.primary};
+//   margin-bottom: 1px;
+//   width:100%;
+//   text-align: center;
+
+
+
+// `
+
+
+export const MobileMenu = styled(Menu)`
+    background-color: ${theme.colors.green.primary};
+    display: none;
+    align-items: center;
+
+    @media (max-width: 655px){
+      display: flex;
+
+  }
 `

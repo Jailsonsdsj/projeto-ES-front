@@ -14,11 +14,11 @@ const HomePage = () => {
 
   useEffect(()=>{
     (async ()=>{
-      const userData = JSON.parse(localStorage.getItem("userData"))
-      const alloteaments = await getAllAlloteaments(userData.user_id);
+      const user = await userData();
+      const alloteaments = await getAllAlloteaments(user.user_id);
       setAlloteaments(alloteaments);
-      setLoading(false);
 
+      setLoading(false);
     })();
   }, []);
 

@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
-
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
-import { UserOutlined } from "@ant-design/icons";
-import { Space, Menu } from "antd";
+import { UserOutlined, MenuOutlined } from "@ant-design/icons";
+import { Menu  } from "antd";
 // import './navigation-style.css'
 import "../../assets/css/style.css";
 import {
@@ -13,11 +13,19 @@ import {
   MenuOption,
   MenuNavLink,
   UserAvatar,
+  MenuDropDown,
+  DropDownOptions,
+  DropDownItems,
+  MobileNavbar,
+  UserPanel,
+  MobileMenu,
+  MobileMenuItems,
+
 } from "../../assets/css/style";
 export const Navigation = () => {
   const { logout } = useContext(AuthContext);
   const [loggedUser, setLoggedUser] = useState(null);
-
+  const [ dropDown, setDropDown] = useState(false)
   useEffect(() => {
     (async () => {
       const userData = JSON.parse(localStorage.getItem("userData"));
@@ -25,20 +33,22 @@ export const Navigation = () => {
     })();
   }, []);
 
-
-
   const handleLogout = () => {
     logout();
   };
 
-  const menu = (
-    <Menu>
-    <Menu.Item>item 1</Menu.Item>
-    <Menu.Item>item 2</Menu.Item>
-  </Menu>
-  );
+  const activeDropDown = ()=>{
+      setDropDown(true)
+  }
+  const desactiveDropDown = ()=>{
+      setDropDown(false)
+  }
+
+
+  
 
   return (
+    <>
     <NavBar>
       <MenuNavLink to="/">
         <ImgLogo
@@ -61,57 +71,44 @@ export const Navigation = () => {
         </MenuOption>
 
         <MenuOption>
-          <UserAvatar overlay={{ menu }}>
-            <MenuNavLink to="/profile">
-              {loggedUser && (
-                <>
-                  <UserOutlined />
-                  {loggedUser.name}
-                </>
+            <MenuDropDown onMouseOver={activeDropDown} onMouseOut={desactiveDropDown}>    
+              <MenuNavLink to="/profile">
+                <UserAvatar icon={<UserOutlined />}>
+                    {loggedUser && <>{loggedUser.name}</>}
+                </UserAvatar>
+              </MenuNavLink>
+
+              {dropDown && (
+              <DropDownOptions>
+                <DropDownItems onClick={handleLogout}>Sair</DropDownItems>
+              </DropDownOptions>
               )}
-            </MenuNavLink>
-          </UserAvatar>
+            </MenuDropDown>
         </MenuOption>
       </MenuItems>
-    </NavBar>
-    /* <nav>
-            <ul className="nav-links">
-                <li className="logo">
-                    <a href="/">
-                        <img src="https://i.ibb.co/xzyn9sj/logo-klote-03.png" alt="klote-logo" />
-                    </a>
-                </li>
-                <li key="home">
-                    <NavLink  to='/' className="nav-link">
-                        Início
-                    </NavLink>
-                </li>
-                <li key="financial">
-                    <NavLink to='/financial' className="nav-link" >
-                        Financeiro
-                    </NavLink>
-                </li>
-                <li key="allotments">
-                    <NavLink to='/allotments' className="nav-link">
-                        Loteamento
-                    </NavLink>
-                </li>
-                <li key="clients">
-                    <NavLink to='/clients' className="nav-link" >
-                        Clientes
-                    </NavLink>
-                </li>
-                <li key="profile">
-                    <NavLink to='/profile' className="nav-link">
-                       <PrimaryButton><UserOutlined /></PrimaryButton>
-                    </NavLink>
-                </li>
-              
-                
-                <li><button className="logout-btn" onClick={handleLogout}> Logout </button></li>
-            </ul>
-        </nav>
-        
-        */
+  
+        <MobileMenu mode="horizontal" defaultSelectedKeys={['mail']} style={{backgroundColor: '#38B885'}} >
+          <Menu.SubMenu key="SubMenu"  icon={<MenuOutlined style={{ fontSize: '50px', marginRight:'30px', color:'#ffff'}}/>}>
+            <Menu.Item key="1">
+              <NavLink to="/">Início</NavLink>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <NavLink to="/financial">Financeiro</NavLink>
+            </Menu.Item>
+            <Menu.Item key="2">
+            <NavLink to="/allotments">Loteamento</NavLink>
+            </Menu.Item>
+            <Menu.Item key="2">
+            <NavLink to="/clients">Clientes</NavLink>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <PrimaryButton onClick={handleLogout}>Sair</PrimaryButton>
+            </Menu.Item>
+          </Menu.SubMenu>
+        </MobileMenu>
+
+    </NavBar>  
+</>
+    
   );
 };
