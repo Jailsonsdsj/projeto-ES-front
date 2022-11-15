@@ -30,9 +30,7 @@ export const LoginForm = () => {
 
       })();
   };
-
-  console.log(details);
- 
+  
   return (
     <>
       <CenterContainer>

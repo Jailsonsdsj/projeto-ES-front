@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { sendResetPassword } from "../../api/users";
-import "./reset-password.css";
 import { Link } from "react-router-dom";
 import {
     Title1,
@@ -44,12 +43,12 @@ export const ResetPassword = () => {
           <Title1>Recuperar sua senha</Title1>
           <p>Vamos enviar uma senha temporária através do e-mail cadastrado.</p>
 
-          <InputGroup className="form-group">
-            <FormLabel htmlFor="email" className="input-label">
+          <InputGroup >
+            <FormLabel htmlFor="email">
               Digite seu e-mail:{" "}
             </FormLabel>
             <InputDefault
-              className="input-text"
+    
               type="email"
               id="email"
               name="email"
@@ -57,7 +56,7 @@ export const ResetPassword = () => {
             />
           </InputGroup>
           <FormOptions>
-            <Link to="/login" className="input-reset">
+            <Link to="/login" >
               {" "}
               Cancelar{" "}
             </Link>

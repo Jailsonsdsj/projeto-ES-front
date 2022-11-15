@@ -1,25 +1,29 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect,useState, useContext } from 'react'
 import { userData } from '../../api/users';
 import { getAllAlloteaments } from '../../api/alloteaments';
 import AlloteamentsDashboard from '../../components/Alloteaments/AlloteamentsDashboard'
 import LoadingData from '../../components/utils/LoadingData';
+import { AuthContext } from '../../contexts/auth';
 import '../../assets/css/style.css'
 
 const HomePage = () => {
   const [ loading , setLoading] = useState(true);
-  const [ loggedUser, setLoggedUser ] = useState(null)
   const [ alloteaments, setAlloteaments ] = useState(null)
+
+
+
   useEffect(()=>{
     (async ()=>{
-      const user = await userData();
-      setLoggedUser(user)
-     
-      const alloteaments = await getAllAlloteaments(user.user_id);
+      const userData = JSON.parse(localStorage.getItem("userData"))
+      const alloteaments = await getAllAlloteaments(userData.user_id);
       setAlloteaments(alloteaments);
-
       setLoading(false);
+
     })();
   }, []);
+
+ 
+ 
 
 
   return (
@@ -30,7 +34,6 @@ const HomePage = () => {
       <div className='container-1'>
         <div className='alert-content'>
           <div><h1>Dashboard</h1></div>
-          <p>Olá, {loggedUser.name}!</p>
           {/* 
             1. create componet to show Dashboard data - waiting for business rule
             2. create componet to show the list of alloteaments

@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) =>{
             localStorage.setItem("user", JSON.stringify(loggedUser));
             localStorage.setItem("token", token);
             apiAutentication.defaults.headers.Authorization = `Bearer ${token}`;
-    
+
             setUser(loggedUser);
             //if the autentication is done, then redirect the use to homepage
             navigate("/");
