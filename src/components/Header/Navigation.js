@@ -16,22 +16,12 @@ import {
   MenuDropDown,
   DropDownOptions,
   DropDownItems,
-  MobileNavbar,
-  UserPanel,
   MobileMenu,
-  MobileMenuItems,
-
 } from "../../assets/css/style";
 export const Navigation = () => {
-  const { logout } = useContext(AuthContext);
-  const [loggedUser, setLoggedUser] = useState(null);
+  const { logout, userData } = useContext(AuthContext);
   const [ dropDown, setDropDown] = useState(false)
-  useEffect(() => {
-    (async () => {
-      const userData = JSON.parse(localStorage.getItem("userData"));
-      setLoggedUser(userData);
-    })();
-  }, []);
+
 
   const handleLogout = () => {
     logout();
@@ -74,7 +64,7 @@ export const Navigation = () => {
             <MenuDropDown onMouseOver={activeDropDown} onMouseOut={desactiveDropDown}>    
               <MenuNavLink to="/profile">
                 <UserAvatar icon={<UserOutlined />}>
-                    {loggedUser && <>{loggedUser.name}</>}
+                    {userData && <>{userData.name}</>}
                 </UserAvatar>
               </MenuNavLink>
 
@@ -95,13 +85,13 @@ export const Navigation = () => {
             <Menu.Item key="2">
               <NavLink to="/financial">Financeiro</NavLink>
             </Menu.Item>
-            <Menu.Item key="2">
+            <Menu.Item key="3">
             <NavLink to="/allotments">Loteamento</NavLink>
             </Menu.Item>
-            <Menu.Item key="2">
+            <Menu.Item key="4">
             <NavLink to="/clients">Clientes</NavLink>
             </Menu.Item>
-            <Menu.Item key="2">
+            <Menu.Item key="5">
               <PrimaryButton onClick={handleLogout}>Sair</PrimaryButton>
             </Menu.Item>
           </Menu.SubMenu>

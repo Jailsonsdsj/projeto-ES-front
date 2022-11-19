@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { userData } from "../../api/users";
+import React, { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../contexts/auth";
 import { addAlloteament } from "../../api/alloteaments";
 import { getAllAlloteaments } from "../../api/alloteaments";
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons";
@@ -9,6 +9,7 @@ import ModalMessage from "../../components/utils/ModalMessage";
 import "../../assets/css/style.css";
 
 export const Allotments = () => {
+  const { userData } = useContext(AuthContext);
   const [alloteaments, setAlloteaments] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [messageSubmit, setMessageSubmit] = useState();
@@ -22,8 +23,7 @@ export const Allotments = () => {
 
   useEffect(() => {
     (async () => {
-      const user = await userData();
-      const alloteaments = await getAllAlloteaments(user.user_id);
+      const alloteaments = await getAllAlloteaments(userData.user_id);
       setAlloteaments(alloteaments);
     })();
   }, []);

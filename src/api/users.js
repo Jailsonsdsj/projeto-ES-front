@@ -30,17 +30,7 @@ export const sendResetPassword = async(email) => {
     }
 }
 
-export const userData = async()=>{
-    const response = await getUsers();
-    const { data } = response;
-    const tokenUser = jwt(localStorage.getItem("token"))
-    const result = data.data.filter(item => tokenUser.user_data.user_id === item.user_id)
-    localStorage.setItem("userData", JSON.stringify(result[0]));
-    return result[0];
-  }
 
-
- 
 
 
 

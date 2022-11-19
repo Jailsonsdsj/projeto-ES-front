@@ -1,57 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import LoadingData from "../../components/utils/LoadingData";
 import ProfileData from "../../components/profileData";
-import { EditOutlined  } from "@ant-design/icons";
+import { EditOutlined } from "@ant-design/icons";
 import ResetPassword from "../../components/ResetPassword/FormResetPassword";
-import { userData } from "../../api/users";
+import { AuthContext } from "../../contexts/auth";
 // import AddGuests from "../../components/AddGuests";
-import "../../assets/css/style.css"
+import "../../assets/css/style.css";
 // import AllGuests from "../../components/AllGuests";
 export const Profile = () => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState();
-  const [resetPasswordModal, setResetPasswordModal ] = useState(false)
+  const [resetPasswordModal, setResetPasswordModal] = useState(false);
+  const { userData } = useContext(AuthContext);
 
-  useEffect(() => {
-    (async () => {
-      const dataResponse = await userData();
-      setData(dataResponse);
-      setLoading(false);
-    })();
-  }, []);
-
-  const onClick = ()=>{
-    setResetPasswordModal(!resetPasswordModal)
-    
-  }
+  const onClick = () => {
+    setResetPasswordModal(!resetPasswordModal);
+  };
 
   return (
     <>
-      {loading ? (
-        <LoadingData/>
-      ) : (
-        <main className="container-1">
-          <h1>Conta</h1>
-          <div className="btn-position">
-            <h2>Administrador</h2>
-            {/* add edit function inside button */}
-            <button className="btn-edit">
-              <EditOutlined/>
-              Editar
-            </button>
-          </div>
-          <ProfileData data={data}/>
-          <button className="btn-large" onClick={() => onClick(true)}>Alterar a senha</button>
-          {resetPasswordModal && <ResetPassword/>}
-  
-          {/* <div className="guests">
+      <main className="container-1">
+        <h1>Conta</h1>
+        <div className="btn-position">
+          <h2>Administrador</h2>
+          {/* add edit function inside button */}
+          <button className="btn-edit">
+            <EditOutlined />
+            Editar
+          </button>
+        </div>
+        <ProfileData data={userData} />
+        <button className="btn-large" onClick={() => onClick(true)}>
+          Alterar a senha
+        </button>
+        {resetPasswordModal && <ResetPassword />}
+
+        {/* <div className="guests">
             <h2>Convidados</h2>          
             <AddGuests/>
           <div className="guests-container">
            <AllGuests/>
           </div> */}
-        </main>
-      )}
+      </main>
     </>
   );
 };

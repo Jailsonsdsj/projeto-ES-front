@@ -1,30 +1,25 @@
 import React, { useEffect,useState, useContext } from 'react'
-import { userData } from '../../api/users';
 import { getAllAlloteaments } from '../../api/alloteaments';
 import AlloteamentsDashboard from '../../components/Alloteaments/AlloteamentsDashboard'
 import LoadingData from '../../components/utils/LoadingData';
 import { AuthContext } from '../../contexts/auth';
 import '../../assets/css/style.css'
 
+
 const HomePage = () => {
   const [ loading , setLoading] = useState(true);
   const [ alloteaments, setAlloteaments ] = useState(null)
-
-
+  const { userData } = useContext(AuthContext);
 
   useEffect(()=>{
     (async ()=>{
-      const user = await userData();
-      const alloteaments = await getAllAlloteaments(user.user_id);
+      const alloteaments = await getAllAlloteaments(userData.user_id);
       setAlloteaments(alloteaments);
-
       setLoading(false);
     })();
   }, []);
 
  
- 
-
 
   return (
     <>
