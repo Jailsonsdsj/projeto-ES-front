@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { theme } from "./style";
-
+import { Space } from "antd";
 
 
 
@@ -63,4 +63,49 @@ export const AlloteamentsLegend = styled.div`
     flex-direction: row;
     font-weight: ${theme.fontSize.caption1};
     
+`
+
+
+
+/* ######### ALLOTEAMENTS #########*/
+
+export const AlloteamentsContainer = styled(Space)`
+   margin: 0 auto;
+   max-width: 90vw;
+   display: flex;
+
+`
+
+export const Card = styled.div`
+    width: 150px;
+    height: 200px;
+    margin: 15px;
+    @media (max-width: 400px){
+        margin:5px;
+    }
+`
+
+export const CardImage = styled.img`
+    max-width: 150px;
+    max-height: 150px;
+`
+
+export const AlloteamentsHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 3% 30px 3%;
+    flex-direction: row;
+    @media (max-width:430px){
+        flex-direction: column;
+    }
+`
+
+export const SearchbarContainer = styled.div`
+    display:flex;
+    flex-direction: row;
+    @media (max-width:430px){
+        justify-content: space-between;
+
+    }
+   
 `

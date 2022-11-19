@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { Dropdown, Button, Menu } from "antd";
-
+import { PlusOutlined } from "@ant-design/icons";
 
 /* ######### THEME #########*/
 
@@ -64,29 +64,26 @@ export const Title1 = styled.h1`
 export const Title2 = styled.h2`
   font-size: ${theme.fontSize.title2};
   color: ${theme.colors.black.primary};
+  font-weight: bold;
 `;
 
 export const Headline = styled.h2`
   font-size: ${theme.fontSize.headline};
-  font-family: ${theme.fonts.primary};
   color: ${theme.colors.black.primary};
 `;
 
 export const BodyText = styled.h2`
   font-size: ${theme.fontSize.body};
-  font-family: ${theme.fonts.primary};
   color: ${theme.colors.black.primary};
 `;
 
 export const Caption1 = styled.h2`
   font-size: ${theme.fontSize.caption1};
-  font-family: ${theme.fonts.primary};
   color: ${theme.colors.black.primary};
 `;
 
 export const Caption2 = styled.h2`
   font-size: ${theme.fontSize.caption2};
-  font-family: ${theme.fonts.primary};
   color: ${theme.colors.black.primary};
 `;
 
@@ -127,11 +124,20 @@ export const AntdPrimaryButton = styled(Button)`
   }
 `
 
+export const AddButton = styled(PlusOutlined)`
+  color: ${theme.colors.green.quartenary};
+  font-size: 25px;
+  margin: 0 20px;
+  :hover{
+    color: ${theme.colors.black.primary};
+  }
+`
+
+
 /* ######### FORMS #########*/
 export const BoxContainer = styled.div`
   display: flex;
   max-height: 100vh;
-
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -217,6 +223,7 @@ export const CenterContainer = styled.div`
   grid-template-rows: 40% 60%;
   text-align: center;
 `;
+
 
 /* ########### HEADER ##############*/
 

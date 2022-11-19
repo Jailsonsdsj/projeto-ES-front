@@ -2,12 +2,32 @@ import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../contexts/auth";
 import { addAlloteament } from "../../api/alloteaments";
 import { getAllAlloteaments } from "../../api/alloteaments";
-import { SearchOutlined, PlusOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
-import { Modal, Row, Col} from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import ModalMessage from "../../components/utils/ModalMessage";
-import "../../assets/css/style.css";
+import { Input, Modal  } from 'antd';
 
+import "../../assets/css/style.css";
+import { 
+  Title2,
+  Headline,
+  Caption2,
+  InputDefault,
+  AddButton,
+  CenterContainer
+} from "../../assets/css/style";
+
+
+import {
+  AlloteamentsContainer,
+  Card,
+  CardImage,
+  AlloteamentsHeader,
+  SearchbarContainer
+} from "../../assets/css/components.styled";
+
+
+const { Search } = Input;
 export const Allotments = () => {
   const { userData } = useContext(AuthContext);
   const [alloteaments, setAlloteaments] = useState(null);
@@ -31,12 +51,12 @@ export const Allotments = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await addAlloteament(inputData);
-  
+
     response.status === 201
       ? setMessageSubmit("Loteamento cadastrado com sucesso!")
       : setMessageSubmit("Falha ao cadastrar loteamento");
 
-      setModalIsOpen(!modalIsOpen)
+    setModalIsOpen(!modalIsOpen);
   };
 
   const onChange = (e) => {
@@ -45,23 +65,21 @@ export const Allotments = () => {
   };
 
   return alloteaments ? (
-    <main className="container-1">
-      <div className="btn-position">
-        <h1>Loteamentos</h1>
-        <div className="search-addClients-position">
-          <input
-            className="search-input"
-            type="text"
+    <>
+      <AlloteamentsHeader>
+        <Title2>Loteamentos</Title2>
+        <SearchbarContainer>
+          <Search
             placeholder="Pesquisar loteamento"
+            style={{
+              width: 200,
+            }}
+            onSearch={''}
           />
-          <button
-            className="add-btn-client"
-            onClick={() => setModalIsOpen(!modalIsOpen)}
-          >
-            Adicionar Loteamento
-          </button>
-        </div>
-      </div>
+          <AddButton onClick={() => setModalIsOpen(!modalIsOpen)}/>
+
+        </SearchbarContainer>
+      </AlloteamentsHeader>
 
       <Modal
         show={modalIsOpen}
@@ -87,7 +105,6 @@ export const Allotments = () => {
                     value={inputData.img}
                     onChange={onChange}
                   />
-                 
                 </Col>
               </Row>
               <Row>
@@ -143,34 +160,27 @@ export const Allotments = () => {
               <input className="input-btn" type="submit" value="Adicionar" />
             </form>
           </Modal.Body>
-          
-          
         </div>
       </Modal>
-      {messageSubmit && (
-             <ModalMessage message={messageSubmit} />
-        )}
-        
-      <div className="lotes-img">
+      {messageSubmit && <ModalMessage message={messageSubmit} />}
+
+      <AlloteamentsContainer size={[8, 16]} wrap>
         {alloteaments.length
           ? Object.entries(alloteaments).map(([key, value]) => (
-              <div key={key}>
-                <NavLink
-                  className="h3-nav-link"
-                  to={`/Allotments/AlloteamentsDetails/${value.id}`}
-                >
-                  <img
+              <NavLink to={`/Allotments/AlloteamentsDetails/${value.id}`}>
+                <Card key={key}>
+                  <CardImage
                     src="https://i.ibb.co/JKLpGDL/image.png"
                     alt="loteamento-img"
                   />
-                  <h4>{value.name}</h4>
-                </NavLink>
-                <p>{value.address}</p>
-              </div>
+                  <Headline>{value.name}</Headline>
+                  <Caption2>{value.address}</Caption2>
+                </Card>
+              </NavLink>
             ))
           : "Sem lote cadastrado"}
-      </div>
-    </main>
+      </AlloteamentsContainer>
+    </>
   ) : (
     <>Carregando dados...</>
   );
