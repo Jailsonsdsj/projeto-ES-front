@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { Dropdown, Button, Menu } from "antd";
+
+
 /* ######### THEME #########*/
 
 export const theme = {
@@ -61,7 +63,6 @@ export const Title1 = styled.h1`
 
 export const Title2 = styled.h2`
   font-size: ${theme.fontSize.title2};
-  font-family: ${theme.fonts.primary};
   color: ${theme.colors.black.primary};
 `;
 
