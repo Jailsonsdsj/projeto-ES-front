@@ -3,29 +3,35 @@ import { AuthContext } from "../../contexts/auth";
 import { addAlloteament } from "../../api/alloteaments";
 import { getAllAlloteaments } from "../../api/alloteaments";
 import { NavLink } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
 import ModalMessage from "../../components/utils/ModalMessage";
-import { Input, Modal  } from 'antd';
+import { Input, Modal, Space} from "antd";
+
 
 import "../../assets/css/style.css";
-import { 
+import {
   Title2,
   Headline,
   Caption2,
   InputDefault,
   AddButton,
-  CenterContainer
+  CenterContainer,
+  PrimaryButton,
+  NormalButton,
+  LinearForm,
+  LinearInput,
+  AddImg,
+  CameraIcon,
+  LinearInputGroup,
 } from "../../assets/css/style";
-
 
 import {
   AlloteamentsContainer,
   Card,
   CardImage,
   AlloteamentsHeader,
-  SearchbarContainer
+  SearchbarContainer,
+  ModalFooter,
 } from "../../assets/css/components.styled";
-
 
 const { Search } = Input;
 export const Allotments = () => {
@@ -64,6 +70,14 @@ export const Allotments = () => {
     setInputData({ ...inputData, [name]: value });
   };
 
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return alloteaments ? (
     <>
       <AlloteamentsHeader>
@@ -74,101 +88,80 @@ export const Allotments = () => {
             style={{
               width: 200,
             }}
-            onSearch={''}
+            onSearch={""}
           />
-          <AddButton onClick={() => setModalIsOpen(!modalIsOpen)}/>
-
+          <AddButton onClick={openModal} />
         </SearchbarContainer>
       </AlloteamentsHeader>
-
       <Modal
-        show={modalIsOpen}
-        onHide={() => setModalIsOpen(!modalIsOpen)}
-        animation={false}
-        dialogClassName="modal-md"
-        centered
-      >
-        <div className="active-users-intire-box">
-          <Modal.Header closeButton>
-            <Modal.Title>Adicionar Loteamento</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form className="add-client-modal" onSubmit={handleSubmit}>
-              <Row>
-                <Col>
-                  <input
-                    className="input-img"
-                    type="file"
-                    name="img"
-                    id="image"
-                    alt="Adicionar Imagem"
-                    value={inputData.img}
-                    onChange={onChange}
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <input
-                    className="input-convidado"
-                    type="text"
-                    name="name"
-                    placeholder="Nome"
-                    value={inputData.name}
-                    onChange={onChange}
-                  />
-                </Col>
+        open={modalIsOpen}
+        title="Adicionar Loteamento"
+        onOk={handleSubmit}
+        onCancel={closeModal}
+        width={600}
+        footer={[
+          <ModalFooter>
+            <NormalButton key="back" type="normal" onClick={closeModal}>
+              Cancelar
+            </NormalButton>
 
-                <Col>
-                  <input
-                    className="input-convidado"
-                    type="text"
-                    name="address"
-                    placeholder="Logradouro"
-                    value={inputData.address}
-                    onChange={onChange}
-                  />
-                </Col>
-                <Col>
-                  <input
-                    className="input-convidado"
-                    type="text"
-                    name="cep"
-                    placeholder="CEP"
-                    value={inputData.cep}
-                    onChange={onChange}
-                  />
-                </Col>
-                <Col>
-                  <input
-                    className="input-convidado"
-                    type="text"
-                    name="number"
-                    placeholder="Número"
-                    value={inputData.number}
-                    onChange={onChange}
-                  />
-                </Col>
-              </Row>
-              <br></br>
-              <button
-                className="input-reset"
-                onClick={() => setModalIsOpen(!modalIsOpen)}
-              >
-                Cancelar
-              </button>
-              <input className="input-btn" type="submit" value="Adicionar" />
-            </form>
-          </Modal.Body>
-        </div>
+            <PrimaryButton key="submit" type="primary" onClick={handleSubmit}>
+              Cadastrar
+            </PrimaryButton>
+          </ModalFooter>,
+        ]}
+      >
+        <LinearForm>
+          <AddImg for="img"><CameraIcon />Anexar Foto</AddImg>
+          <input
+            type="file"
+            id="img"
+            name="img"
+            alt="Adicionar Imagem"
+            accept="image/png, image/jpeg"
+            value={inputData.img}
+            onChange={onChange}
+            style={{ display: "none" }}
+          />
+          <LinearInputGroup size={[8, 16]} wrap>
+            <LinearInput
+              type="text"
+              name="name"
+              placeholder="Nome"
+              value={inputData.name}
+              onChange={onChange}
+            />
+            <LinearInput
+              type="text"
+              name="address"
+              placeholder="Logradouro"
+              value={inputData.address}
+              onChange={onChange}
+            />
+            <LinearInput
+              type="text"
+              name="cep"
+              placeholder="CEP"
+              value={inputData.cep}
+              onChange={onChange}
+            />
+            <LinearInput
+              type="text"
+              name="number"
+              placeholder="Número"
+              value={inputData.number}
+              onChange={onChange}
+            />
+          </LinearInputGroup>
+        </LinearForm>
       </Modal>
-      {messageSubmit && <ModalMessage message={messageSubmit} />}
+      {messageSubmit && <ModalMessage message={messageSubmit} type="success"/>}
 
       <AlloteamentsContainer size={[8, 16]} wrap>
         {alloteaments.length
           ? Object.entries(alloteaments).map(([key, value]) => (
-              <NavLink to={`/Allotments/AlloteamentsDetails/${value.id}`}>
-                <Card key={key}>
+              <NavLink key={key} to={`/Allotments/AlloteamentsDetails/${value.id}`}>
+                <Card>
                   <CardImage
                     src="https://i.ibb.co/JKLpGDL/image.png"
                     alt="loteamento-img"

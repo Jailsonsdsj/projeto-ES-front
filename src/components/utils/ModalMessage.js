@@ -1,32 +1,49 @@
-import React, { useState }from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {Modal} from "react-bootstrap";
+import { Modal, Space, Button } from "antd";
+import { PrimaryButton,SuccessIcon, ErrorIcon ,InfoIcon} from "../../assets/css/style";
 
-const ModalMessage = ({ message,navigateLink }) => {
-    const [modalIsOpen, setModalIsOpen] = useState(true);
-    const navigate = useNavigate()
+//type:error, info, success
+const ModalMessage = ({ message, navigateLink, type }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const navigate = useNavigate();
 
-    const toggleModal = () => {
-        setModalIsOpen(!modalIsOpen);
-      };
-    const onClick = () =>{
-        if(navigateLink){
-            navigate(navigateLink)
-        }else{
-            window.location.reload()
-        }
-    }
+  const toggleModal = () => {
+    setModalIsOpen(!modalIsOpen);
+  };
 
-  return (
-    <Modal  backdrop="static" keyboard={false}show={modalIsOpen} onHide={toggleModal} className="success-message">
-      <Modal.Header >
-          <Modal.Title>{message}</Modal.Title>
-    </Modal.Header>
-    
-    <Modal.Footer>
-        <button className="add-btn-client" onClick={onClick}>Ok</button>
-    </Modal.Footer>
-      
+  const onClick = () => {
+    setModalIsOpen(false)
+    navigateLink ? navigate(navigateLink) : window.location.reload();
+  };
+
+
+  const style ={
+    marginLeft: "auto",
+    marginRight: 0
+  }
+
+  const ModalBodyStyle = {
+    display:"flex",
+    flexDirection:"column",
+    alignItems:"center"
+  }
+
+  return ( 
+    <Modal
+      open={modalIsOpen}
+      footer={[
+        <PrimaryButton key="submit" onClick={onClick} style={style}>
+          ok
+        </PrimaryButton>,
+      ]}
+    >
+      <div style={ModalBodyStyle}>
+        {type == "success" && <SuccessIcon/>}
+        {type == "info" && <InfoIcon/>}
+        {type == "error" && <ErrorIcon/>}
+        <p>{message}</p>
+      </div>
     </Modal>
   );
 };

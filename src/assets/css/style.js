@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
-import { Dropdown, Button, Menu } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { Dropdown, Button, Menu, Space } from "antd";
+import { PlusOutlined, CameraOutlined, CheckCircleOutlined, InfoCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import {  } from "@ant-design/icons";
 
 /* ######### THEME #########*/
 
@@ -47,6 +48,8 @@ export const theme = {
     caption1: "12px",
     caption2: "11px",
   },
+  placeHolder:
+    "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 };
 
 /* ######### TEXTS #########*/
@@ -94,10 +97,10 @@ export const PrimaryButton = styled.button`
   border-radius: 30px;
   background: ${theme.colors.green.quartenary};
   color: #ffffff;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
- 
+
   border: none;
   width: 100px;
   height: 30px;
@@ -122,16 +125,65 @@ export const AntdPrimaryButton = styled(Button)`
     background: ${theme.colors.green.primary};
     cursor: pointer;
   }
-`
+`;
+
+export const NormalButton = styled.button`
+  text-align: center;
+  border-radius: 30px;
+  color: ${theme.colors.green.quartenary};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  width: 100px;
+  height: 30px;
+  padding: 8px;
+  margin: 0 5px;
+  background-color: inherit;
+
+  :hover {
+    cursor: pointer;
+    color: ${theme.colors.green.secondary};
+  }
+`;
 
 export const AddButton = styled(PlusOutlined)`
   color: ${theme.colors.green.quartenary};
   font-size: 25px;
   margin: 0 20px;
-  :hover{
+  :hover {
     color: ${theme.colors.black.primary};
   }
-`
+`;
+
+export const AddImg = styled.label`
+  width: 200px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin: 0 5%;
+  background-color: ${theme.colors.black.senary};
+  content: 'Anexar foto';
+  &:hover{
+    background-color: ${theme.colors.black.senary};
+    cursor: pointer;
+  }
+  ::-webkit-file-upload-button{
+    visibility: hidden;
+  };
+`;
+ 
+
+
+export const CameraIcon = styled(CameraOutlined)`
+  font-size: 30px;
+
+`;
+
+
 
 
 /* ######### FORMS #########*/
@@ -165,6 +217,16 @@ export const FormDefault = styled.form`
   }
 `;
 
+export const LinearForm = styled.form`
+  display: flex;
+  flex-direction: row;
+  @media (max-width:563px){
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
 export const InputDefault = styled.input`
   background-color: ${theme.colors.black.senary};
   color: ${theme.colors.black.primary};
@@ -184,6 +246,26 @@ export const InputDefault = styled.input`
     text-align: left;
   }
 `;
+
+export const LinearInput = styled.input`
+  border: none;
+  border-bottom: 2px solid gray;
+  outline: none;
+  width: auto;
+  margin: 0 5%;
+
+  ::placeholder {
+    font-family: ${theme.placeHolder};
+    font-size: 15px;
+  }
+`;
+
+export const LinearInputGroup = styled(Space)`
+  text-align: center;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+`
 
 export const InputGroup = styled.div`
   display: flex;
@@ -224,7 +306,6 @@ export const CenterContainer = styled.div`
   text-align: center;
 `;
 
-
 /* ########### HEADER ##############*/
 
 export const NavBar = styled.nav`
@@ -247,8 +328,8 @@ export const MenuItems = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
-  @media (max-width:655px){
-    display:none;
+  @media (max-width: 655px) {
+    display: none;
   }
 `;
 
@@ -317,27 +398,24 @@ export const DropDownItems = styled.a`
   }
 `;
 
-
 export const MobileNavbar = styled.div`
   display: none;
   align-items: center;
 
-
-  @media (max-width: 655px){
+  @media (max-width: 655px) {
     display: inherit;
   }
 `;
 
 export const UserPanel = styled.div`
   text-align: center;
-`
+`;
 
 // export const MobileMenu = styled.div`
 //   display: flex;
 //   flex-direction: column;
 //   align-items: center;
 //   background-color: ${theme.colors.black.senary};
-  
 
 // `
 // export const MobileMenuItems = styled(NavLink)`
@@ -351,18 +429,40 @@ export const UserPanel = styled.div`
 //   width:100%;
 //   text-align: center;
 
-
-
 // `
 
-
 export const MobileMenu = styled(Menu)`
-    background-color: ${theme.colors.green.primary};
-    display: none;
-    align-items: center;
+  background-color: ${theme.colors.green.primary};
+  display: none;
+  align-items: center;
 
-    @media (max-width: 655px){
-      display: flex;
-
+  @media (max-width: 655px) {
+    display: flex;
   }
+`;
+
+
+
+
+/* ########### MODAL AND MESSAGER ##############*/
+
+
+export const SuccessIcon = styled(CheckCircleOutlined)`
+  color:${theme.colors.green.quartenary};
+  font-size:40px;
+  margin-bottom: 10px;
 `
+export const ErrorIcon = styled(CloseCircleOutlined)`
+  color:${theme.colors.red.quartenary};
+  font-size:40px;
+  margin-bottom: 10px;
+`
+export const InfoIcon = styled(InfoCircleOutlined)`
+  color:${theme.colors.black.secondary};
+  font-size:40px;
+  margin-bottom: 10px;
+`
+
+
+
+/*CheckCircleOutlined, InfoCircleOutlined, CloseCircleOutlined*/
