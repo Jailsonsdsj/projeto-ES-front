@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { PlusOutlined } from "@ant-design/icons";
-import { getAllAlloteaments } from "../api/alloteaments";
-import { addClient } from "../api/user";
-import { Modal, Row, Col} from "react-bootstrap";
-import ModalMessage from "./utils/ModalMessage";
-import "../assets/css/style.css"
+import { getAllAlloteaments } from "../../api/alloteaments";
+import { addClient } from "../../api/user";
+import { Modal,Space } from "antd";
+import ModalMessage from "../../components/utils/ModalMessage";
+import "../../assets/css/style.css";
+import { AddButton, LinearForm,NormalButton,PrimaryButton, LinearInputGroup, LinearInput, Headline} from "../../assets/css/style";
+import { ModalFooter } from "../../assets/css/components.styled";
 
 const AddClients = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -36,85 +37,93 @@ const AddClients = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const toggleModal = () => {
-    setModalIsOpen(!modalIsOpen);
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     (async () => {
       const response = await addClient(formValues);
-      response.status === 201 ? setMessageSubmit("Cliente cadastrado com sucesso!") : setMessageSubmit("Falha ao cadastrar cliente");
-  
-      toggleModal()
+      response.status === 201
+        ? setMessageSubmit("Cliente cadastrado com sucesso!")
+        : setMessageSubmit("Falha ao cadastrar cliente");
     })();
   };
+
 
   const handleChange = (e) => {
     const { value } = e.target;
     const lots = JSON.parse(value);
     setSelectedAlloteament(lots.lots);
   };
-  
-  return (
+
+  console.log(messageSubmit);
+
+  return modalIsOpen ? (
     <>
-      <button className="add-btn-client" onClick={toggleModal}>
-        Adicionar Clientes
-      </button>
+      <Modal
+        open={modalIsOpen}
+        title="Adicionar Cliente"
+        onOk={handleSubmit}
+        onCancel={closeModal}
+        width={600}
+        footer={[
+          <ModalFooter>
+            <NormalButton key="back" type="normal" onClick={closeModal}>
+              Cancelar
+            </NormalButton>
 
-      <Modal show={modalIsOpen} onHide={toggleModal} animation={false}   dialogClassName="modal-md" centered >
+            <PrimaryButton key="submit" type="primary" onClick={handleSubmit}>
+              Cadastrar
+            </PrimaryButton>
+          </ModalFooter>,
+        ]}
+      >
+        <LinearForm style={{flexDirection:"column"}}>
+          <LinearInputGroup size={[8, 16]} wrap style={{justifyContent:"left", marginBottom:"15px"}} >
+            <LinearInput
+              type="text"
+              className="linear-input"
+              name="name"
+              placeholder="Nome"
+              onChange={onChange}
+              value={formValues.name}
+            />
 
-        <Modal.Header closeButton>
-          <Modal.Title>Adicionar Cliente</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-         <form onSubmit={handleSubmit}>
-          <Row>
-            <Col>
-            <input
-                type="text"
-                className="linear-input"
-                name="name"
-                placeholder="Nome"
-                onChange={onChange}
-                value={formValues.name}
-              />
-            </Col>
-            <Col>
-            <input
-                type="text"
-                className="linear-input"
-                name="email"
-                placeholder="E-mail"
-                onChange={onChange}
-                value={formValues.email}
-              />
-            </Col>
-            <Col>
-            <input
-                type="text"
-                className="linear-input"
-                name="cpf"
-                placeholder="CPF"
-                onChange={onChange}
-                value={formValues.cpf}
-              />
-            </Col>
-            <Col>
-            <input
-                type="text"
-                className="linear-input"
-                name="address"
-                placeholder="Endereço"
-                onChange={onChange}
-                value={formValues.address}
-              />
-            </Col>
-          </Row>
-              
+            <LinearInput
+              type="text"
+              className="linear-input"
+              name="email"
+              placeholder="E-mail"
+              onChange={onChange}
+              value={formValues.email}
+            />
 
-            <h5>Lote associado</h5>
+            <LinearInput
+              type="text"
+              className="linear-input"
+              name="cpf"
+              placeholder="CPF"
+              onChange={onChange}
+              value={formValues.cpf}
+            />
 
+            <LinearInput
+              type="text"
+              className="linear-input"
+              name="address"
+              placeholder="Endereço"
+              onChange={onChange}
+              value={formValues.address}
+            />
+          </LinearInputGroup>
+          
+          <Headline>Lote associado</Headline>
+          <Space size={[8, 16]} wrap>
             <select
               name="alloteaments"
               id="alloteaments-list"
@@ -161,24 +170,13 @@ const AddClients = () => {
             ) : (
               <></>
             )}
-            <br></br>
-
-            <button className="input-reset" onClick={toggleModal}>
-              Cancelar
-            </button>
-            <input className="add-btn-client" type="submit" value="Adicionar"/>
-          </form>
-        </Modal.Body>
-        <Modal.Footer></Modal.Footer>
+          </Space>
+          
+        </LinearForm>
       </Modal>
-      {messageSubmit && (
-          <>
-          <ModalMessage message={messageSubmit} />
-           </>
-        )}
+      {messageSubmit && <ModalMessage message={messageSubmit} type="success"/>}
     </>
-    
-  );
+  ):  <AddButton onClick={openModal} />;
 };
 
 export default AddClients;

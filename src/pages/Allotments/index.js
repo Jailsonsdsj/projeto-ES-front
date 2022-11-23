@@ -22,13 +22,13 @@ import {
   AddImg,
   CameraIcon,
   LinearInputGroup,
+  PageHeader,
 } from "../../assets/css/style";
 
 import {
   AlloteamentsContainer,
   Card,
   CardImage,
-  AlloteamentsHeader,
   SearchbarContainer,
   ModalFooter,
 } from "../../assets/css/components.styled";
@@ -80,7 +80,7 @@ export const Allotments = () => {
 
   return alloteaments ? (
     <>
-      <AlloteamentsHeader>
+      <PageHeader>
         <Title2>Loteamentos</Title2>
         <SearchbarContainer>
           <Search
@@ -92,7 +92,7 @@ export const Allotments = () => {
           />
           <AddButton onClick={openModal} />
         </SearchbarContainer>
-      </AlloteamentsHeader>
+      </PageHeader>
       <Modal
         open={modalIsOpen}
         title="Adicionar Loteamento"

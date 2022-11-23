@@ -217,6 +217,9 @@ export const FormDefault = styled.form`
   }
 `;
 
+
+
+
 export const LinearForm = styled.form`
   display: flex;
   flex-direction: row;
@@ -224,7 +227,7 @@ export const LinearForm = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+  };
 `;
 
 export const InputDefault = styled.input`
@@ -298,6 +301,9 @@ export const FormMessageError = styled.p`
   font-size: ${theme.fontSize.caption1};
 `;
 
+
+
+
 /* ######### CONTAINERS #########*/
 
 export const CenterContainer = styled.div`
@@ -306,6 +312,22 @@ export const CenterContainer = styled.div`
   text-align: center;
 `;
 
+
+export const MainContainer = styled.div`
+  margin: 0 auto;
+  padding: 2%;
+`
+
+
+export const PageHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 3% 30px 3%;
+    flex-direction: row;
+    @media (max-width:430px){
+        flex-direction: column;
+    }
+`
 /* ########### HEADER ##############*/
 
 export const NavBar = styled.nav`

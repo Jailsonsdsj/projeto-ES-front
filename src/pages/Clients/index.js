@@ -1,10 +1,15 @@
 import React from 'react'
 import './client-style.css'
 import '../../assets/css/style.css'
-import AddClients from '../../components/AddClients';
-import AllClients from '../../components/AllClients';
-import "../../assets/css/style.css"
+import AddClients from './AddClients';
+import AllClients from './AllClients';
 import {SearchOutlined} from '@ant-design/icons';
+import { MainContainer } from '../../assets/css/style';
+import { SearchbarContainer } from '../../assets/css/components.styled';
+import { AddButton,Title2, PageHeader } from '../../assets/css/style';
+import { Input } from 'antd';
+const { Search } = Input;
+
 
 export const Clients = () => {
   // const [users, setUsers] = useState([]);
@@ -20,18 +25,24 @@ export const Clients = () => {
 
 
   return (
-    <main className='container-1'>
-      <div className="btn-position">
-        <h1>Clientes</h1>
-        <div className="search-addClients-position">
-          <input className='search-input' type="text" placeholder='Buscar'></input>
+    <MainContainer>
+     <PageHeader>
+        <Title2>Clientes</Title2>
+        <SearchbarContainer>
+          <Search
+            placeholder="Pesquisar cliente"
+            style={{
+              width: 200,
+            }}
+            onSearch={""}
+          />
+  
           <AddClients/>
-        </div>
-        
-      </div>
+        </SearchbarContainer>
+      </PageHeader>
       
     <AllClients/>
-    </main>
+    </MainContainer>
   
   )
 }

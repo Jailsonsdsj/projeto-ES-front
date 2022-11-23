@@ -90,15 +90,7 @@ export const CardImage = styled.img`
     max-height: 150px;
 `
 
-export const AlloteamentsHeader = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 3% 30px 3%;
-    flex-direction: row;
-    @media (max-width:430px){
-        flex-direction: column;
-    }
-`
+
 
 export const SearchbarContainer = styled.div`
     display:flex;
@@ -115,5 +107,62 @@ export const SearchbarContainer = styled.div`
 export const ModalFooter = styled.div`
     display:flex;
     justify-content: end;
+
+`
+
+
+
+/* ######### CLIENTS #########*/
+
+export const ClientCard = styled.div`
+    border: 1px solid ${theme.colors.black.terciary};
+    margin: 5px 5%;
+    padding: 1% 2%;
+    border-radius: 20px;
+    display:grid;
+    grid-template-columns: 1fr 3fr;
+    &:nth-of-type(0){
+        background-color:red;
+    }
+
+    @media (max-width: 500px){
+        display:flex;
+        flex-direction: column;
+    }
+`
+
+export const AssociateLots = styled.div`
+    border: 1px solid ${theme.colors.green.terciary};
+    border-radius: 5px;
+    color: ${theme.colors.green.quartenary};
+    padding: 0 10px;
+    margin: 0;
+
+`
+
+export const ClientCardBody = styled.ul`
+   list-style: none;
+
+`
+export const ClientCardLots = styled(Space)`
+    display: flex;
+    justify-content: right;
+    @media (max-width: 500px){
+       
+        justify-content: center;
+    }
+`
+
+export const ClientName = styled(NavLink)`
+    text-decoration:none;
+    color: ${theme.colors.black.primary};
+    :hover{
+        color:${theme.colors.green.quartenary};
+    }
+`
+
+
+export const selectedAlloteament = styled.div`
+
 
 `
