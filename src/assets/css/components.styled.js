@@ -27,6 +27,16 @@ export const Lot = styled.div`
     };
     
 `
+export const AddLot = styled.div`
+    min-width: 50px;
+    min-height: 50px;
+    display:flex;
+    align-items: center;
+    background-color: '#8c8c8f';
+    :hover{
+        cursor: pointer;
+    }
+`
 
 
 export const AlloteamentsInfo = styled.div`
@@ -110,6 +120,14 @@ export const ModalFooter = styled.div`
 
 `
 
+/* ######### ALLOTEAMENTS #########*/
+
+export const BluePrintContainer = styled.div`
+    min-height: 30vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+`
 
 
 /* ######### CLIENTS #########*/
@@ -166,3 +184,5 @@ export const selectedAlloteament = styled.div`
 
 
 `
+
+

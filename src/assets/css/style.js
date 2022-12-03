@@ -100,9 +100,9 @@ export const PrimaryButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  font-weight: bold;
   border: none;
-  width: 100px;
+  min-width: 100px;
   height: 30px;
   padding: 8px;
   :hover {

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import '../../assets/css/style.css'
 import { useParams, useNavigate } from "react-router-dom";
 import { getAllAlloteaments } from "../../api/alloteaments";
+import { BluePrintContainer, Lot , AddLot} from "../../assets/css/components.styled";
+import { PrimaryButton,AddButton,MainContainer } from "../../assets/css/style";
 import {
   EditOutlined,
   DeleteOutlined,
@@ -9,6 +11,7 @@ import {
   InfoCircleOutlined,
   WarningOutlined,
 } from "@ant-design/icons";
+import { Space } from "antd"
 import { NavLink } from "react-router-dom";
 
 const AlloteamentsDetails = () => {
@@ -26,10 +29,10 @@ const AlloteamentsDetails = () => {
     })();
   }, []);
 
-  // console.log(dataAlloteaments)
+
 
   return dataAlloteaments ? (
-    <div className="container-1">
+    <MainContainer>
       <div className="btn-position">
         <h3>
           <NavLink className="h3-nav-link" to="/clients">
@@ -90,37 +93,34 @@ const AlloteamentsDetails = () => {
             </tbody>
           </table>
         </div>
-        <div className="alloteaments-numbers">
-          {Object.keys(dataAlloteaments.lots).length
-            ? Object.entries(dataAlloteaments.lots).map(([key, value]) =>
-                value === true ? (
-                  <div key={key} className="box-lot available-lot">
-                    <NavLink
-                      to={`/Lot/${dataAlloteaments.id}/${key}`}
-                      key={key}
-                      className="info-number-alloteament"
-                    >
-                      <p>{key}</p>
-                    </NavLink>
-                  </div>
-                ) : (
-                  <div key={key} className="box-lot unavaliable-lot">
-                    <NavLink
-                      to={`/Lot/${dataAlloteaments.id}/${key}`}
-                      key={key}
-                      className="info-number-alloteament"
-                    >
-                      <p>{key}</p>
-                    </NavLink>
 
-                  </div>
-                )
-              )
-            : <button>Adicionar Lotes</button>}
-        </div>
-        <button>Anexar planta baixa</button>
+        <Space size={[8, 16]} wrap>
+      
+        {Object.keys(dataAlloteaments.lots).length
+          ? <> {Object.entries(dataAlloteaments.lots).map(([key, value]) => (
+              <NavLink to={`/Lot/${dataAlloteaments.id}/${key}`} key={key}>
+                <Lot key={key} avaliable={value}>
+                  <p>{key}</p>
+                </Lot>
+              </NavLink>
+            ))}
+            <AddLot onClick={''}>
+              <AddButton/>
+            </AddLot>
+            </>
+          : <>
+              <PrimaryButton>Adicionar Lotes</PrimaryButton>
+            </>}
+      </Space>
+      
+      <BluePrintContainer>
+          <PrimaryButton>Anexar planta baixa</PrimaryButton>
+      </BluePrintContainer>
+      
       </div>
-    </div>
+    </MainContainer>
+
+    
   ) : (
     <>Carregando dados...</>
   );
