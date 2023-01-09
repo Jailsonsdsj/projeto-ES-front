@@ -3,6 +3,7 @@ import '../../assets/css/style.css'
 import { useParams, useNavigate } from "react-router-dom";
 import { getAllAlloteaments } from "../../api/alloteaments";
 import { BluePrintContainer, Lot , AddLot} from "../../assets/css/components.styled";
+import LoadingData from "../../components/utils/LoadingData";
 import { PrimaryButton,AddButton,MainContainer } from "../../assets/css/style";
 import {
   EditOutlined,
@@ -48,14 +49,14 @@ const AlloteamentsDetails = () => {
               style={{ backgroundColor: "white" }}
             >
               <EditOutlined />
-              Editar
+              Excluir
             </button>
             <button
               className="input-delete-outlined"
               style={{ backgroundColor: "white" }}
+              onClick={() => setToggleDeleteLot(!toggleDeleteLot)}
             >
               <DeleteOutlined
-                onClick={() => setToggleDeleteLot(!toggleDeleteLot)}
               />
               Deletar
             </button>
@@ -122,7 +123,7 @@ const AlloteamentsDetails = () => {
 
     
   ) : (
-    <>Carregando dados...</>
+    <LoadingData />
   );
 };
 
