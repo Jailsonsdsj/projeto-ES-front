@@ -1,38 +1,89 @@
 import React, { useEffect, useState } from "react";
 import '../../assets/css/style.css'
+import { deleteAlloteament } from "../../api/alloteaments";
 import { useParams, useNavigate } from "react-router-dom";
 import { getAllAlloteaments } from "../../api/alloteaments";
-import { BluePrintContainer, Lot , AddLot} from "../../assets/css/components.styled";
+import { BluePrintContainer, Lot , AddLot, ModalFooter} from "../../assets/css/components.styled";
 import LoadingData from "../../components/utils/LoadingData";
-import { PrimaryButton,AddButton,MainContainer } from "../../assets/css/style";
+import { Modal,Space } from "antd";
+import ModalMessage from "../../components/utils/ModalMessage";
+import { PrimaryButton,AddButton,MainContainer,SecondaryButton, ButtonContainer, NormalButton } from "../../assets/css/style";
+import { NavLink } from "react-router-dom";
 import {
   EditOutlined,
   DeleteOutlined,
   RightOutlined,
   InfoCircleOutlined,
   WarningOutlined,
+  
 } from "@ant-design/icons";
-import { Space } from "antd"
-import { NavLink } from "react-router-dom";
+
 
 const AlloteamentsDetails = () => {
   const { id } = useParams();
   const [dataAlloteaments, setDataAlloteaments] = useState();
-  const [toggleDeleteLot, setToggleDeleteLot] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const [messageSubmit, setMessageSubmit] = useState(false);
+
 
   useEffect(() => {
     (async () => {
       const user = JSON.parse(localStorage.getItem("userData"));
       const reponse = await getAllAlloteaments(user.user_id);
       const details = reponse.filter((item) => item.id == id);
-
+  
       setDataAlloteaments(details[0]);
     })();
   }, []);
 
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+ const deleteLot = () =>{
+   (async()=>{
+    const response = await deleteAlloteament(dataAlloteaments);
+    response.status === 200 ?
+    setMessageSubmit("Loteamento deletado com sucesso") : 
+    setMessageSubmit("Falha ao deletar loteamento");
+    console.log(`reponse: ${response}`)
+   })();
+ };
 
 
+  
   return dataAlloteaments ? (
+    <>
+      <Modal
+        open={modalIsOpen}
+        title="Confirmar ação"
+        onOk={''}
+        onCancel={closeModal}
+        width={400}
+        footer={[
+          <ModalFooter>
+            <NormalButton key="back" type="normal" onClick={()=>closeModal()}>
+              Cancelar
+            </NormalButton>
+           
+            <SecondaryButton danger key="submit" type="primary" onClick={()=> deleteLot()}>
+              Excluir
+            </SecondaryButton>
+          </ModalFooter>,
+        ]}
+      >
+        {messageSubmit && (
+          <ModalMessage message={messageSubmit} navigateLink={"/allAloteaments"}/>
+        )
+        }
+
+      <h3>Tem certeza que deseja excluir o loteamento?</h3>
+      </Modal>
+  
     <MainContainer>
       <div className="btn-position">
         <h3>
@@ -42,34 +93,25 @@ const AlloteamentsDetails = () => {
           <RightOutlined />
           {dataAlloteaments.name}
         </h3>
-        <div className="clients-btn-details-position">
-          <div>
-            <button
+        <ButtonContainer align="right">
+            <SecondaryButton
               className="input-edit-outlined"
               style={{ backgroundColor: "white" }}
             >
               <EditOutlined />
-              Excluir
-            </button>
-            <button
-              className="input-delete-outlined"
-              style={{ backgroundColor: "white" }}
-              onClick={() => setToggleDeleteLot(!toggleDeleteLot)}
+              Editar
+            </SecondaryButton>
+            <SecondaryButton danger
+              onClick={() => openModal()}
             >
               <DeleteOutlined
               />
-              Deletar
-            </button>
-          </div>
-        </div>
+              Excluir
+            </SecondaryButton>
+  
+        </ButtonContainer>
       </div>
-      {toggleDeleteLot && 
-            (<div> 
-                <h3>Tem certeza que deseja excluir o loteamento?</h3>
-                <button className="input-edit-outlined" onClick={() => setToggleDeleteLot(!toggleDeleteLot)}>Cancelar</button>
-                <button className="input-delete-outlined" onClick={''}>Excluir</button>
-            </div>)
-        }
+    
       <div className="alloteaments-status">
         <p>⚫️Vendido</p>
         <p>🟢Disponível</p>
@@ -99,12 +141,13 @@ const AlloteamentsDetails = () => {
       
         {Object.keys(dataAlloteaments.lots).length
           ? <> {Object.entries(dataAlloteaments.lots).map(([key, value]) => (
-              <NavLink to={`/Lot/${dataAlloteaments.id}/${key}`} key={key}>
-                <Lot key={key} avaliable={value}>
+              <NavLink key={key} to={`/Lot/${dataAlloteaments.id}/${key}`}>
+                <Lot avaliable={value}>
                   <p>{key}</p>
                 </Lot>
               </NavLink>
             ))}
+            {/* add new lotes here */}
             <AddLot onClick={''}>
               <AddButton/>
             </AddLot>
@@ -121,7 +164,7 @@ const AlloteamentsDetails = () => {
       </div>
     </MainContainer>
 
-    
+    </>
   ) : (
     <LoadingData />
   );

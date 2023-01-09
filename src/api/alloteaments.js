@@ -46,3 +46,14 @@ export const addAlloteament = async({name,cep,address,img_url}) =>{
         return new Error(err)
     }
 }
+
+
+//request error
+export const deleteAlloteament = async({id}) =>{
+    try{
+        return apiAutentication.delete(`lot/delete/${id}`)
+    }catch(err){
+        return new Error(err)
+    }
+
+}

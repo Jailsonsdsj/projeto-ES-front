@@ -176,6 +176,12 @@ export const AddImg = styled.label`
   };
 `;
  
+export const ButtonContainer = styled.div`
+  display:flex;
+  align-items: center;
+  justify-content: ${(props)=> props.align};
+
+`
 
 
 export const CameraIcon = styled(CameraOutlined)`
@@ -184,7 +190,16 @@ export const CameraIcon = styled(CameraOutlined)`
 `;
 
 
+export const SecondaryButton = styled(Button)`
+  border-radius: 5px;
 
+  :hover{
+    box-shadow: inherit;
+    color: inherit;
+    border-color: inherit;
+  }
+
+`
 
 /* ######### FORMS #########*/
 export const BoxContainer = styled.div`

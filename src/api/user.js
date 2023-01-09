@@ -111,11 +111,9 @@ export const deleteCustomerLot = async(userId,allotment_id,customer_id,lot_numbe
 
 export const ticketGenerator = async(clientName) =>{
     try{
-        console.log(clientName)
         return apiAutentication.get(`pdf/${clientName}`)
         
     }catch(err){
-        console.log(err)
         return new Error(err)
         
     }
